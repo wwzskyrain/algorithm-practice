@@ -1,7 +1,7 @@
 package study.erik.algorithm.leetcode.other;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * @author erik.wang
@@ -80,8 +80,8 @@ public class Solution {
     public void test_mobile_select_station() {
         int[] houseArray1 = {1, 2, 3, 4, 5};
         int[] houseArray2 = {2, 4, 5, 6, 7, 11, 12};
-        Assertions.assertEquals(2, mobileSelectStation(houseArray1, 1));
-        Assertions.assertEquals(3, mobileSelectStation(houseArray2, 2));
+        Assert.assertEquals(2, mobileSelectStation(houseArray1, 1));
+        Assert.assertEquals(3, mobileSelectStation(houseArray2, 2));
     }
 
 

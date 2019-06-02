@@ -1,7 +1,8 @@
 package study.erik.algorithm.leetcode.list;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -250,7 +251,7 @@ public class Solutions {
         int result = longestConsecutive(nums);
 
         int expected = 4;
-        Assertions.assertEquals(expected, result);
+        Assert.assertEquals(expected, result);
 
     }
 
@@ -293,7 +294,7 @@ public class Solutions {
         int[] nums = {3, 2, 4};
         int target = 6;
         int[] except = {1, 2};
-        Assertions.assertArrayEquals(except, twoSum(nums, target));
+        Assert.assertArrayEquals(except, twoSum(nums, target));
     }
 
     /**
@@ -411,7 +412,7 @@ public class Solutions {
 //        Assertions.assertEquals(3, lengthOfLongestSubstringI("abcabcbb"));
 //        Assertions.assertEquals(1, lengthOfLongestSubstringI("bbbbb"));
 //        Assertions.assertEquals(3, lengthOfLongestSubstringI("pwwkew"));
-        Assertions.assertEquals(2, lengthOfLongestSubstringI("abba"));
+        Assert.assertEquals(2, lengthOfLongestSubstringI("abba"));
     }
 
 }

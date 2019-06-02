@@ -662,6 +662,7 @@ public class BinaryTreeTraversalSolutions {
      * title=Populating Next Right Pointers in Each Node
      * 解法：这个题目用"层次优先遍历"最为简单，可惜空间复杂度是O(n),人家题目有要求，只能是常量级别的。
      * 所以用了一个迭代法，真的是迭代法吗？其实是利用了结点中的next指针来完成的。
+     *
      * @param root
      * @return
      */
@@ -694,6 +695,32 @@ public class BinaryTreeTraversalSolutions {
         }
 
         return result;
+    }
+
+    /**
+     * 递归解法，因为它的思想真的很简介
+     *  而且，表现最佳 faster than 100.00% ，less than 96.25%
+     * @param root
+     * @return
+     */
+    public Node connectI(Node root) {
+
+        if (root == null) {
+            return null;
+        }
+
+        if (root.left != null) {
+            root.left.next = root.right;
+        }
+
+        if (root.right != null && root.next != null) {
+            root.right.next = root.next.left;
+        }
+
+        connect(root.left);
+        connect(root.right);
+
+        return root;
     }
 
 

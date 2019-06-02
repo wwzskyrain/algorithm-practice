@@ -1,7 +1,8 @@
 package study.erik.algorithm.leetcode.list;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
+
 
 import java.util.*;
 
@@ -12,7 +13,7 @@ public class Rectangle {
     public void test_largestRectangleArea() {
         int[] heights = {1,1,1,1,1,2, 1, 5, 6, 2, 3};
         int result = largestRectangleArea2(heights);
-        Assertions.assertEquals(11, result);
+        Assert.assertEquals(11, result);
     }
 
     public int largestRectangleArea(int[] heights) {

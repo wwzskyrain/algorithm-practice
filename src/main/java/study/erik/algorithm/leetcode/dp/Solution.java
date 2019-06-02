@@ -1,8 +1,11 @@
 package study.erik.algorithm.leetcode.dp;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author erik.wang
@@ -183,11 +186,12 @@ public class Solution {
     /**
      * title = Best Time to Buy and Sell Stock
      * 注意：只能进行一次交易
+     * 这个写法是抄的官网给的solution，我也有自己的理解
      *
      * @param prices
      * @return
      */
-    public int maxProfitI(int[] prices) {
+    public int maxProfitI1(int[] prices) {
 
         int maxProfit = 0;
         int minPrice = Integer.MAX_VALUE;
@@ -203,9 +207,49 @@ public class Solution {
     }
 
     /**
+     * title = Best Time to Buy and Sell Stock
+     * 注意：最多只能进行一次交易
+     * 解法：定义p[i] 为 price[0...i] 的最大收益；那么p[length-1] 就是源问题的解。
+     * 再定义 m[i]为price[0...i]的最小价格；
+     * 递推公式：
+     * p[i] = max( p[i-1], price[i] - m[i-1] )
+     * 写成算法时，没必要额外使用一个p数组和m数组；
+     * 因为p和m都是一维的，而且他们都是依次变化的，所以各自只需要一个变量就可以了
+     * 如下写法，maxProfit就是p数组的代表，minPrice就是m数组的代表
+     * <p>
+     * leetcode结果：Runtime: 1 ms, faster than 80.79% 还是不错的
+     *
+     * @param prices
+     * @return
+     */
+    public int maxProfitI2(int[] prices) {
+
+        if (prices.length == 0) {
+            return 0;
+        }
+
+        int maxProfit = 0;
+        int minPrice = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+
+            maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+            minPrice = Math.min(minPrice, prices[i]);
+
+        }
+
+        return maxProfit;
+    }
+
+    @Test
+    public void test_max_profit_I_2() {
+        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
+        Assert.assertEquals(5, maxProfitI2(prices));
+    }
+
+    /**
      * title = Best Time to Buy and Sell Stock II
      * 注意：全程可以进行多次交易
-     *
+     * 这个就简单了。
      * @param prices
      * @return
      */
@@ -232,12 +276,25 @@ public class Solution {
      */
     public int maxProfitIII(int[] prices) {
 
-        return 0;
+        if (prices == null || prices.length < 2) {
+            return 0;
+        }
+        List<Integer> upZones = upZones(prices);
+        Collections.sort(upZones);
+        Collections.reverse(upZones);
+
+        int maxProfit = 0;
+        for (int i = 0; i < upZones.size() && i < 2; i++) {
+            maxProfit += upZones.get(i);
+        }
+
+        return maxProfit;
     }
 
     /**
      * title = Best Time to Buy and Sell Stock IV
      * 注意：III问题的泛化，最对进行k次交易
+     * 使用二维dp吧
      *
      * @param k
      * @param prices
@@ -245,7 +302,91 @@ public class Solution {
      */
     public int maxProfit(int k, int[] prices) {
 
-        return 0;
+        if (prices == null || prices.length < 2) {
+            return 0;
+        }
+        List<Integer> upZones = upZones(prices);
+        Collections.sort(upZones);
+        Collections.reverse(upZones);
+
+        int maxProfit = 0;
+        for (int i = 0; i < upZones.size() && i < k; i++) {
+            maxProfit += upZones.get(i);
+        }
+
+        return maxProfit;
+
+
+    }
+
+    public List<Integer> upZones(int[] prices) {
+
+        List<Integer> upZones = new ArrayList<>();
+
+        int base = prices[0];
+        int upZoneValue = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (base <= prices[i]) {
+                upZoneValue += prices[i] - base;
+
+                if (i == prices.length - 1) {
+                    upZones.add(upZoneValue);
+                }
+
+            } else {
+                upZones.add(upZoneValue);
+                upZoneValue = 0;
+            }
+            base = prices[i];
+        }
+        return upZones;
+    }
+
+    @Test
+    public void test_up_zones() {
+        int[] prices = new int[]{1,2,4,2,5,7,2,4,9,0};
+        List<Integer> upZones = upZones(prices);
+        System.out.println(upZones);
+        Collections.sort(upZones);
+        Collections.reverse(upZones);
+        System.out.println(upZones);
+    }
+
+    /**
+     * title = Maximum Subarray
+     * 经典问题：最大子串和
+     * 依稀记得一个算法
+     * 设置m[i]是以nums[i]结尾的字符串中最大字符串的和
+     * 则m[i]=max( m[i-1] + num[i] , num[i])
+     * 即在m[i-1]的基础上，m[i]要么就是把num[i]续接上以num[i-1]为结尾的子串，要么就单干
+     * 而"最大子串和"=max(m[0...length-1])。
+     * 在写程序是m数组可以不需要
+     *
+     * @param nums
+     * @return
+     */
+    public int maxSubArray(int[] nums) {
+
+        if (nums.length == 0) {
+            return 0;
+        }
+        int r = nums[0];
+        int m = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            m = Math.max(m + nums[i], nums[i]);
+            r = Math.max(r, m);
+        }
+        return r;
+        // TODO: 2019/4/17 next challenge
+//         1 degree-of-an-array
+//         2 longest-turbulent-subarray
+    }
+
+    @Test
+    public void test_max_sub_array() {
+
+        int[] nums = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        Assert.assertEquals(6, maxSubArray(nums));
     }
 
 

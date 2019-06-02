@@ -1,6 +1,5 @@
 package study.erik.algorithm.leetcode.tree.helper;
 
-import erik.ximalaya.tree.RecursiveBinaryTree;
 
 import java.util.LinkedList;
 import java.util.List;
