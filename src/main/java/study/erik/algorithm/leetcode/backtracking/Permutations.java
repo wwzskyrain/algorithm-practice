@@ -1,7 +1,6 @@
 package study.erik.algorithm.leetcode.backtracking;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,16 +16,16 @@ public class Permutations {
      * @param nums
      * @return
      */
-    public List<List<Integer>> permute(int[] nums) {
+    public List<List<Integer>> permute_by_my_self(int[] nums) {
 
         List<List<Integer>> result = new ArrayList<>();
 
-        doPermute(result, nums, 0);
+        doPermuteBySwitch(result, nums, 0);
 
         return result;
     }
 
-    public void doPermute(List<List<Integer>> result, int[] nums, int point) {
+    public void doPermuteBySwitch(List<List<Integer>> result, int[] nums, int point) {
 
         if (nums == null || nums.length == 0) {
             return;
@@ -47,7 +46,7 @@ public class Permutations {
             nums[point] = nums[i];
             nums[i] = temp;
 
-            doPermute(result, nums, point + 1);
+            doPermuteBySwitch(result, nums, point + 1);
 
             temp = nums[point];
             nums[point] = nums[i];

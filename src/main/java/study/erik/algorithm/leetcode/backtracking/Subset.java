@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author erik.wang
  * @date 2019/06/01
+ * 共四个解法：位图法、遍历子集二叉树、标准回溯法、迭代法。其中位图法和遍历二叉树、迭代法比较容易理解。
  **/
 public class Subset {
 
@@ -61,14 +62,6 @@ public class Subset {
         return result;
     }
 
-    /**
-     * 回溯法的具体实现之遍历一颗二叉树，这颗二叉树是一颗子集树。
-     *
-     * @param result
-     * @param nums
-     * @param level
-     * @param currentSet
-     */
     public void findSubsetByTraceBinaryTree(List<List<Integer>> result, int[] nums, int level, List<Integer> currentSet) {
 
         if (nums == null || nums.length == 0) {
@@ -87,12 +80,39 @@ public class Subset {
         findSubsetByTraceBinaryTree(result, nums, level + 1, temp);
     }
 
-    @Test
-    public void test_subsetI() {
-        int[] nums = new int[]{1, 2, 3};
-        List<List<Integer>> result = subsets_Backtrace(nums);
-        System.out.println(result);
+
+    /**
+     * 标准回溯法，faster than 67.81%，  less than 99.23%
+     * 战绩不佳，其效率远不如我自己的遍历二叉树；
+     *
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> subsets_StandardBacktrace(int[] nums) {
+
+        List<List<Integer>> allSubset = new ArrayList<>();
+        findSubsetByStandardBacktrace(allSubset, nums, 0, new ArrayList<>());
+        return allSubset;
     }
+
+    /**
+     * @param allSubset
+     * @param nums
+     * @param position
+     * @param currentSubset 当前一个解，也是用于试探的解
+     */
+    public void findSubsetByStandardBacktrace(List<List<Integer>> allSubset, int[] nums, int position, List<Integer> currentSubset) {
+
+        allSubset.add(new ArrayList<>(currentSubset));
+
+        for (int i = position; i < nums.length; i++) {
+            int currentIndex = currentSubset.size();
+            currentSubset.add(currentIndex, nums[i]);
+            findSubsetByStandardBacktrace(allSubset, nums, i + 1, currentSubset);//注意，这是i+1，而不是position+1.
+            currentSubset.remove(currentIndex);
+        }
+    }
+
 
     /**
      * 迭代法，这个解法真的很美。
@@ -117,9 +137,6 @@ public class Subset {
 
         return result;
     }
-
-
-
 
 
 

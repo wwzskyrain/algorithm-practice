@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author erik.wang
  * @date 2019/03/23
  **/
-public class Solution {
+public class MobileSelectStation {
 
     public static int mobileSelectStation(int[] houseCoordinate, int radius) {
 
