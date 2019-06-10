@@ -36,74 +36,6 @@ public class RecursiveBinaryTree {
 
     }
 
-    /**
-     * title = Path Sum
-     *
-     * @param root
-     * @param sum
-     * @return
-     */
-    public boolean hasPathSum(TreeNode root, int sum) {
-
-        if (root == null) {
-            return false;
-        }
-
-        if (root.left == null && root.right == null) {
-            return sum == root.val;
-        }
-
-        return hasPathSum(root.left, sum - root.val)
-                || hasPathSum(root.right, sum - root.val);
-
-    }
-
-    /**
-     * title = Path Sum II
-     *
-     * @param root
-     * @param sum
-     * @return
-     */
-    public List<List<Integer>> pathSum(TreeNode root, int sum) {
-
-        List<List<Integer>> result = new ArrayList<>();
-        Deque<Integer> currentPath = new LinkedList<>();
-        pathSum(root, sum, currentPath, result);
-
-        return result;
-
-    }
-
-    /**
-     * 以当前节点为二叉树，以当前路径为基础，找寻目标路径
-     *
-     * @param root
-     * @param sum
-     * @param currentPath
-     * @param result
-     */
-    public void pathSum(TreeNode root, int sum, Deque<Integer> currentPath, List<List<Integer>> result) {
-
-        if (root == null) {
-            return;
-        }
-
-        currentPath.push(root.val);
-        if (root.right == null && root.left == null) {  // leaf node
-            if (root.val == sum) {
-                ArrayList<Integer> resultPath = new ArrayList<>(currentPath);
-                Collections.reverse(resultPath);
-                result.add(resultPath);
-            }
-        }
-
-        pathSum(root.left, sum - root.val, currentPath, result);
-        pathSum(root.right, sum - root.val, currentPath, result);
-
-        currentPath.pop();
-    }
-
 
     /**
      * title = Binary Tree Maximum Path Sum
@@ -153,12 +85,10 @@ public class RecursiveBinaryTree {
 
     /**
      * title = Sum Root to Leaf Numbers
-     *
      * @param root
      * @return
      */
     public int sumNumbers(TreeNode root) {
-
 
         return DFSForSumNumbersI(root, 0);
     }
@@ -167,7 +97,6 @@ public class RecursiveBinaryTree {
 
     /**
      * 定义函数：
-     *
      * @param root
      * @param stack
      */

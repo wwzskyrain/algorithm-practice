@@ -6,11 +6,11 @@ package study.erik.algorithm.leetcode.tree.helper;
  **/
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public Integer val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int x) {
+    TreeNode(Integer x) {
         val = x;
     }
 
