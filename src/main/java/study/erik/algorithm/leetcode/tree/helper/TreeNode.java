@@ -10,7 +10,7 @@ public class TreeNode {
     public TreeNode left;
     public TreeNode right;
 
-    TreeNode(Integer x) {
+    public TreeNode(Integer x) {
         val = x;
     }
 

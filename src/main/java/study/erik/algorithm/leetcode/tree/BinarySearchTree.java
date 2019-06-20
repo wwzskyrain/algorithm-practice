@@ -54,7 +54,7 @@ public class BinarySearchTree {
     /**
      * title=Unique Binary Search Trees II
      * 这是一个典型的"分治法"
-     * 返回的是一个二叉树；而leetcode对树有自己的打印方式，无序去把他"扁平化"
+     * 返回的是一个二叉树；而leetcode对树有自己的打印方式，无需去把他"扁平化"
      *
      * @param n
      * @return

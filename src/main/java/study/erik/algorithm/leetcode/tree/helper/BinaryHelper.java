@@ -14,7 +14,6 @@ public class BinaryHelper {
 
     /**
      * 不能用呢。
-     *
      * @param values
      * @return
      */
@@ -62,6 +61,10 @@ public class BinaryHelper {
         return root;
     }
 
+    /**
+     * 修剪
+     * @param root
+     */
     public static void pruning(TreeNode root) {
 
         if (root == null) {

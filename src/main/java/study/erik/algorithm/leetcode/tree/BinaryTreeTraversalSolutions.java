@@ -25,7 +25,7 @@ public class BinaryTreeTraversalSolutions {
      * 最基础的方法-结点法-出栈法-
      * 优点：操作流程比较简单明了
      * 缺点：不能变形为"中序遍历"
-     * 这个方法可以利用堆成思想变形为"后序遍历"
+     * 这个方法可以利用对称思想变形为"后序遍历"
      *
      * @param root
      * @return
@@ -59,7 +59,7 @@ public class BinaryTreeTraversalSolutions {
 
     /**
      * 先序遍历二叉树-非递归算法
-     * 探针法
+     * stac+探针法
      * 同样可以利用"对称思想"变形为"后序遍历。
      *
      * @param root
@@ -96,8 +96,7 @@ public class BinaryTreeTraversalSolutions {
 
     /**
      * 中序遍历二叉树-非递归算法
-     * 探针法
-     *
+     * stack+探针法
      * @param root
      * @return
      */
@@ -110,19 +109,19 @@ public class BinaryTreeTraversalSolutions {
             return result;
         }
 
-        TreeNode node = root;
+        TreeNode probe = root;
 
-        while (!stack.isEmpty() || node != null) {
+        while (!stack.isEmpty() || probe != null) {
 
-            if (node != null) {     //先左后右
-                stack.push(node);
-                node = node.left;
+            if (probe != null) {     //先左后右
+                stack.push(probe);
+                probe = probe.left;
             } else {
 //           左指针为空或者右指针为空。
 //           左指针为空的话，就是要访问该节点了
-                node = stack.pop();
-                result.add(node.val);
-                node = node.right;
+                probe = stack.pop();
+                result.add(probe.val);
+                probe = probe.right;
             }
 
         }
@@ -202,36 +201,8 @@ public class BinaryTreeTraversalSolutions {
         return result;
     }
 
-    public List<Integer> postorderTraversalIII(TreeNode root) {
-
-        Deque<TreeNode> stack = new ArrayDeque<>();
-
-        List<Integer> result = new ArrayList<>();
-
-        if (root == null) {
-            return result;
-        }
-        stack.push(root);
-        while (!stack.isEmpty()) {
-
-            TreeNode currentTreeNode = stack.pop();
-            result.add(0, currentTreeNode.val);
-
-            if (currentTreeNode.left != null) {
-                stack.push(currentTreeNode.left);
-            }
-
-            if (currentTreeNode.right != null) {
-                stack.push(currentTreeNode.right);
-            }
-        }
-        return result;
-
-    }
-
     /**
-     * 探针法+lastVisited方法实现后序遍历
-     *
+     * stach+探针法+lastVisited方法实现后序遍历
      * @param root
      * @return
      */
@@ -255,11 +226,12 @@ public class BinaryTreeTraversalSolutions {
             } else {
 
                 TreeNode peekNode = stack.peek();
+                //当peekNode的右子树为空，或者 上一个访问的节点就是peekNode的有结点，peekNode才能出栈被访问。
                 if (peekNode.right == null || peekNode.right == lastVisitedNode) {
                     peekNode = stack.pop();
                     result.add(peekNode.val);
                     lastVisitedNode = peekNode;
-                    pointerNode = null; //必须经pointerNode置空的
+                    pointerNode = null; //必须将pointerNode置空的
                 } else {
                     pointerNode = peekNode.right;
                 }
