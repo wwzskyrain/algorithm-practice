@@ -52,9 +52,8 @@ public class TailRecursive {
 
     /**
      * 递归形式的fib；这是一个中尾递归吗？递归调用的位置在return中，算尾递归；但是他有两个调用出，还算尾递归吗？
-     * 如果是一维递归，是一个尾递归；二位就不好说了。
-     * 反正我可以把它变成一个'一维递归'的'尾递归'。
-     *
+     * 如果是一维递归，是一个尾递归；二维就不好说了。
+     * 二维应该不是了。尾递归的价值在于，当执行到下一个递归调用时，是不用在保留当前调用的上下文的；
      * @param n
      * @return
      */
@@ -68,12 +67,18 @@ public class TailRecursive {
         return fib(n - 1) + fib(n - 2);
     }
 
+    /**
+     * 尾递归形式的'斐波那契函数'实现
+     * @param n 其实只是一个计数器
+     * @param first 前一个斐波那契数，也是前一个函数的值
+     * @param second 当前的斐波那契额数，也就是当前的函数值
+     * @return
+     */
     public int fibTailRecursive(int n, int first, int second) {
 
         if (n == 2) {
             return second;
         }
-
         return fibTailRecursive(n - 1, second, first + second);
     }
 
