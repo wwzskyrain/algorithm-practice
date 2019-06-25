@@ -66,7 +66,7 @@ public class EntryNodeOfLoop {
     }
 
     /**
-     * 正解2：记住结论吧，x = a - c + m*c ,其中m={ 0,1,2,3.... }
+     * 正解2：记住结论吧，x = c - a + m*c ,其中m={ 0,1,2,3.... }
      * @param pHead
      * @return
      */
