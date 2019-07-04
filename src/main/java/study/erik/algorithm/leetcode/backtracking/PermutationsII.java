@@ -20,6 +20,9 @@ public class PermutationsII {
     }
 
     /**
+     *  link = https://leetcode.com/problems/permutations-ii/
+     *  title=Permutations II
+     *  description：Given a collection of numbers that might contain duplicates, return all possible unique permutations.
      * 有了全排列的基础，这一题就很简单了。关键点就是去重。
      * @param nums
      * @return

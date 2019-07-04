@@ -19,7 +19,9 @@ public class Combination {
     }
 
     /**
-     * leecode:
+     * title: Combinations
+     * link = https://leetcode.com/problems/combinations/
+     * description = Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
      * 解法：标准回溯法
      * 战绩：faster than 43.79%  less than 66.75%并不是很好，不过这个写法真的很标准
      *
@@ -52,6 +54,7 @@ public class Combination {
 
     /**
      * 这个解法是公式的演艺 C(n,k) = C(n-1,k-1) + C(n-1,k)
+     * 战绩：faster than 85.65%  less than 41.35%
      * @param n
      * @param k
      * @return

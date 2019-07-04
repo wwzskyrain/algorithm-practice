@@ -21,10 +21,11 @@ public class TwoDimensionsBacktrace {
     }
 
     /**
-     * 求岛屿个数的问题是一个很经典的问题
+     * description=求岛屿个数的问题是一个很经典的问题
      * leetCode https://leetcode.com/problems/number-of-islands/
      * 这篇文章中有很好的讲解，这里的代码也基本是抄写自它的。http://www.imooc.com/article/39641
-     * 这里的解法并没有一个很明显的'试探形式-一进一退'；在主函数和dfs配合下，就找到了所有的岛屿点。
+     * 这里的解法并没有一个很明显的'试探形式-一进一退'，因为这个题的特性得知，这里不要回溯，只需要遍历，所以，
+     * 我们只需要记录我们发起dfs的次数就行了。每发生一次就表示遍历完了一篇区域。
      * @param grid
      * @return
      */
@@ -131,6 +132,8 @@ public class TwoDimensionsBacktrace {
         boolean right = false;
         boolean up = false;
         boolean down = false;
+
+        // TODO: 2019/7/1 这四个if分支可以用一个for循环简化
         if (valid(visited, x - 1, y) && board[x - 1][y] == word.charAt(level)) {
             visited[x - 1][y] = '1';
             down = doExist(board, visited, x - 1, y, word, level + 1);

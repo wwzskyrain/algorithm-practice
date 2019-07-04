@@ -12,6 +12,7 @@ public class PhoneNumber {
 
     /**
      * Letter Combinations of a Phone Number
+     * link = https://leetcode.com/problems/letter-combinations-of-a-phone-number/
      * 解法：深度搜索多叉树。也是子集树
      * 战绩：faster than 21.37%， less than 99.36% 不理想的很
      * @param digits

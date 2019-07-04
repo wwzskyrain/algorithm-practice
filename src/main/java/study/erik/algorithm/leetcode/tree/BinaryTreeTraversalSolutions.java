@@ -59,9 +59,9 @@ public class BinaryTreeTraversalSolutions {
 
     /**
      * 先序遍历二叉树-非递归算法
-     * stac+探针法
+     * stack+探针法
      * 同样可以利用"对称思想"变形为"后序遍历。
-     *
+     *  可变形为'中序遍历'
      * @param root
      * @return
      */
@@ -202,7 +202,7 @@ public class BinaryTreeTraversalSolutions {
     }
 
     /**
-     * stach+探针法+lastVisited方法实现后序遍历
+     * stack+探针法+lastVisited方法实现后序遍历
      * @param root
      * @return
      */

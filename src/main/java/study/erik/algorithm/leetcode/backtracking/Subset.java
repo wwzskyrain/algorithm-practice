@@ -62,6 +62,13 @@ public class Subset {
         return result;
     }
 
+    /**
+     * 遍历子集树的方法-自写(不敢说自创)
+     * @param result
+     * @param nums
+     * @param level
+     * @param currentSet
+     */
     public void findSubsetByTraceBinaryTree(List<List<Integer>> result, int[] nums, int level, List<Integer> currentSet) {
 
         if (nums == null || nums.length == 0) {
@@ -84,7 +91,6 @@ public class Subset {
     /**
      * 标准回溯法，faster than 67.81%，  less than 99.23%
      * 战绩不佳，其效率远不如我自己的遍历二叉树；
-     *
      * @param nums
      * @return
      */

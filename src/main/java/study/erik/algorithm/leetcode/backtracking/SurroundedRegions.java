@@ -41,6 +41,7 @@ public class SurroundedRegions {
 
         for (int i = 0; i < board.length; ++i) {
             for (int j = 0; j < board[i].length; ++j) {
+                //从四条边中的'O'开始遍历，与这些'O'联通的'O'都是要保留的，而联通不到的'O'都是要被'围困而死'的。
                 if (i == 0 || i == board.length - 1 || j == 0 || j == board[i].length - 1) {
                     if (board[i][j] == 'O') bfs(direction, board, i, j);
                 }

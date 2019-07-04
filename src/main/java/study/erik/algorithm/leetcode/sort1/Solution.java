@@ -108,7 +108,7 @@ public class Solution {
 
     public void heapSort(int[] data) {
 
-        //从data的倒数第二层开始，一直到第一层(第一层就是data[0].)，调整为一颗大顶堆
+        //从data的倒数第二层开始，一直到第一层(第一层就是data[1]，date[0]不参与排序)，调整为一颗大顶堆
         for (int i = data.length / 2; i >= 1; i--) {
             heapAdjust(data, i, data.length - 1);
         }
@@ -138,7 +138,7 @@ public class Solution {
 
         for (int i = 2 * start; i <= end; i *= 2) {
 
-            if (i < end && data[i] < data[i + 1]) { //在左孩子、右孩子中，找打大的那一个。
+            if (i < end && data[i] < data[i + 1]) { //在左孩子、右孩子中，找到比较大的那一个。
                 i++;
             }
             if (temp > data[i]) //如果已经构成堆了，循环结束，即找到了temp的落脚点
@@ -146,7 +146,6 @@ public class Solution {
 
             data[start] = data[i];
             start = i;
-
         }
 
         data[start] = temp;
