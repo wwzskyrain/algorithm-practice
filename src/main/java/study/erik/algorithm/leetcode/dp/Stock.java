@@ -3,10 +3,6 @@ package study.erik.algorithm.leetcode.dp;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Stock {
 
     /**
@@ -129,7 +125,15 @@ public class Stock {
      *
      * local[i][j] 表示在第[i]天卖出的情况下，最多进行j次交易，这时的最大交易额。
      * global[i][j] 表示i天最多进行j次交易的最大交易额，也是问题的解
-     * 公式2：前者表示
+     * 公式3很简单，全局最优就是local的最大值
+     * 公式2有点扯淡，因为对global[i-1][j-1]+gain解释不清楚。网上还有另一个版本呢。
+     * 我自己也有一个local[i][j]的递推公式，但是有点长，所以就不谢了。
+     * 不过很希望能解释清楚这个公式2，因为这是一个思考方式，叫做'全局最优和局部最优'理论嗯。
+     * 但是这个题目不能这样结束的。
+     * 幸好在网上找到了一篇可以贯穿这个系列题目解法。
+     * link = https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/kadanes-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input
+     * 他让我明白了一点，他详细分析了这个题目中的变量，并且建立了一个很细节的交易求最值的模型。
+     * 有时候大道至简；那是应为化繁为简了。所以细节分析还是很重要的。
      * @param prices
      * @return
      */
