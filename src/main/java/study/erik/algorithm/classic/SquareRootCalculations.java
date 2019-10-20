@@ -5,7 +5,6 @@ package study.erik.algorithm.classic;
  * @Created by erik
  * 二分法和牛顿法开根号
  * 参考文章 https://www.cnblogs.com/wangkundentisy/p/8118007.html
- *
  */
 public class SquareRootCalculations {
 
@@ -33,7 +32,11 @@ public class SquareRootCalculations {
         return mid;
     }
 
-
+    /**
+     * 牛顿法主要有一个退到公式；知道了退到之后的公式后，转化成代码就可以了。
+     * @param n
+     * @return
+     */
     public static double solutionByNewtonsMethod(double n) {
 
         double result = 1;
