@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author erik.wang
  * @date 2019/05/30
  **/
-public class JumpGame {
+public class JumpGameI {
 
     /**
      * 不做总结，等于白做
@@ -83,38 +83,5 @@ public class JumpGame {
         Assert.assertTrue(solution2(array1));
         Assert.assertFalse(solution2(array2));
     }
-
-
-    public int jump(int[] nums) {
-
-        int length = nums.length;
-        int[] mixStep = new int[length];
-
-        for (int i = 0; i < length - 1; i++) {
-            mixStep[i] = Integer.MAX_VALUE;
-        }
-
-        mixStep[length - 1] = 0;
-
-        for (int i = length - 2; i >= 0; i--) {
-
-            int min = length;
-            for (int j = 1; j <= nums[i] && j + i < length; j++) {
-                min = Math.min(min, mixStep[j + i]);
-            }
-            mixStep[i] = min + 1;
-        }
-
-        return mixStep[0];
-    }
-
-    @Test
-    public void test_jump() {
-        int[] array1 = new int[]{2, 3, 1, 1, 4};
-        int[] array2 = new int[]{2, 3, 0, 1, 4};
-        Assert.assertEquals(2, jump(array1));
-        Assert.assertEquals(2, jump(array2));
-    }
-
 
 }
