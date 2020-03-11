@@ -11,6 +11,15 @@ public class JumpGame {
 
     /**
      * 不做总结，等于白做
+     *
+     * @param nums
+     * @return
+     */
+    public boolean canJump(int[] nums) {
+        return solution1(nums);
+    }
+
+    /**
      * 这个题目的描述很有意思，而dp的思路却很简单。
      * 题意是描述能不能跳过去，而不能跳过去的关键就是存在0点。但是dp的思路却不在这里。
      * 可以通过判断0点来加快'可以跳过去'测试case。但是dp的思路却不在这里。
@@ -24,8 +33,7 @@ public class JumpGame {
      * @param nums
      * @return
      */
-    public boolean canJump(int[] nums) {
-
+    public boolean solution1(int[] nums) {
         boolean[] canJump = new boolean[nums.length];
         int length = nums.length;
         canJump[length - 1] = true;
@@ -43,15 +51,39 @@ public class JumpGame {
         return canJump[0];
     }
 
+    /**
+     * 成绩：98% 和 52%
+     * 解法分析：从左边向右走，不断的更新'最大达到下标'。
+     * 这是新想出来的做法。
+     * 相比较solution1，该解法跟省空间，速度更快。
+     * @param nums
+     * @return
+     */
+    public boolean solution2(int[] nums) {
+
+        int maxArrivedIndex = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i <= maxArrivedIndex) {
+                int arriveIndex = nums[i] + i;
+                maxArrivedIndex = Math.max(maxArrivedIndex, arriveIndex);
+                if (maxArrivedIndex >= nums.length - 1) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @Test
-    public void test_can_jump() {
+    public void test_solution() {
 
         int[] array1 = new int[]{2, 3, 1, 1, 4};
         int[] array2 = new int[]{3, 2, 1, 0, 4};
 
-        Assert.assertTrue(canJump(array1));
-        Assert.assertFalse(canJump(array2));
+        Assert.assertTrue(solution2(array1));
+        Assert.assertFalse(solution2(array2));
     }
+
 
     public int jump(int[] nums) {
 

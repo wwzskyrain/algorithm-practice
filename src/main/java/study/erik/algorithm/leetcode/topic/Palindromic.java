@@ -3,6 +3,9 @@ package study.erik.algorithm.leetcode.topic;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author erik.wang
  * @date 2019/06/08
@@ -20,9 +23,7 @@ public class Palindromic {
      * @return
      */
     public boolean validPalindromeI(String s) {
-
         return true;
-
     }
 
     @Test
@@ -96,6 +97,7 @@ public class Palindromic {
      * 问题描述：找到最长回文子串
      * 解法描述：动态规划吧，定义d[i,j]=1表示str[i,,,j]是'回文'；
      * d[i,j]=or{d[i+1,j-1] , str[i]==str[j];  0, str[i]!=str[j]}
+     *
      * @param s
      * @return
      */
@@ -155,5 +157,56 @@ public class Palindromic {
         Assert.assertEquals("bb", longestPalindrome1("cbbd"));
     }
 
+    /**
+     * title: 131. Palindrome Partitioning
+     *
+     * @param s
+     * @return
+     */
+    public List<List<String>> partition(String s) {
+        char[] charArray = s.toCharArray();
+        short[][] isPalindrome = new short[charArray.length][charArray.length];
+        for (int i = 0; i < isPalindrome.length - 1; i++) {
+            isPalindrome[i][i + 1] = 1;
+        }
 
+        return null;
+    }
+
+    @Test
+    public void test() {
+        boolean[] values = new boolean[5];
+        test_a(0, values);
+    }
+
+    public boolean isPalindrome(char[] values, short[][] isPalindrome, int from, int end) {
+        if (from > end) {
+            return false;
+        }
+        if (from == end) {
+            return true;
+        }
+
+        if (isPalindrome[from + 1][end - 1] == 0) {
+
+        }
+//        if (values[from] == values[end] &&) {
+//
+//        }
+        return false;
+    }
+
+    public void test_a(int level, boolean[] values) {
+        if (level == values.length) {
+
+            System.out.println(Arrays.toString(values));
+            return;
+        }
+
+        boolean[] vector = {true, false};
+        for (boolean b : vector) {
+            values[level] = b;
+            test_a(level + 1, values);
+        }
+    }
 }

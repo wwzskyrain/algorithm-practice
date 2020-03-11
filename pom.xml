@@ -7,6 +7,9 @@
     <groupId>edu.study.erik</groupId>
     <artifactId>algorithm-practice</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
+
     <build>
         <plugins>
             <plugin>
@@ -20,12 +23,40 @@
         </plugins>
     </build>
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.codec -->
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>org-apache-commons-codec</artifactId>
+            <version>RELEASE113</version>
+        </dependency>
+
+        <!--   slf4j配置     -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.8.0-beta2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.8.0-beta2</version>
+        </dependency>
+<!-- util -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
+        </dependency>
+
     </dependencies>
 
 

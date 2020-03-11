@@ -1,5 +1,6 @@
 package study.erik.algorithm.leetcode.dp;
 
+import javafx.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,11 +14,8 @@ import java.util.stream.IntStream;
  **/
 public class Solution {
 
-
     @Test
     public void test_min_mum_total() {
-
-        String input = "[[2],[3,4],[6,5,7],[4,1,8,3]]";
 
         List<List<Integer>> triangle = new ArrayList<>();
         triangle.add(Arrays.asList(2));
@@ -25,14 +23,13 @@ public class Solution {
         triangle.add(Arrays.asList(6, 5, 7));
         triangle.add(Arrays.asList(4, 1, 8, 3));
 
-        System.out.println(minimumTotal(triangle));
-
+        Assert.assertEquals(11, minimumTotal(triangle));
     }
 
     /**
-     * title = Triangle
+     * title = DynamicProgramming
      * 没有通过的是'DFS深度遍历'，其写法优美，令自己折服，然而，超时了。
-     * 通过的解法是：备忘录法，其中用输入数据做了'使用空间'
+     * 通过的解法是：备忘录法，其中用输入数据做了'使用空间'，即空间复杂度为O(1)，要比要求的O(n)要厉害的多
      * 相关题目：
      * Partition to K Equal Sum Subsets
      * Image Overlap
@@ -49,6 +46,7 @@ public class Solution {
         if (triangle.get(0).size() == 0) {
             return 0;
         }
+        //从最后一行开始
         for (int i = triangle.size() - 1; i >= 0; i--) {
 
             for (int j = 0; j < triangle.get(i).size(); j++) {
@@ -62,13 +60,13 @@ public class Solution {
                 }
             }
         }
-
         return triangle.get(0).get(0);
     }
 
     /**
      * 返回以结点(level,column)为子树的小路径和
      * 算法没问题，用层次遍历，写法简单扼要，但是会超时。要改
+     * 未通过的解法，超时了。
      *
      * @param triangle
      * @param level    当前层数，从0开始计数
@@ -87,7 +85,6 @@ public class Solution {
 
     }
 
-
     /**
      * 讲一个故事：清朝有位举人，他有K个儿子，分别是老大、老二、老三、、、、老k；
      * 在儿子长大的过程中，举人常常儿子银子，并嘱咐他们攒着以后娶媳妇用。举人算了一下，
@@ -104,7 +101,9 @@ public class Solution {
     public boolean search(int[] groups, int row, int[] nums, int target) {
 
         // 所有的nums[row]都进入了正确的组。
-        if (row < 0) return true;
+        if (row < 0) {
+            return true;
+        }
         int v = nums[row--];
 
         /**
@@ -181,7 +180,6 @@ public class Solution {
         memo[(1 << nums.length) - 1] = Result.TRUE;
         return search(0, sum, memo, nums, sum / k);
     }
-
 
 
     /**
