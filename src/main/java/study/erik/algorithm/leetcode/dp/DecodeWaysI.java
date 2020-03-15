@@ -73,10 +73,10 @@ public class DecodeWaysI {
     @Test
     public void test_solution() {
         Assert.assertEquals(1, solution("110"));
-//        Assert.assertEquals(0, solution("00"));
-//        Assert.assertEquals(1, solution("101"));
-//        Assert.assertEquals(1, solution("10"));
-//        Assert.assertEquals(2, solution("12"));
-//        Assert.assertEquals(3, solution("226"));
+//        Assert.assertEquals(0, solution1("00"));
+//        Assert.assertEquals(1, solution1("101"));
+//        Assert.assertEquals(1, solution1("10"));
+//        Assert.assertEquals(2, solution1("12"));
+//        Assert.assertEquals(3, solution1("226"));
     }
 }
