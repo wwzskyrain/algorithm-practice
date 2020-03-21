@@ -25,6 +25,7 @@ public class EditDistance {
         // dp[0][j]表示从无到word2[j]
         // dp[i][0]表示从word1[0]到无
         int[][] dp = new int[word1.length() + 1][];
+        //dp[i][j] 表示 w1[0..i] 转到 w2[0..j]的最小次数,原问题=dp[w1.length-1][w2.length-1];
         for (int i = 0; i < dp.length; i++) {
             dp[i] = new int[word2.length() + 1];
         }

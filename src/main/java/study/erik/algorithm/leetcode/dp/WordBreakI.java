@@ -18,7 +18,7 @@ public class WordBreakI {
         return solution1(s, wordDict);
     }
 
-    public boolean solution1(String s, List<String> wordDict) {
+    public boolean solution1(String s, List<String> wordDict) {//s能否由字典拼成，就是原问题
         if (wordDict.contains(s)) {
             return true;
         }
@@ -30,6 +30,9 @@ public class WordBreakI {
             }
             boolean rightContain = solution1(s.substring(i), wordDict);
             contain = contain || (leftContain && rightContain);
+            if (contain) {
+                break;
+            }
         }
         return contain;
     }
@@ -57,6 +60,9 @@ public class WordBreakI {
             // 细节，必须把char转成String，不然的话，contains返回为false，因为类型不匹配
             dp[i][i] = wordDict.contains(String.valueOf(s.charAt(i)));
         }
+
+        //dp[i][j] 表示 字符串s[i...j]由字典拼成
+        //dp[i][j] = s[i..j]在字典中 || （s[i...k]和s[k+1...j]都能由字典拼成）---k={i,i+1,...,j}
 
         // j这里并不是长度，因为这类dp二位数组我们也结果的。
         // j就是dp[i,j]中的j。比如 dp[0,1] dp[1,2]

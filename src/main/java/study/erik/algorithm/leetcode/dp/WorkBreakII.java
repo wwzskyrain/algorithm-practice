@@ -42,6 +42,13 @@ public class WorkBreakII {
         return dfs2(s, new HashSet<>(wordDict), new HashMap<>());
     }
 
+    /**
+     *
+     * @param s
+     * @param wordDict
+     * @param cache
+     * @return
+     */
     public List<String> dfs2(String s, Set<String> wordDict, Map<String, List<String>> cache) {
 
         List<String> list = cache.get(s);
@@ -102,6 +109,13 @@ public class WorkBreakII {
         return allSentences;
     }
 
+    /**
+     *
+     * @param allSentences
+     * @param s
+     * @param stack
+     * @param wordDict
+     */
     public void dfs(List<String> allSentences, String s, Deque<String> stack, List<String> wordDict) {
         if (s == null || s.length() == 0) {
             return;
