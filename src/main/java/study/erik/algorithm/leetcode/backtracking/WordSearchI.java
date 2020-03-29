@@ -106,12 +106,12 @@ public class WordSearchI {
                 {'A', 'B', 'C', 'E'},
                 {'S', 'F', 'C', 'S'},
                 {'A', 'D', 'E', 'E'}};
-//        System.out.println(solution1(board, "ABCCED"));
-//        System.out.println(solution1(board, "SEE"));
-//        System.out.println(solution1(board, "ABCB"));
+//        System.out.println(solutionForHouseRobber1(board, "ABCCED"));
+//        System.out.println(solutionForHouseRobber1(board, "SEE"));
+//        System.out.println(solutionForHouseRobber1(board, "ABCB"));
 //
 //        char[][] board1 = {{'a', 'a'}};
-//        System.out.println(solution1(board1, "aaa"));
+//        System.out.println(solutionForHouseRobber1(board1, "aaa"));
 
         char[][] board2 = {{'a', 'a', 'a', 'a'}, {'a', 'a', 'a', 'a'}, {'a', 'a', 'a', 'a'}};
         System.out.println(solution1(board2, "aaaaaaaaaaaaa"));

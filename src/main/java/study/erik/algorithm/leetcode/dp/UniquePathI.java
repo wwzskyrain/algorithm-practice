@@ -72,8 +72,8 @@ public class UniquePathI {
         int column = 7;
         int row = 3;
 //        Assert.assertEquals(28, dp(column, row));
-//        Assert.assertEquals(3, solution1(3, 2));
-//        Assert.assertEquals(28, solution1(7, 3));
+//        Assert.assertEquals(3, solutionForHouseRobber1(3, 2));
+//        Assert.assertEquals(28, solutionForHouseRobber1(7, 3));
     }
 
 
