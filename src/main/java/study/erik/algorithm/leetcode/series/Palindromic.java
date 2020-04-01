@@ -1,4 +1,4 @@
-package study.erik.algorithm.leetcode.topic;
+package study.erik.algorithm.leetcode.series;
 
 import org.junit.Assert;
 import org.junit.Test;

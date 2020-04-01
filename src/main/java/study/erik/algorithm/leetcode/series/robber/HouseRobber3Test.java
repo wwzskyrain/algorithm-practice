@@ -1,9 +1,4 @@
-package study.erik.algorithm.leetcode.topic;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.Arrays;
+package study.erik.algorithm.leetcode.series.robber;
 
 /**
  *
