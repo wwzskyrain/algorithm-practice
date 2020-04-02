@@ -3,17 +3,12 @@ package study.erik.algorithm.leetcode.stack;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-
 /**
  * @author erik.wang
  * @date 2020-03-12 14:19
  * @description
  */
-public class LongestRectangelInHistogram {
+public class LongestRectangleInHistogramTest {
 
     /**
      * title = largest-rectangle-in-histogram
@@ -31,7 +26,7 @@ public class LongestRectangelInHistogram {
      * 基本思想也是遍历每个bar，然后找bar的左右边界，从而确定宽度；然后 该bar所组成的矩阵面积是宽度*bar高度
      * 遍历所有bar的矩阵面积，找到最大值即可。
      * 使用递增栈，是帮助寻找左右边界的，已达到常量找到左右边界的效果。从而把算法复杂度从N2方降低到N。
-     *
+     * extense: 单调栈还有其他的应用，至少这个题还有一个高阶：01矩阵中的最大1子矩阵面积-https://zhuanlan.zhihu.com/p/26465701。todo
      * @param heights
      * @return
      */

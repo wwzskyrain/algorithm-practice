@@ -30,7 +30,7 @@ public class BinaryTreeTraversalSolutions {
      * @param root
      * @return
      */
-    public List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> preOrderTraversal(TreeNode root) {
 
         Deque<TreeNode> stack = new ArrayDeque<>();
 
@@ -45,7 +45,8 @@ public class BinaryTreeTraversalSolutions {
             TreeNode currentTreeNode = stack.pop();
             result.add(currentTreeNode.val);
 
-            if (currentTreeNode.right != null) { //右孩子先进栈-也就是后出栈
+            if (currentTreeNode.right != null) {
+                //右孩子先进栈-也就是后出栈
                 stack.push(currentTreeNode.right);
             }
 
@@ -61,7 +62,8 @@ public class BinaryTreeTraversalSolutions {
      * 先序遍历二叉树-非递归算法
      * stack+探针法
      * 同样可以利用"对称思想"变形为"后序遍历。
-     *  可变形为'中序遍历'
+     * 可变形为'中序遍历'
+     *
      * @param root
      * @return
      */
@@ -80,11 +82,10 @@ public class BinaryTreeTraversalSolutions {
             if (pointer != null) {
 
                 result.add(pointer.val);
-                stack.push(pointer);    //该进栈还是要进栈，只是访问的时机变了
+                stack.push(pointer);
+                //该进栈还是要进栈，只是访问的时机变了
                 pointer = pointer.left;
-
             } else {
-
                 TreeNode popTreeNode = stack.pop();
                 pointer = popTreeNode.right;
             }
@@ -97,6 +98,7 @@ public class BinaryTreeTraversalSolutions {
     /**
      * 中序遍历二叉树-非递归算法
      * stack+探针法
+     *
      * @param root
      * @return
      */
@@ -184,18 +186,18 @@ public class BinaryTreeTraversalSolutions {
      * @param root
      * @return
      */
-    public List<Integer> postorderTraversalII(TreeNode root) {
+    public List<Integer> postOrderTraversalII(TreeNode root) {
         LinkedList<Integer> result = new LinkedList<>();
         Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode p = root;
         while (!stack.isEmpty() || p != null) {
             if (p != null) {
                 stack.push(p);
-                result.addFirst(p.val);  // Reverse the process of preorder
-                p = p.right;             // Reverse the process of preorder
+                result.addFirst(p.val);  // Reverse the process of preOrder
+                p = p.right;             // Reverse the process of preOrder
             } else {
                 TreeNode node = stack.pop();
-                p = node.left;           // Reverse the process of preorder
+                p = node.left;           // Reverse the process of preOrder
             }
         }
         return result;
@@ -203,6 +205,7 @@ public class BinaryTreeTraversalSolutions {
 
     /**
      * stack+探针法+lastVisited方法实现后序遍历
+     *
      * @param root
      * @return
      */
@@ -671,7 +674,8 @@ public class BinaryTreeTraversalSolutions {
 
     /**
      * 递归解法，因为它的思想真的很简介
-     *  而且，表现最佳 faster than 100.00% ，less than 96.25%
+     * 而且，表现最佳 faster than 100.00% ，less than 96.25%
+     *
      * @param root
      * @return
      */
