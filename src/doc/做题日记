@@ -79,4 +79,31 @@
 ## 【4.25】
 1.  CoinChange  - 换零钱 - medium  - dp
 2.  minimum costs for ticker - 最小票价 - medium - dp 
+    extension1：Continuous Subarray Sum - 是否存在子数组，其和是k的倍数
+        extension：Subarray Sum Equals K  +
+    extension2：Palindrome Removal  -- lock了
+    extension3：Largest Multiple of Three
+        extension1:Remove Interval -- 加锁
+        extension2:Profitable Schemes  -- 好题 
+        
+## 【4.30】
+1.  Profitable Schemes  -- 好题
+        1.Campus Bikes II 锁住了
+2.  Largest 1-Bordered Square 通过啦        
+                2.  Push Dominoes
+                3.  Minimize Rounding Error to Meet Target
+        extension3:Make Array Strictly Increasing
+        
+## 【5.1】
+1.  Target Sum + 中等难度，完美ac；
+2.  Partition Equal Subset Sum 中等难度，子集问题，01背包解法
+3.  
+    //Push Dominoes
+    //Minimize Rounding Error to Meet Target
+    //Guess Number Higher or Lower II
+    //Non-negative Integers without Consecutive Ones
+    //Strange Printer   
 
+竞赛题目
+    1.https://leetcode.com/contest/weekly-contest-121
+    2.
