@@ -98,9 +98,9 @@
 1.  Target Sum + 中等难度，完美ac；
 2.  Partition Equal Subset Sum 中等难度，子集问题，01背包解法
 3.  
-    //Push Dominoes
+    //Push Dominoes  -- 这是个细节题，我不要做它（看他描述那么多）
     //Minimize Rounding Error to Meet Target
-    //Guess Number Higher or Lower II
+    //Guess Number Higher or Lower II  // 踩得人比赞的人多，不做哈哈
     //Non-negative Integers without Consecutive Ones
     //Strange Printer   
 
