@@ -97,12 +97,35 @@
 ## 【5.1】
 1.  Target Sum + 中等难度，完美ac；
 2.  Partition Equal Subset Sum 中等难度，子集问题，01背包解法
-3.  
+3.  Non-negative Integers without Consecutive Ones
     //Push Dominoes  -- 这是个细节题，我不要做它（看他描述那么多）
     //Minimize Rounding Error to Meet Target
     //Guess Number Higher or Lower II  // 踩得人比赞的人多，不做哈哈
-    //Non-negative Integers without Consecutive Ones
-    //Strange Printer   
+    //
+    //Strange Printer 
+    
+## 【5.2】
+1.  Strange Printer   
+    extension：Remove Boxes
+## 【5.3】
+1.  把日记都写在csdn上吧；
+    但是如何写比较好呢？
+    1.  先试一下
+      
+
+2.  +Remove Boxes
+
+
+## 【5.4】
+1.  [Counting Bits 计算从0到i的所有数字的二进制表示中的1的个数](https://leetcode.com/problems/counting-bits/)  
+2.  [Minimum ASCII Delete Sum for Two Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/description/)
+3.  [Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/)
+3.  [Bitwise ORs of Subarrays]()
+4.  Odd Even Jump
+5.  ZigZag Conversion
+6.  Distinct Echo Substrings
+1.  Count of Smaller Numbers After Self
+
 
 竞赛题目
     1.https://leetcode.com/contest/weekly-contest-121
