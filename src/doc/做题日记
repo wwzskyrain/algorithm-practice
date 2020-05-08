@@ -121,11 +121,37 @@
 2.  [Minimum ASCII Delete Sum for Two Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/description/)
 3.  [Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/)
 3.  [Bitwise ORs of Subarrays]()
-4.  Odd Even Jump
-5.  ZigZag Conversion
-6.  Distinct Echo Substrings
+4.  
+5.  
+6.  
 1.  Count of Smaller Numbers After Self
 
+## 【5.5】
+1.  Reverse Pairs- 这个还没有写，因为不是十分明白这倒题
+2.  在一个上下有序左右有序的二维矩阵中contains一个target：[Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/)
+3.  [Beautiful Array](https://leetcode.com/problems/beautiful-array/)
+    
+
+## 【5.6】
+1.  给一个表达式各种添加圆括号以计算它的不同的值[Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/)
+
+
+
+## 【5.7】
+1.  The Skyline Problem
+2.  Burst Balloons
+3.  Count of Smaller Numbers After Self
+4.  Count of Range Sum
+5.  Reverse Pairs
+6.  Freedom Trail
+7.  Valid Permutations for DI Sequence
+8.  K Closest Points to Origin
+9.  Expression Add Operators
+10.  Basic Calculator
+
+## 【5.8】
+1.  带括弧的加减运算[Basic Calculator](https://leetcode.com/problems/basic-calculator/)
+2.  
 
 竞赛题目
     1.https://leetcode.com/contest/weekly-contest-121
