@@ -92,6 +92,10 @@ public class ParenthesisTest {
 
     /**
      * 解法一：双栈法，很朴素，但是很受用
+     * 在分析1：双栈法有点幼稚呀，哈哈哈，可以只用一个stackIndex"下标栈"就好了，因为当前的char可以通过
+     * s.char(stackIndex.peek())获取的。
+     *
+     * 接着分析：看的一个面试算法帖子，说还能优化空间，那就是不用栈，而用变量
      * @param s
      * @return
      */
@@ -144,7 +148,6 @@ public class ParenthesisTest {
         Deque<Integer> stackIndex = new ArrayDeque<>();
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            char c = chars[i];
             if (chars[i] == '(' || stackIndex.isEmpty()) {
                 stackIndex.push(i);
             } else {
@@ -174,7 +177,8 @@ public class ParenthesisTest {
      * performance：100、80
      * 解题思路：这种求子串的问题，一定要先顾一头，即子解的设定要是以[i]开头的子串，
      * 比如这里设计d[i]为义s[i]开头的最长符合字符串定义的子串的长度。这样以来再往下分析就清楚多了。
-     *  小结：这是三个方法，都可以进行扩展即匹配字符为(){}[]。
+     * 小结：这是三个方法，都可以进行扩展即匹配字符为(){}[]。
+     *
      * @param s
      * @return
      */
@@ -184,25 +188,25 @@ public class ParenthesisTest {
         }
         int maxLength = 0;
         char[] chars = s.toCharArray();
-        int[] d = new int[chars.length];
-        d[d.length - 1] = 0;
-        for (int i = d.length - 2; i >= 0; i--) {
+        int[] dp = new int[chars.length];
+        dp[dp.length - 1] = 0;
+        for (int i = dp.length - 2; i >= 0; i--) {
             if (chars[i] == '(') {
-                int j = i + 1 + d[i + 1];
-                if (j < d.length) {
+                int j = i + 1 + dp[i + 1];
+                if (j < dp.length) {
                     // s[i+1,...,j-1]是以s[i+1]为首的最长字符串，即这些字符已经自己匹配成功了
                     if (chars[j] == ')') {
-                        d[i] = d[i + 1] + 2;
-                        if (j + 1 < d.length) { //注意续接上s[j+1]最长字符串。
-                            d[i] += d[j + 1];
-                            maxLength = Math.max(maxLength, d[i]);
+                        dp[i] = dp[i + 1] + 2;
+                        if (j + 1 < dp.length) { //注意续接上s[j+1]最长字符串。
+                            dp[i] += dp[j + 1];
+                            maxLength = Math.max(maxLength, dp[i]);
                         }
-                        maxLength = Math.max(maxLength, d[i]);
+                        maxLength = Math.max(maxLength, dp[i]);
                     }
 
                 }
             } else {
-                d[i] = 0;
+                dp[i] = 0;
             }
         }
         return maxLength;

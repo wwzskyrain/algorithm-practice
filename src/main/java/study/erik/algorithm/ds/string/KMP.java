@@ -1,4 +1,4 @@
-package study.erik.algorithm.ds;
+package study.erik.algorithm.ds.string;
 
 import org.junit.Assert;
 import org.junit.Test;

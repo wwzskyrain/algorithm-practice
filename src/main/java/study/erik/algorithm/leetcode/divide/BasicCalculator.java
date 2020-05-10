@@ -18,6 +18,7 @@ public class BasicCalculator {
 
     /**
      * title = Basic Calculator
+     * 描述：看test，计算二则运算，带圆括号
      * 成绩：29 和 44
      * 扣弄了一个下午，终于通过了
      * 解法很不高明，就是硬写；没啥章法；
@@ -25,6 +26,8 @@ public class BasicCalculator {
      * 1.对s的遍历，不要回退
      * 2.坚持用两个栈，数据栈和操作符栈
      * 3.用操作符来定界数字，然后见到数字就计算，除非不适合计算，比如操作数不够两个、操作符是(。
+     *
+     * 改进：这里用字符来定界数字了，其实数字可以自我定界的，用十进制累积法
      */
     public int calculate(String s) {
         s = s.replaceAll(" ", "");
