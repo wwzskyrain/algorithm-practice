@@ -3,20 +3,41 @@ package study.erik.algorithm.ds;
 import java.util.Random;
 
 /**
- * 跳表SkipList，参考这一篇文章，既有代码又有讲解 [跳跃表Skip List的原理和实现(Java)](https://blog.csdn.net/DERRANTCM/article/details/79063312)
+ * @author erik.wang
+ * 跳表SkipList，参考这一篇文章，
+ * 既有代码又有讲解 [跳跃表Skip List的原理和实现(Java)](https://blog.csdn.net/DERRANTCM/article/details/79063312)
  */
 public class SkipList {
 
-    public SkipListEntry head;  // First element of the top level
-    public SkipListEntry tail;  // Last element of the top level
+    /**
+     * First element of the top level
+     */
 
-    public int n;       // number of entries in the Skip List
-    public int h;       // Height
+    public SkipListEntry head;
 
-    public Random r;    // Coin toss
+    /**
+     * Last element of the top level
+     */
+    public SkipListEntry tail;
 
-    // constructor
+    /**
+     * number of entries in the Skip List
+     */
+    public int n;
+
+    /**
+     * Height
+     */
+    public int h;
+
+    /**
+     * Coin toss
+     */
+    public Random r;
+
+
     public SkipList() {
+
         SkipListEntry p1, p2;
 
         // 创建一个 -oo 和一个 +oo 对象
@@ -38,6 +59,7 @@ public class SkipList {
 
     /**
      * 查找指定key的节点
+     *
      * @param key key是有序的
      * @return 返回最低层的小于等于指定key的结点。
      */
@@ -48,15 +70,15 @@ public class SkipList {
         // 从head头节点开始查找
         p = head;
 
-        while(true) {
+        while (true) {
             // 从左向右查找，直到右节点的key值大于要查找的key值
-            while(p.right.key != SkipListEntry.posInf
+            while (p.right.key != SkipListEntry.posInf
                     && p.right.key.compareTo(key) <= 0) {
                 p = p.right;
             }
 
             // 如果有更低层的节点，则向低层移动
-            if(p.down != null) {
+            if (p.down != null) {
                 p = p.down;
             } else {
                 break;
@@ -70,10 +92,8 @@ public class SkipList {
     public Integer get(String key) {
 
         SkipListEntry p;
-
         p = findEntry(key);
-
-        if(p.key.equals(key)) {
+        if (p.key.equals(key)) {
             return p.value;
         } else {
             return null;
@@ -89,7 +109,7 @@ public class SkipList {
         p = findEntry(key);
 
         // 如果跳跃表中存在含有key值的节点，则进行value的修改操作即可完成
-        if(p.key.equals(key)) {
+        if (p.key.equals(key)) {
             Integer oldValue = p.value;
             p.value = value;
             return oldValue;
@@ -103,15 +123,15 @@ public class SkipList {
         p.right = q;
 
         // 再使用随机数决定是否要向更高level攀升
-        while(r.nextDouble() < 0.5) {
+        while (r.nextDouble() < 0.5) {
 
             // 如果新元素的级别已经达到跳跃表的最大高度，则新建空白层
-            if(i >= h) {
+            if (i >= h) {
                 addEmptyLevel();
             }
 
             // 从p向左扫描含有高层节点的节点
-            while(p.up == null) {
+            while (p.up == null) {
                 p = p.left;
             }
             p = p.up;
@@ -161,7 +181,6 @@ public class SkipList {
     }
 
     /**
-     *
      * @param key
      * @return 如果key存在，则返回oldValue；否则返回null
      */
@@ -171,12 +190,13 @@ public class SkipList {
 
         p = findEntry(key);
 
-        if(!p.key.equals(key)) {
+        if (!p.key.equals(key)) {
             return null;
         }
 
         Integer oldValue = p.value;
-        while(p != null) {
+        //链表操作，真是完美
+        while (p != null) {
             q = p.up;
             p.left.right = p.right;
             p.right.left = p.left;
@@ -185,7 +205,6 @@ public class SkipList {
 
         return oldValue;
     }
-
 
 
 }

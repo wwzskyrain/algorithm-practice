@@ -1,22 +1,31 @@
 package study.erik.algorithm.ds;
 
+/**
+ * @author
+ */
 public class SkipListEntry {
 
-    // data
+    /**
+     * data
+     */
     public String key;
     public Integer value;
 
-    // links
-    public SkipListEntry up;
-    public SkipListEntry down;
-    public SkipListEntry left;
-    public SkipListEntry right;
 
-    // special
+    public SkipListEntry up = null;
+    public SkipListEntry down = null;
+    public SkipListEntry left = null;
+    public SkipListEntry right = null;
+
+    /**
+     * special
+     */
     public static final String negInf = "-oo";
     public static final String posInf = "+oo";
 
-    // constructor
+    /**
+     * constructor
+     */
     public SkipListEntry(String key, Integer value) {
         this.key = key;
         this.value = value;
