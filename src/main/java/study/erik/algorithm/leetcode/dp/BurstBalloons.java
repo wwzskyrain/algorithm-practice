@@ -16,11 +16,10 @@ public class BurstBalloons {
 
     /**
      * title = Burst Balloons
-     *
      */
     public int maxCoins(int[] nums) {
 
-
+        return 0;
 
     }
 
