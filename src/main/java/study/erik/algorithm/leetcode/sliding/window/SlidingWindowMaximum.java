@@ -3,7 +3,6 @@ package study.erik.algorithm.leetcode.sliding.window;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -18,8 +17,8 @@ public class SlidingWindowMaximum {
     @Test
     public void test_() {
 
-//        int[] nums2 = {1, -1};
-//        System.out.println(Arrays.toString(maxSlidingWindow1(nums2, 1)));
+        int[] nums2 = {1, -1};
+        System.out.println(Arrays.toString(maxSlidingWindow1(nums2, 1)));
 
         int[] nums1 = {1};
         System.out.println(Arrays.toString(maxSlidingWindow1(nums1, 1)));

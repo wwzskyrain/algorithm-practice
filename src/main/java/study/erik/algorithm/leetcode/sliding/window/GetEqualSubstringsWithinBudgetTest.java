@@ -65,7 +65,6 @@ public class GetEqualSubstringsWithinBudgetTest {
         for (j = 0; j < n; ++j) {
             k -= Math.abs(s.charAt(j) - t.charAt(j));
             if (k < 0) {
-
                 k += Math.abs(s.charAt(i) - t.charAt(i));
                 ++i;
                 //右边方向平移一个，此时k不一定就不<0了；但是k>0时的窗口[i,j]保持了下来，因为平移嘛

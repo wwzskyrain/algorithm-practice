@@ -5,6 +5,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
+/**
+ * 二叉树遍历总结：
+ * 1.
+ */
 public class BinaryTreeTraversalSolutions {
 
     public static List<Integer> nodeValueListWithPreOrder = new ArrayList<>();
@@ -98,6 +102,7 @@ public class BinaryTreeTraversalSolutions {
     /**
      * 中序遍历二叉树-非递归算法
      * stack+探针法
+     * 与先序遍历的区别只在于：先序遍历是入栈前访问，中序遍历是出栈访问
      *
      * @param root
      * @return
@@ -204,7 +209,7 @@ public class BinaryTreeTraversalSolutions {
     }
 
     /**
-     * stack+探针法+lastVisited方法实现后序遍历
+     * stack+探针法+lastVisited 方法实现后序遍历
      *
      * @param root
      * @return
