@@ -20,7 +20,8 @@ public class Sudoku {
                 if (board[i][j] != '.') {
                     continue;
                 }
-                for (char num = '1'; num <= '9'; num++) {//尝试
+                for (char num = '1'; num <= '9'; num++) {
+                    //尝试
                     if (!isValid(board, i, j, num)) {
                         continue;
                     }
@@ -28,7 +29,8 @@ public class Sudoku {
                     if (searchRes(board)) {
                         return true;
                     } else {
-                        board[i][j] = '.';//回退之前的状态,本轮搜索失败,回退的时候也是递归的
+                        board[i][j] = '.';
+                        //回退之前的状态,本轮搜索失败,回退的时候也是递归的
                     }
                 }
                 return false;

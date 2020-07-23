@@ -26,6 +26,7 @@ public class LongestTurbulentSubarray {
     /**
      * 成绩：100 和 78
      * 一遍通过，这本来是一个'滑动窗口'的题目，结果我用简单的dp做了解答，而且还这么高效，不得不让我怀疑，这个题目的类型。
+     * up和down表示以当前元素A[i]结尾的最大长度子数组，up和down分别表示两个趋势
      * @param A
      * @return
      */
