@@ -1,6 +1,5 @@
 package study.erik.algorithm.nowcoder.zijie;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -24,9 +23,7 @@ public class Mahjon {
         for (int i = 1; i < count.length; i++) {
             if (count[i] < 4) {
                 cards[13] = i;
-                int[] cardsCopy = Arrays.copyOf(cards, cards.length);
-                Arrays.sort(cardsCopy);
-                if (winCard(cardsCopy, new boolean[14], new int[14], 0)) {
+                if (winCard(cards, new boolean[14], new int[14], 0)) {
                     result[sum++] = i;
                 }
             }
@@ -136,5 +133,4 @@ public class Mahjon {
         }
         return false;
     }
-
 }
