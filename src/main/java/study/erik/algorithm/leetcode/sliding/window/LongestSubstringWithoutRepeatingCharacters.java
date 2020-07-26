@@ -21,6 +21,11 @@ public class LongestSubstringWithoutRepeatingCharacters {
         Assert.assertEquals(3, lengthOfLongestSubstring("pwwkew"));
     }
 
+    /**
+     * 这写的啥，一点注释都没有
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstring(String s) {
 
         if (s == null || s.length() == 0) {

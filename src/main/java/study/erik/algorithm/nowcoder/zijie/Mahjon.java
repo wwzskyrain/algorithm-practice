@@ -40,6 +40,19 @@ public class Mahjon {
 
     }
 
+    /**
+     * 14张card是否可以和牌?
+     * <p>
+     * 有点状态记得感觉，其实人家叫做'回溯法'
+     * 1.   先找雀头，sIn = 0，1
+     * 2.   在找顺子或者刻字，sIn = (2，3，4),(5,6,7),(8,9,10),(11,12,13)
+     *
+     * @param cards
+     * @param visited
+     * @param stack   牌的一种组合
+     * @param sIn     stack的指针
+     * @return true，14张card可以和牌；false 不能和牌
+     */
     private static boolean winCard(int[] cards, boolean[] visited, int[] stack, int sIn) {
         if (sIn == cards.length) {
             return true;
@@ -55,8 +68,10 @@ public class Mahjon {
                     visited[i] = true;
                     win = winCard(cards, visited, stack, sIn + 1);
                     if (win) {
+                        //快速返回
                         return true;
                     }
+                    //回溯
                     visited[i] = false;
                     break;
                 case 1:
@@ -74,6 +89,7 @@ public class Mahjon {
                 case 5:
                 case 8:
                 case 11:
+                    //新的顺子、刻子的开始，直接进栈并回溯即可
                     stack[sIn] = cards[i];
                     visited[i] = true;
                     win = winCard(cards, visited, stack, sIn + 1);
@@ -86,6 +102,7 @@ public class Mahjon {
                 case 6:
                 case 9:
                 case 12:
+                    //顺子模式 或者 刻子模式
                     if (stack[sIn - 1] == cards[i] || stack[sIn - 1] + 1 == cards[i]) {
                         stack[sIn] = cards[i];
                         visited[i] = true;
@@ -103,6 +120,7 @@ public class Mahjon {
                     int s1 = stack[sIn - 1];
                     int s2 = stack[sIn - 2];
                     int c = cards[i];
+                    //刻子模式
                     if (s1 == s2) {
                         if (c == s1) {
                             // push stack
@@ -115,6 +133,7 @@ public class Mahjon {
                             visited[i] = false;
                         }
                     } else {
+                        //刻子模式
                         if (c == s1 + 1) {
                             //push stack
                             stack[sIn] = c;
@@ -131,6 +150,7 @@ public class Mahjon {
                     // never default.
             }
         }
+        //唯一返回false的地方
         return false;
     }
 }
