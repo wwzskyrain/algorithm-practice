@@ -8,7 +8,7 @@ import java.util.Scanner;
  * title = 这是著名的旅行商问题-卖货郎问题
  * url = https://www.nowcoder.com/question/next?pid=16516564&qid=362293&tid=35146752
  */
-public class Main {
+public class TravelingSaleMan {
 
     public static void main(String[] args) {
 
