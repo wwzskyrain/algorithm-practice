@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.leetcode.tree.helper.BinaryHelper;
 import study.erik.algorithm.leetcode.tree.helper.TreeNode;
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.*;
 
@@ -21,12 +22,13 @@ public class PathSum {
      * @param sum
      * @return
      */
+    @LetCodeCommit(no = 112, title = "Path Sum", types = LetCodeCommit.Type.Tree)
     public boolean hasPathSum(RecursiveBinaryTree.TreeNode root, int sum) {
 
         if (root == null) {
             return false;
         }
-
+        //注意要到叶子结点才算
         if (root.left == null && root.right == null) {
             return sum == root.val;
         }
@@ -147,6 +149,7 @@ public class PathSum {
      * 使用两重递归来解答
      * 内递归是求出以root为路径起始节点的满足pathSum=sum的路径树
      * 外递归则是对root中的没有个结点都做内递归。
+     *
      * @param root
      * @param sum
      * @return

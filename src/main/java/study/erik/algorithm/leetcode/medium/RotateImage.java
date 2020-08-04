@@ -11,8 +11,12 @@ import java.util.Arrays;
  */
 public class RotateImage {
 
-    @LetCodeCommit(title = "Rotate Image", time = 6, space = 5,
-            types = {LetCodeCommit.Type.Detail, LetCodeCommit.Type.Matrix})
+    @LetCodeCommit(no = 48, title = "Rotate Image", time = 6, space = 5,
+            selfRemark = "成绩真的是差呀",
+            extend = "可以通过赤道线对折+对角线对折，高效完成",
+            types = {LetCodeCommit.Type.Detail, LetCodeCommit.Type.Matrix},
+            diff = "m",
+            related = {"Smallest String With Swaps", "Maximum Length of Repeated Subarray"})
     public void rotate(int[][] matrix) {
 
         int length = matrix.length;

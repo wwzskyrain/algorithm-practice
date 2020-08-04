@@ -16,15 +16,23 @@ public @interface LetCodeCommit {
 
     String title() default "";
 
+    int no() default 0;
+
     int time() default 0;
 
     int space() default 0;
 
     String diff() default "e";
 
+    String[] related() default "";
+
+    String selfRemark() default "";
+
+    String extend() default "";
+
     Type[] types() default {};
 
     enum Type {
-        DP, Double_Point, Slide_Window, State_Mechine, Detail, Matrix;
+        DP, Double_Point, Slide_Window, State_Mechine, Detail, Matrix, Tree;
     }
 }
