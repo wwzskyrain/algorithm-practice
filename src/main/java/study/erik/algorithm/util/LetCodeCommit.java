@@ -25,6 +25,6 @@ public @interface LetCodeCommit {
     Type[] types() default {};
 
     enum Type {
-        DP, Double_Point, Slide_Window, State_Mechine;
+        DP, Double_Point, Slide_Window, State_Mechine, Detail, Matrix;
     }
 }
