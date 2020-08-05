@@ -1,6 +1,8 @@
 package study.erik.algorithm.leetcode.tree;
 
 
+import study.erik.algorithm.leetcode.util.TreeNode;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -12,16 +14,6 @@ import java.util.stream.Collectors;
 public class BinaryTreeTraversalSolutions {
 
     public static List<Integer> nodeValueListWithPreOrder = new ArrayList<>();
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
 
     /**
@@ -392,7 +384,7 @@ public class BinaryTreeTraversalSolutions {
     }
 
 
-    public List<List<Integer>> zigzagLevelOrder(TreeTraversalSolution.TreeNode root) {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 
         List<List<Integer>> result = new ArrayList<>();
 
@@ -400,7 +392,7 @@ public class BinaryTreeTraversalSolutions {
             return result;
         }
 
-        Queue<TreeTraversalSolution.TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
 
         queue.offer(root);
         boolean direction = true;
@@ -410,7 +402,7 @@ public class BinaryTreeTraversalSolutions {
             List<Integer> currentLevelNodeValueTemp = new ArrayList<>();
             for (int i = 0; i < currentLevelNodeNumbers; i++) {
 
-                TreeTraversalSolution.TreeNode treeNode = queue.poll();
+                TreeNode treeNode = queue.poll();
                 if (treeNode.left != null) {
                     queue.offer(treeNode.left);
                 }

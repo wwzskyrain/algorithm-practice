@@ -1,6 +1,6 @@
 package study.erik.algorithm.leetcode.tree;
 
-import study.erik.algorithm.leetcode.tree.helper.TreeNode;
+import study.erik.algorithm.leetcode.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,6 @@ import java.util.List;
  * @date 2019/06/10
  **/
 public class DiameterOfBinaryTree {
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     /**
      * https://leetcode.com/problems/diameter-of-binary-tree/

@@ -1,7 +1,7 @@
 package study.erik.algorithm.leetcode.tree;
 
 import org.junit.Test;
-import study.erik.algorithm.leetcode.tree.helper.TreeNode;
+import study.erik.algorithm.leetcode.util.TreeNode;
 
 import java.util.*;
 

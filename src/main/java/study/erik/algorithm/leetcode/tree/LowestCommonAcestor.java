@@ -2,8 +2,7 @@ package study.erik.algorithm.leetcode.tree;
 
 import org.junit.Assert;
 import org.junit.Test;
-import study.erik.algorithm.leetcode.tree.helper.BinaryHelper;
-import study.erik.algorithm.leetcode.tree.helper.TreeNode;
+import study.erik.algorithm.leetcode.util.TreeNode;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -140,8 +139,8 @@ public class LowestCommonAcestor {
 
     @Test
     public void test_find_path() {
-        List<Integer> input = Arrays.asList(3, 5, 1, 6, 2, 0, 8, null, null, 7, 4);
-        TreeNode root = BinaryHelper.buildTree(input);
+        List<Integer> input = Arrays.asList();
+        TreeNode root = TreeNode.buildTree("3, 5, 1, 6, 2, 0, 8, null, null, 7, 4");
         LinkedList<TreeNode> pathToP = new LinkedList<>();
         findPath(root, new TreeNode(1), pathToP);
         System.out.println(pathToP.stream().map(treeNode -> treeNode.val).collect(Collectors.toList()));
@@ -149,11 +148,11 @@ public class LowestCommonAcestor {
 
     @Test
     public void test_lowestCommonAncestor2() {
-        List<Integer> input = Arrays.asList(3, 5, 1, 6, 2, 0, 8, null, null, 7, 4);
-        TreeNode root = BinaryHelper.buildTree(input);
+        List<Integer> input = Arrays.asList();
+        TreeNode root = TreeNode.buildTree("3,5,1,6,2,0,8,null,null,7,4");
 
         TreeNode commonAncestor = lowestCommonAncestor2(root, new TreeNode(5), new TreeNode(1));
-        Assert.assertEquals("3", commonAncestor.val.toString());
+        Assert.assertEquals("3", commonAncestor.val);
 
     }
 

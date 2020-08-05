@@ -2,8 +2,7 @@ package study.erik.algorithm.leetcode.tree;
 
 import org.junit.Assert;
 import org.junit.Test;
-import study.erik.algorithm.leetcode.tree.helper.BinaryHelper;
-import study.erik.algorithm.leetcode.tree.helper.TreeNode;
+import study.erik.algorithm.leetcode.util.TreeNode;
 import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.*;
@@ -23,7 +22,7 @@ public class PathSum {
      * @return
      */
     @LetCodeCommit(no = 112, title = "Path Sum", types = LetCodeCommit.Type.Tree)
-    public boolean hasPathSum(RecursiveBinaryTree.TreeNode root, int sum) {
+    public boolean hasPathSum(TreeNode root, int sum) {
 
         if (root == null) {
             return false;
@@ -46,7 +45,7 @@ public class PathSum {
      * @param sum
      * @return
      */
-    public List<List<Integer>> pathSumII(RecursiveBinaryTree.TreeNode root, int sum) {
+    public List<List<Integer>> pathSumII(TreeNode root, int sum) {
 
         List<List<Integer>> result = new ArrayList<>();
         Deque<Integer> currentPath = new LinkedList<>();
@@ -64,7 +63,7 @@ public class PathSum {
      * @param currentPath
      * @param result
      */
-    public void pathSum(RecursiveBinaryTree.TreeNode root, int sum, Deque<Integer> currentPath, List<List<Integer>> result) {
+    public void pathSum(TreeNode root, int sum, Deque<Integer> currentPath, List<List<Integer>> result) {
 
         if (root == null) {
             return;
@@ -140,7 +139,7 @@ public class PathSum {
     public void test_pathSum() {
 
         List<Integer> data = Arrays.asList(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1);
-        TreeNode root = BinaryHelper.buildTree(data);
+        TreeNode root = TreeNode.buildTree(data);
         Assert.assertEquals(3, pathSumIII2(root, 22));
 
     }
@@ -162,8 +161,7 @@ public class PathSum {
     @Test
     public void test_pathSumIII2() {
 
-        List<Integer> data = Arrays.asList(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1);
-        TreeNode root = BinaryHelper.buildTree(data);
+        TreeNode root = TreeNode.buildTree("5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1");
         Assert.assertEquals(3, pathSumIII2(root, 22));
 
     }
@@ -176,7 +174,7 @@ public class PathSum {
      * @param sum
      * @return
      */
-    public int hasPathSum(TreeNode root, int sum) {
+    public int hasPathSum1(TreeNode root, int sum) {
 
         if (root == null) {
             return 0;
@@ -186,8 +184,8 @@ public class PathSum {
             pathCount++;
         }
 
-        int leftCount = hasPathSum(root.left, sum - root.val);
-        int rightCount = hasPathSum(root.right, sum - root.val);
+        int leftCount = hasPathSum1(root.left, sum - root.val);
+        int rightCount = hasPathSum1(root.right, sum - root.val);
         return pathCount + leftCount + rightCount;
     }
 
@@ -202,8 +200,9 @@ public class PathSum {
         if (root == null) {
             return 0;
         }
-        int ret = hasPathSum(root, sum) + pathSumIII2(root.left, sum) + pathSumIII2(root.right, sum);
+//        int ret = hasPathSum(root, sum) + pathSumIII2(root.left, sum) + pathSumIII2(root.right, sum);
 
+        int ret = 0; // 先处理了
         return ret;
     }
 

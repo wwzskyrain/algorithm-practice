@@ -1,5 +1,7 @@
 package study.erik.algorithm.leetcode.tree;
 
+import study.erik.algorithm.leetcode.util.TreeNode;
+
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collector;
@@ -11,15 +13,6 @@ import java.util.stream.Collectors;
  **/
 public class RecursiveBinaryTree {
 
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     /**
      * title = Maximum Depth of Binary Tree

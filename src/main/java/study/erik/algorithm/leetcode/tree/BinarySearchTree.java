@@ -1,5 +1,7 @@
 package study.erik.algorithm.leetcode.tree;
 
+import study.erik.algorithm.leetcode.util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -10,17 +12,6 @@ import java.util.List;
  * @date 2019/04/07
  **/
 public class BinarySearchTree {
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
 
     /**

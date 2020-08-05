@@ -1,21 +1,13 @@
 package study.erik.algorithm.nowcoder;
 
+import study.erik.algorithm.leetcode.util.TreeNode;
+
 /**
  * @author erik.wang
  * @date 2019/06/24
  **/
 public class HasSubTree {
 
-    public class TreeNode {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        public TreeNode(int val) {
-            this.val = val;
-
-        }
-    }
 
     /**
      * 注意：我们约定空树不是任意一个树的子结构

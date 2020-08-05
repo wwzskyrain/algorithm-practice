@@ -1,22 +1,12 @@
 package study.erik.algorithm.nowcoder;
 
+import study.erik.algorithm.leetcode.util.TreeNode;
+
 /**
  * @author erik.wang
  * @date 2019/06/24
  **/
 public class SymmetricalBinaryTree {
-
-    public class TreeNode {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        public TreeNode(int val) {
-            this.val = val;
-
-        }
-
-    }
 
     boolean isSymmetrical(TreeNode pRoot) {
 
