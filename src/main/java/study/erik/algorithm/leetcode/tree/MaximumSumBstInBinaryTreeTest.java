@@ -15,7 +15,8 @@ public class MaximumSumBstInBinaryTreeTest {
     @LetCodeCommit(no = 1373, title = "Maximum Sum BST in Binary Tree", time = 29, space = 20, diff = "h",
             types = LetCodeCommit.Type.Tree,
             related = {"Binary Tree Cameras", "Minimum Cost to Merge Stones"},
-            selfRemark = "树的题目，一般考思想，我也不在意时间复杂度。这里判断BST时要注意与左右子树的最小值和最大值比较，而不是和左右子树的根的值比较")
+            selfRemark = "树的题目，一般考思想，我也不在意时间复杂度。这里判断BST时要注意与左右子树的最小值和最大值比较，而不是和左右子树的根的值比较",
+            extend = "在这种子树(这里是bst)的基础上求最值，这是一类题")
     public int maxSumBST(TreeNode root) {
         return Math.max(postIsBst(root)[0], 0);
     }

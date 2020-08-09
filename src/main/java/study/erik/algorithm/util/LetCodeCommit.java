@@ -4,7 +4,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.Date;
 
 /**
  * @author erik.wang
@@ -20,19 +19,73 @@ public @interface LetCodeCommit {
 
     int time() default 0;
 
+    int timeMillseconde() default 100000;
+
     int space() default 0;
+
 
     String diff() default "e";
 
+    /**
+     * 相关题目
+     *
+     * @return
+     */
     String[] related() default "";
 
+    /**
+     * 自我评价
+     *
+     * @return
+     */
     String selfRemark() default "";
 
+    /**
+     * 扩展
+     *
+     * @return
+     */
     String extend() default "";
 
+    /**
+     * 题目类型
+     *
+     * @return
+     */
     Type[] types() default {};
 
     enum Type {
-        DP, Double_Point, Slide_Window, State_Mechine, Detail, Matrix, Tree;
+        /**
+         * 动态规划
+         */
+        DP,
+        /**
+         * 双指针
+         */
+        Double_Point,
+        /**
+         * 滑动窗口
+         */
+        Slide_Window,
+        /**
+         * 有限状态机器
+         */
+        State_Mechine,
+        /**
+         * 细节题
+         */
+        Detail,
+        /**
+         * 矩阵
+         */
+        Matrix,
+        /**
+         * 树
+         */
+        Tree,
+        /**
+         * 贪心
+         */
+        Greedy;
     }
 }

@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.sliding.window;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 
 /**
@@ -9,7 +10,7 @@ import org.junit.Test;
  * @date 2020-07-13 22:12
  * title = Minimum Window Substring
  */
-public class MinimumWindowSubstring {
+public class MinimumWindowSubstringTest {
 
     @Test
     public void test_() {
@@ -28,6 +29,11 @@ public class MinimumWindowSubstring {
      * @param t
      * @return
      */
+    @LetCodeCommit(no = 76, title = "Minimum Window Substring", time = 80, space = 23, diff = "h",
+            selfRemark = "独自想出来的，虽然代码上有点绕，但是基本还是符合滑动窗口框架的。尽量用hash表来自己实现数组，因为换成hashMap之后，性能下降很多",
+            related = "",
+            extend = ""
+    )
     public String minWindow(String s, String t) {
 
         if (t.length() > s.length()) {
@@ -66,6 +72,7 @@ public class MinimumWindowSubstring {
                 //如果当前窗口还有字符没有包含，则r指针继续右移
                 continue;
             }
+            //count = 0 了，需要右移左指针了，同时找到最小值
             while (true) {
                 hashIndex = s.charAt(l++) - 'A';
                 if (hash[hashIndex] == Integer.MAX_VALUE) {
