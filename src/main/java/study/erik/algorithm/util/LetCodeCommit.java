@@ -86,6 +86,14 @@ public @interface LetCodeCommit {
         /**
          * 贪心
          */
-        Greedy;
+        Greedy,
+        /**
+         * 二分查找
+         */
+        BinarySearch,
+        /**
+         * 链表
+         */
+        Link_List;
     }
 }

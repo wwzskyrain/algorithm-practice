@@ -3,7 +3,6 @@ package study.erik.algorithm.leetcode.list;
 
 import java.util.List;
 
-// Definition for singly-linked list.
 public class ListNode {
     public int val;
     public ListNode next;
