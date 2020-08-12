@@ -18,7 +18,7 @@ public class FindFirstAndLastPositionOfElementInSortedArrayTest {
     )
     public int[] searchRange(int[] nums, int target) {
 
-        int index = index(nums, target);
+        int index = standardBinarySearch(nums, target);
         if (index == -1) {
             return new int[]{-1, -1};
         }
@@ -37,7 +37,7 @@ public class FindFirstAndLastPositionOfElementInSortedArrayTest {
     }
 
 
-    public int index(int[] nums, int target) {
+    public int standardBinarySearch(int[] nums, int target) {
 
         int l = 0;
         int h = nums.length - 1;
