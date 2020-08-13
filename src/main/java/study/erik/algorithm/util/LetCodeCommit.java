@@ -92,6 +92,10 @@ public @interface LetCodeCommit {
          */
         BinarySearch,
         /**
+         * 数组
+         */
+        Array,
+        /**
          * 链表
          */
         Link_List;
