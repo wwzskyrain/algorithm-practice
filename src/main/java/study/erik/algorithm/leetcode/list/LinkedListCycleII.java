@@ -11,7 +11,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 public class LinkedListCycleII {
 
 
-    @LetCodeCommit(no = 142, title = "Linked List Cycle II", time = 100, space = 90, timeMillseconde = 0,
+    @LetCodeCommit(no = 142, title = "Linked List Cycle II", time = 100, space = 90, timeMillisecond = 0,
             selfRemark = "在上一个题的基础上，直接一遍通过")
     public ListNode detectCycle(ListNode head) {
 

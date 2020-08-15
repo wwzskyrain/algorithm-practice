@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.sliding.window;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
 import java.util.Deque;
@@ -40,6 +41,8 @@ public class SlidingWindowMaximum {
      * @param k
      * @return
      */
+    @LetCodeCommit(no = 239, title = "Sliding Window Maximum",
+            selfRemark = "这个题目是我们的拿手好题，因为完全是自己coding，并且优化的")
     public int[] maxSlidingWindow1(int[] nums, int k) {
 
         Deque<Integer> deque = new LinkedList<>();
@@ -61,7 +64,6 @@ public class SlidingWindowMaximum {
                     deque.pollFirst();
                 }
                 l++;
-
             }
         }
         return maxWindow;
@@ -79,7 +81,7 @@ public class SlidingWindowMaximum {
      */
     public int[] maxSlidingWindow2(int[] nums, int k) {
 
-        //循环数组只需要窗口的大小
+        //循环递减数组只需要窗口的大小
         int[] deque = new int[k];
         int tail = 0;
         int head = 0;

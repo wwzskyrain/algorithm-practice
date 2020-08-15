@@ -169,7 +169,6 @@ public class BinaryTreeTraversalSolutions {
                     break;
                 }
             }
-
         } while (!stack.isEmpty());
 
         return result;

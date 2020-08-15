@@ -11,7 +11,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 public class DeleteColumnsToMakeSortedIITest {
 
 
-    @LetCodeCommit(no = 955, title = "Delete Columns to Make Sorted II", time = 100, timeMillseconde = 0, space = 68, diff = "m",
+    @LetCodeCommit(no = 955, title = "Delete Columns to Make Sorted II", time = 100, timeMillisecond = 0, space = 68, diff = "m",
             selfRemark = "又是野路子，状态比较多，还是通过提交的错误case才完善的，不过计算框架是没问题的。",
             related = {"Task Scheduler", "Group the People Given the Group Size They Belong To", "Maximum Number of Events That Can Be Attended"},
             extend = "lee大神的代码运行了4ms，time=32，和我的相差不少呢；但是他也是O(mn)，不知道差在了哪里")

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @date 2020-08-04 09:09
  */
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.METHOD})
+@Target({ElementType.METHOD, ElementType.TYPE})
 public @interface LetCodeCommit {
 
     String title() default "";
@@ -19,9 +19,11 @@ public @interface LetCodeCommit {
 
     int time() default 0;
 
-    int timeMillseconde() default 100000;
+    int timeMillisecond() default 100000;
 
     int space() default 0;
+
+    String postLink() default "";
 
 
     String diff() default "e";
@@ -95,6 +97,16 @@ public @interface LetCodeCommit {
          * 数组
          */
         Array,
+
+        /**
+         * 回溯
+         */
+        Back_Tracking,
+
+        /**
+         * 栈
+         */
+        Stack,
         /**
          * 链表
          */

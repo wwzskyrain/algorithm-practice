@@ -13,7 +13,7 @@ public class FindFirstAndLastPositionOfElementInSortedArrayTest {
 
 
     @LetCodeCommit(no = 3704, title = "Find First and Last Position of Element in Sorted Array",
-            time = 100, timeMillseconde = 0, space = 93, types = LetCodeCommit.Type.BinarySearch,
+            time = 100, timeMillisecond = 0, space = 93, types = LetCodeCommit.Type.BinarySearch,
             selfRemark = "复习一下binary-search"
     )
     public int[] searchRange(int[] nums, int target) {

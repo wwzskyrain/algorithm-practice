@@ -10,7 +10,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 public class RemoveNthNodeFromEndOfListTest {
 
 
-    @LetCodeCommit(no = 3549, title = "Remove Nth Node From End of List", time = 100, timeMillseconde = 0, space = 82,
+    @LetCodeCommit(no = 3549, title = "Remove Nth Node From End of List", time = 100, timeMillisecond = 0, space = 82,
             types = LetCodeCommit.Type.Link_List,
             diff = "m",
             selfRemark = "剑指offer上讲过")

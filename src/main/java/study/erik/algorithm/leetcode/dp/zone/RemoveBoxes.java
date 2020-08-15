@@ -1,7 +1,8 @@
-package study.erik.algorithm.leetcode.dp;
+package study.erik.algorithm.leetcode.dp.zone;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
@@ -20,12 +21,9 @@ public class RemoveBoxes {
 
     }
 
-    /**
-     * title = Remove Boxes
-     *
-     * @param boxes
-     * @return
-     */
+
+    @LetCodeCommit(no = 546, title = "Remove Boxes",
+            selfRemark = "区间dp，不好办；不过还好，理解一下三维dp;三维dp的思路可以理解，但是目前还不能转成自底向上的解法")
     public int removeBoxes(int[] boxes) {
         return solution(boxes);
     }
@@ -39,6 +37,14 @@ public class RemoveBoxes {
         return helpWithDfs(dp, 0, l - 1, 0, boxes);
     }
 
+    /**
+     * @param dp  表示，在已经累计了k个box[i]的情况下，合并box[i],box[j]能获得的最高分数。合并之后，就只剩下一个分治了，没有k个box[i]了
+     * @param i   i
+     * @param j   j
+     * @param k   k
+     * @param box box
+     * @return 在已经累计了k个box[i]的情况下，合并box[i],box[j]能获得的最高分数。合并之后，就只剩下一个分治了，没有k个box[i]了
+     */
     public int helpWithDfs(int[][][] dp, int i, int j, int k, int[] box) {
         if (i > j) {
             return 0;
@@ -46,7 +52,7 @@ public class RemoveBoxes {
         if (i == j) {
             return (k + 1) * (k + 1);
         }
-        int result = 0;
+        int result;
         if ((result = dp[i][j][k]) != 0) {
             return result;
         }
