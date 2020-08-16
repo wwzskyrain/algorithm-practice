@@ -27,8 +27,10 @@ public class CountDifferentPalindromicSubsequences {
         for (int l = 1; l < dp.length; l++) {
             for (int i = 0; i < dp.length - l; i++) {
                 int j = i + l;
+                int c = 0;
                 if (S.charAt(i) != S.charAt(j)) {
-                    dp[i][j] = (dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1]) % mod;
+                    //这一加一减中， 一加的结果可能就是负值了
+                    c = dp[i][j - 1] + dp[i + 1][j] - dp[i + 1][j - 1];  //s.charAt(i) != s.charAt(j)
                 } else {
                     int low = i + 1;
                     int high = j - 1;
@@ -39,14 +41,23 @@ public class CountDifferentPalindromicSubsequences {
                         high--;
                     }
                     if (low < high) {
-                        dp[i][j] = (dp[i + 1][j - 1] * 2 - dp[low + 1][high - 1]) % mod;
+                        //这三个*2，都可能导致c为负值
+                        c = dp[i + 1][j - 1] * 2 - dp[low + 1][high - 1];
                     } else if (low == high) {
-                        dp[i][j] = (dp[i + 1][j - 1] * 2 + 1) % mod;
+                        c = dp[i + 1][j - 1] * 2 + 1;
                     } else {
-                        dp[i][j] = (dp[i + 1][j - 1] * 2 + 2) % mod;
+                        c = dp[i + 1][j - 1] * 2 + 2;
                     }
                 }
+
+                if (c < 0) {
+                    // 注意这里哈，c可能为负值。不考虑这一点的话，case3通不过
+                    dp[i][j] = (c + mod);
+                } else {
+                    dp[i][j] = (c % mod);
+                }
             }
+
         }
 
         return dp[0][dp[0].length - 1];
@@ -61,6 +72,11 @@ public class CountDifferentPalindromicSubsequences {
     @Test
     public void test_solution_2() {
         Assert.assertEquals(104860361, countPalindromicSubsequences("abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba"));
+    }
+
+    @Test
+    public void test_solution_3() {
+        Assert.assertEquals(117990582, countPalindromicSubsequences("bcbacbabdcbcbdcbddcaaccdcbbcdbcabbcdddadaadddbdbbbdacbabaabdddcaccccdccdbabcddbdcccabccbbcdbcdbdaada"));
     }
 
 }
