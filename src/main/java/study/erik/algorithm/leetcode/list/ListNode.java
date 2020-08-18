@@ -54,6 +54,9 @@ public class ListNode {
         ListNode head = null;
         ListNode point = null;
         for (int i = 0; i < values.length; i++) {
+            if (values[i] == null || values[i].trim().length() == 0) {
+                continue;
+            }
             if (i == 0) {
                 head = new ListNode(Integer.valueOf(values[i]));
                 point = head;
