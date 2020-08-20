@@ -42,6 +42,50 @@ public class CourseSchedule {
     }
 
     /**
+     * 按照入度递减来访问并排序——拓扑排序
+     * @param numCourses
+     * @param prerequisites
+     * @return
+     */
+    public boolean canFinish1(int numCourses, int[][] prerequisites) {
+
+        int[] in = new int[numCourses];
+        int[][] map = new int[numCourses][numCourses];
+        for (int i = 0; i < prerequisites.length; i++) {
+            in[prerequisites[i][0]]++;
+            map[prerequisites[i][1]][prerequisites[i][0]] = 1;
+        }
+
+        while (true) {
+            int indexO = indexFirstZero(in);
+            if (indexO >= 0) {
+                in[indexO] = -1;
+                for (int i = 0; i < map[indexO].length; i++) {
+                    if (map[indexO][i] == 1) {
+                        in[i]--;
+                    }
+                }
+            } else {
+                for (int i = 0; i < in.length; i++) {
+                    if (in[i] != -1) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+    }
+
+    public int indexFirstZero(int[] in) {
+        for (int i = 0; i < in.length; i++) {
+            if (in[i] == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
      * 有环吗
      *
      * @param lists
@@ -70,12 +114,12 @@ public class CourseSchedule {
 
     @Test
     public void test_solution_1() {
-        Assert.assertFalse(canFinish(2, new int[][]{{1, 0}, {0, 1}}));
+        Assert.assertFalse(canFinish1(2, new int[][]{{1, 0}, {0, 1}}));
     }
 
     @Test
     public void test_solution_2() {
-        Assert.assertTrue(canFinish(3, new int[][]{{0, 1}, {0, 2}, {1, 2}}));
+        Assert.assertTrue(canFinish1(3, new int[][]{{0, 1}, {0, 2}, {1, 2}}));
     }
 
 

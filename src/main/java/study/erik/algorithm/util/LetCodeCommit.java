@@ -108,6 +108,10 @@ public @interface LetCodeCommit {
          */
         Stack,
         /**
+         * 图
+         */
+        Graph,
+        /**
          * 链表
          */
         Link_List;
