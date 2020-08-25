@@ -21,6 +21,7 @@ public class Game24 {
      * 解法分析：这是一个典型的dfs题，在递归的过程要结合'四则运算'。
      * 任意拿出当前数组中的两个，进行六种四则运算，并把结果重新放入数组；如此往复直到数组中只有一个元素，比较它和target就可以了。
      * 先前也写了一个实现，但是没有考虑到圆括号的场景，就漏掉了很多。
+     * 看了下力扣上大家的写法，有直接四重循环+六种组合的，这种四重循环是不能扩展的。我的这个写法是能扩展的。但是有大量的数组复制，也不太好
      * 扩展：
      * 1.  找出所有的解 todo done
      * 2.  构造所有的四则运算 todo
@@ -159,7 +160,7 @@ public class Game24 {
     public void test_dfs_to_find_solution() {
 
 
-        int[] nums3 = {3, 5, 1, 1};
+        int[] nums3 = {8, 1, 6, 6};
         double[] nums3Copy = new double[nums3.length];
         for (int i = 0; i < nums3.length; i++) {
             nums3Copy[i] = nums3[i];

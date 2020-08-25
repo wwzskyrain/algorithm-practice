@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.series.subsequence;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
@@ -14,13 +15,16 @@ public class LongestCommonSubSequenceTest {
      * title = Longest Common Subsequence
      * url = https://leetcode.com/problems/longest-common-subsequence/
      * next challenge =
-     *  1.https://leetcode.com/problems/longest-palindromic-subsequence/
-     *  2.https://leetcode.com/problems/delete-operation-for-two-strings/
-     *  3.Shortest Common Supersequence
+     * 1.https://leetcode.com/problems/longest-palindromic-subsequence/
+     * 2.https://leetcode.com/problems/delete-operation-for-two-strings/
+     * 3.Shortest Common Supersequence
+     *
      * @param text1
      * @param text2
      * @return
      */
+    @LetCodeCommit(title = "1143. Longest Common Subsequence",
+            related = {"1092. Shortest Common Supersequence"})
     public int longestCommonSubsequence(String text1, String text2) {
         return solution(text1, text2);
     }
