@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import static study.erik.algorithm.util.QuestionType.Link_List;
+
 /**
  * @author erik.wang
  * @date 2020-08-13 12:51
@@ -25,7 +27,7 @@ public class CopyListWithRandomPointer {
 
 
     @LetCodeCommit(no = 138, title = "Copy List with Random Pointer", time = 100, space = 35, diff = "m",
-            types = LetCodeCommit.Type.Link_List,
+            types = Link_List,
             selfRemark = "复制和拆分",
             related = {"Clone Binary Tree With Random Pointer", "Clone N-ary Tree"})
     public Node copyRandomList(Node head) {

@@ -5,6 +5,9 @@ import org.junit.Test;
 import study.erik.algorithm.leetcode.util.TreeNode;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import static study.erik.algorithm.util.QuestionType.Greedy;
+import static study.erik.algorithm.util.QuestionType.Tree;
+
 /**
  * @author erik.wang
  * @date 2020-08-05 11:12
@@ -12,7 +15,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 public class BinaryTreeCameras {
 
     @LetCodeCommit(no = 968, title = "Binary Tree Cameras", diff = "h", time = 53, space = 6,
-            types = {LetCodeCommit.Type.Tree, LetCodeCommit.Type.Greedy},
+            types = {Tree, Greedy},
             selfRemark = "不会做，看的lee大神的结点，思想很好，多看一遍，学会这样思考",
             extend = "Distribute Coins in Binary Tree")
     public int minCameraCover(TreeNode root) {

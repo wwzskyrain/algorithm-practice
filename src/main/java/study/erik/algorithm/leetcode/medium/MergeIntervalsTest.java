@@ -9,6 +9,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import static study.erik.algorithm.util.QuestionType.Detail;
+
 /**
  * @author erik.wang
  * @date 2020-08-12 19:21
@@ -17,7 +19,7 @@ public class MergeIntervalsTest {
 
     @LetCodeCommit(no = 56, title = "Merge Intervals", time = 96, space = 71,
             selfRemark = "这个题好像之前做过，难道是太细节了，所以没有提交成功；这个题有很多related呢，看来比较容易出题",
-            types = LetCodeCommit.Type.Detail,
+            types = Detail,
             diff = "m",
             related = {"Insert Interval", "Teemo Attacking", "Range Module", "Partition Labels", "Interval List Intersections"})
     public int[][] merge(int[][] intervals) {

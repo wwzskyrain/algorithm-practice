@@ -3,6 +3,7 @@ package study.erik.algorithm.leetcode.dp;
 import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.util.LetCodeCommit;
+import study.erik.algorithm.util.QuestionType;
 
 /**
  * @author erik.wang
@@ -13,7 +14,7 @@ public class MinimumCostToMergeStonesTest {
 
     @LetCodeCommit(no = 1000, title = "Minimum Cost to Merge Stones", time = 94, space = 72,
             related = {"Burst Balloons"},
-            types = LetCodeCommit.Type.DP,
+            types = QuestionType.DP,
             selfRemark = "这是区间dp的例子，还可以用三维dp来解答，但是我不太会")
     public int mergeStones(int[] stones, int K) {
 

@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import static study.erik.algorithm.util.QuestionType.Array;
+
 /**
  * @author erik.wang
  * @date 2020-08-13 23:55
@@ -11,7 +13,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 public class MissingNumber {
 
     @LetCodeCommit(no = 268, title = "Missing Number", time = 59, space = 60,
-            diff = "e", types = LetCodeCommit.Type.Array,
+            diff = "e", types = Array,
             selfRemark = "这种占位题，做了好几个了；我承认，这个题目我做了半小时呢。思路对了，但是细节不少得处理",
             extend = "dis中，有两个绝妙的解法；我要写下来",
             related = "Couples Holding Hands")

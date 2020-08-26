@@ -6,6 +6,8 @@ import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
 
+import static study.erik.algorithm.util.QuestionType.Graph;
+
 /**
  * @author erik.wang
  * @date 2020-08-18 13:49
@@ -14,7 +16,7 @@ public class CourseScheduleII {
 
     @LetCodeCommit(no = 32, title = "Course Schedule II", time = 32, space = 5, diff = "m",
             selfRemark = "拓扑排序来遍历有向无环图(也可能有环)",
-    types = LetCodeCommit.Type.Graph,
+    types = Graph,
             related = {"Course Schedule III",
             " Minimum Height Trees"}
     )

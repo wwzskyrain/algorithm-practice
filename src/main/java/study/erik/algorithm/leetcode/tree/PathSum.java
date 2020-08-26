@@ -7,6 +7,8 @@ import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.*;
 
+import static study.erik.algorithm.util.QuestionType.Tree;
+
 /**
  * @author erik.wang
  * @date 2019/06/10
@@ -21,7 +23,7 @@ public class PathSum {
      * @param sum
      * @return
      */
-    @LetCodeCommit(no = 112, title = "Path Sum", types = LetCodeCommit.Type.Tree)
+    @LetCodeCommit(no = 112, title = "Path Sum", types = Tree)
     public boolean hasPathSum(TreeNode root, int sum) {
 
         if (root == null) {

@@ -5,6 +5,9 @@ import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
 
+import static study.erik.algorithm.util.QuestionType.Detail;
+import static study.erik.algorithm.util.QuestionType.Matrix;
+
 /**
  * @author erik.wang
  * @date 2020-08-04 10:26
@@ -14,7 +17,7 @@ public class RotateImage {
     @LetCodeCommit(no = 48, title = "Rotate Image", time = 6, space = 5,
             selfRemark = "成绩真的是差呀",
             extend = "可以通过赤道线对折+对角线对折，高效完成",
-            types = {LetCodeCommit.Type.Detail, LetCodeCommit.Type.Matrix},
+            types = {Detail, Matrix},
             diff = "m",
             related = {"Smallest String With Swaps", "Maximum Length of Repeated Subarray"})
     public void rotate(int[][] matrix) {

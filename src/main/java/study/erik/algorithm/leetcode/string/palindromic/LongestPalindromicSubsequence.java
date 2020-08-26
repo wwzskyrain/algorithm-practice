@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import static study.erik.algorithm.util.QuestionType.DP;
+
 /**
  * @author erik.wang
  * @date 2020-08-16 18:42
@@ -11,7 +13,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 public class LongestPalindromicSubsequence {
 
     @LetCodeCommit(no = 516, title = "Longest Palindromic Subsequence", time = 63, space = 84, diff = "m",
-            types = LetCodeCommit.Type.DP,
+            types = DP,
             selfRemark = "一个简单的二位dp的题目，也是一个回文数的题目。dp的特性还不错")
     public int longestPalindromeSubseq(String s) {
 

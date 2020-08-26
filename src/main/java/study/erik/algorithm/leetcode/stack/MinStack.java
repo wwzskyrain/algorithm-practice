@@ -6,11 +6,13 @@ import study.erik.algorithm.util.LetCodeCommit;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import static study.erik.algorithm.util.QuestionType.Stack;
+
 @LetCodeCommit(no = 11, title = "min stack", diff = "e",
         selfRemark = "用双向链表实现一个最小栈，这样就没有扩容的烦恼了。但是每次都new内存，还是不太好，不如预分配；" +
                 "而预分配有不能追加分配，在扩容时只能再分配并且迁移",
         related = "max stack-不要做了，一样的思路",
-        types = LetCodeCommit.Type.Stack)
+        types = Stack)
 public class MinStack {
 
     private Deque<Integer> data;

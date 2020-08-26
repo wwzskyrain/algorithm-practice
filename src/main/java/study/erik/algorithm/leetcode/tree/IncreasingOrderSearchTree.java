@@ -4,6 +4,8 @@ import org.junit.Test;
 import study.erik.algorithm.leetcode.util.TreeNode;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import static study.erik.algorithm.util.QuestionType.Tree;
+
 
 /**
  * @author erik.wang
@@ -13,7 +15,7 @@ public class IncreasingOrderSearchTree {
 
     @LetCodeCommit(no = 897, title = "Increasing Order Search Tree", time = 100, space = 76,
             diff = "e",
-            types = LetCodeCommit.Type.Tree,
+            types = Tree,
             selfRemark = "easy级别的树题，对我来说不是很简单的，比如这个，把二叉搜索树给线索化，就让我调了半个小时之多",
             related = {"Print Binary Tree-踩比赞多",
                     "Recover a Tree From Preorder Traversal",

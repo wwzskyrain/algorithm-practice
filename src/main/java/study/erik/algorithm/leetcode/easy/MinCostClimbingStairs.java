@@ -4,13 +4,15 @@ import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import static study.erik.algorithm.util.QuestionType.DP;
+
 /**
  * @author erik.wang
  * @date 2020-08-04 09:41
  */
 public class MinCostClimbingStairs {
 
-    @LetCodeCommit(title = "Min Cost Climbing Stairs", time = 100, space = 28, diff = "h", types = LetCodeCommit.Type.DP)
+    @LetCodeCommit(title = "Min Cost Climbing Stairs", time = 100, space = 28, diff = "h", types = DP)
     public int minCostClimbingStairs(int[] cost) {
 
         //dp[i]表示到达i处，所需要的最小花费；dp[i] = min{dp[i-1], dp[i-2]} + cost[i];

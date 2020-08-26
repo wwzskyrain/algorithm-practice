@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import static study.erik.algorithm.util.QuestionType.Double_Point;
+
 /**
  * @author erik.wang
  * @date 2020-08-04 08:31
@@ -21,7 +23,7 @@ public class GettheMaximumScore {
      * @param nums2
      * @return
      */
-    @LetCodeCommit(title = "Get the Maximum Score", time = 100, space = 100, diff = "h", types = LetCodeCommit.Type.Double_Point)
+    @LetCodeCommit(title = "Get the Maximum Score", time = 100, space = 100, diff = "h", types = Double_Point)
     public int maxSum(int[] nums1, int[] nums2) {
         int mod = 1000000007;
         long dp1 = 0, dp2 = 0;
