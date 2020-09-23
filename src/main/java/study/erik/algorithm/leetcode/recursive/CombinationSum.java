@@ -14,7 +14,8 @@ import java.util.*;
 public class CombinationSum {
 
 
-    @LetCodeCommit(title = "39. Combination Sum")
+    @LetCodeCommit(title = "39. Combination Sum", diff = "m",
+            selfRemark = "这是一个无穷背包问题，当然我这里用了dfs的解法")
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Set<List<Integer>> allResults = new HashSet<>();
         dfs(candidates, target, new LinkedList<>(), allResults);
