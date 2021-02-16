@@ -63,6 +63,10 @@ public enum QuestionType {
      */
     Graph,
     /**
+     * 最值
+     */
+    MostValue,
+    /**
      * 链表
      */
     Link_List;
