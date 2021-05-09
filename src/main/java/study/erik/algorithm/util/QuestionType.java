@@ -69,5 +69,11 @@ public enum QuestionType {
     /**
      * 链表
      */
-    Link_List;
+    Link_List,
+    /**
+     * 字符串
+     */
+    String_,
+    ;
+
 }
