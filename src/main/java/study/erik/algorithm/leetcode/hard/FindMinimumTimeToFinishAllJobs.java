@@ -16,7 +16,7 @@ public class FindMinimumTimeToFinishAllJobs {
 
     @LetCodeCommit(no = 1723, title = "Find Minimum Time to Finish All Jobs",
             diff = "h",
-            selfRemark = "这是一道很正宗的'动态规划(状态压缩)'")
+            selfRemark = "这是一道很正宗的'动态规划(状态压缩)'。还有一个回溯法的解法，以后可以试一试的，因为里面有剪枝逻辑。")
     public int minimumTimeRequired(int[] jobs, int k) {
 
 
