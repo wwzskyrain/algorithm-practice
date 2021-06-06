@@ -12,17 +12,20 @@ public class TargetSum {
     @Test
     public void test_solution() {
 
-        int[] nums3 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        Assert.assertEquals(1048576, findTargetSumWays(nums3, 0));
-
-        int[] nums2 = {0, 0, 0, 0, 0, 0, 0, 0, 1};
-        Assert.assertEquals(256, findTargetSumWays(nums2, 1));
-
-        int[] nums1 = {1, 0};
-        Assert.assertEquals(2, findTargetSumWays(nums1, 1));
+        //int[] nums3 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        //Assert.assertEquals(1048576, findTargetSumWays(nums3, 0));
+        //
+        //int[] nums2 = {0, 0, 0, 0, 0, 0, 0, 0, 1};
+        //Assert.assertEquals(256, findTargetSumWays(nums2, 1));
+        //
+        //int[] nums1 = {1, 0};
+        //Assert.assertEquals(2, findTargetSumWays(nums1, 1));
 
         int[] nums = {1, 1, 1, 1, 1};
         Assert.assertEquals(5, findTargetSumWays(nums, 3));
+
+        int[] nums4 = {1, 1};
+        Assert.assertEquals(2, findTargetSumWays(nums4, 0));
     }
 
     /**
@@ -30,15 +33,15 @@ public class TargetSum {
      * title = Target Sum
      *
      * @param nums
-     * @param S
+     * @param target
      * @return
      */
-    public int findTargetSumWays(int[] nums, int S) {
-        return solutionWithDp(nums, S);
+    public int findTargetSumWays(int[] nums, int target) {
+        return findTargetSumWaysRecurse(nums, target);
     }
 
     /**
-     * 成绩：72 和 100 ，成绩不错，给自己故障
+     * 成绩：72 和 100 ，成绩不错，给自己鼓掌
      * 这个题目是01背包问题的的扩展题目，所以一看到题目我们就想到了这个思路，经过了几次处理包含0的case试错之后，就完成了。
      * 解法属于：把目标泛化的套路。
      * <p>
@@ -46,7 +49,7 @@ public class TargetSum {
      * 这里最好不要把j当做下边，而当做范围在max和min之间的具体值，即具体的每一个可能的+-组合结果
      * 当遍历到第i个数字是：
      * dp[i][j] = dp[i][j-num[i]] + dp[i][j+num[i]]
-     * 而原问题则是当dp[nums.length][S].
+     * 而原问题则是当dp[nums.length][target].
      * <p>
      * 具体实现时注意的问题：
      * 1.   需要以max和min来作为目标泛化的界限
@@ -54,14 +57,15 @@ public class TargetSum {
      * 3.   答：其实可以优化到行数为2的二位数组，或者用两个一位数组来实现，但是在想优化成一位数组，是不可能的，因为从状态转变公式看出，变化来自两个方向，不太好从一个方向算起的。
      * <p>
      * extension: diss区有一个解法，转化到了子集和问题，而子集和问题就是01背包问题，所以直接解答，很巧妙。
-     * 难道转一下就很桥面了吗？当然不是，要看转过去之后，问题是变的多么简单，而01背包问题的解法，我们已经烂熟于心，所以这样的转化才是巧妙的
-     * 链接：https://leetcode.com/problems/target-sum/discuss/97334/Java-(15-ms)-C%2B%2B-(3-ms)-O(ns)-iterative-DP-solution-using-subset-sum-with-explanation
+     * 难道转一下就很巧妙了吗？当然不是，要看转过去之后，问题是变的多么简单，而01背包问题的解法，我们已经烂熟于心，所以这样的转化才是巧妙的
+     * 链接：https://leetcode.com/problems/target-sum/discuss/97334/Java-(15-ms)-C%2B%2B-(3-ms)-O(ns)
+     * -iterative-DP-solution-using-subset-sum-with-explanation
      *
      * @param nums
-     * @param S
+     * @param target
      * @return
      */
-    public int solutionWithDp(int[] nums, int S) {
+    public int solutionWithDp(int[] nums, int target) {
 
         int max = 0, min = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -69,7 +73,7 @@ public class TargetSum {
             min -= nums[i];
         }
 
-        if (S > max || S < min) {
+        if (target > max || target < min) {
             return 0;
         }
 
@@ -95,7 +99,44 @@ public class TargetSum {
                 }
             }
         }
-        return dp[nums.length - 1][S - min];
+        return dp[nums.length - 1][target - min];
+    }
+
+    /**
+     * 又一个解法，二叉树的遍历解法。结合上面的01背包解法，是不是这样的二叉树遍历问题都可以用01背包解法呢？
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int findTargetSumWaysRecurse(int[] nums, int target) {
+        int max = 0, min = 0;
+        for (int num : nums) {
+            max += Math.abs(num);
+            min -= Math.abs(num);
+        }
+        return solutionWithTree(nums, 0, max, min, target);
+    }
+
+    public int solutionWithTree(int[] nums, int index, int max, int min, int target) {
+        if (target > max || target < min) {
+            return 0;
+        }
+        if (index == nums.length - 1) {
+            int result = 0;
+            if (nums[index] == target || nums[index] == -target) {
+                result++;
+                if (target == 0) {
+                    result++;
+                }
+            }
+            return result;
+        }
+
+        int num = nums[index];
+
+        int left = solutionWithTree(nums, index + 1, max - Math.abs(num), min + Math.abs(num), target - num);
+        int right = solutionWithTree(nums, index + 1, max - Math.abs(num), min + Math.abs(num), target + num);
+        return left + right;
     }
 
 }
