@@ -1,10 +1,14 @@
 package study.erik.algorithm.leetcode.list;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class Solutions {
 
@@ -297,6 +301,28 @@ public class Solutions {
         Assert.assertArrayEquals(except, twoSum(nums, target));
     }
 
+    public ListNode removeElementsRecurse(ListNode head, int val) {
+        if (head == null) {
+            return null;
+        }
+        if (head.val == val) {
+            return removeElementsRecurse(head.next, val);
+        }
+
+        ListNode prePoint = head;
+        ListNode point = prePoint.next;
+        while (point != null) {
+            if (point.val == val) {
+                point = point.next;
+                prePoint.next = point;
+            } else {
+                prePoint = prePoint.next;
+                point = point.next;
+            }
+        }
+        return head;
+    }
+
     /**
      * 203. Remove Linked List Elements
      *
@@ -348,10 +374,10 @@ public class Solutions {
 
         String input2 = "6->6->6";
 
-        ListNode head = ListNode.buildLinkedList(input);
+        ListNode head = ListNode.buildLinkedList(input2);
         ListNode.print(head);
 
-        ListNode headAfterRemove = removeElements(head, 6);
+        ListNode headAfterRemove = removeElementsRecurse(head, 6);
         ListNode.print(headAfterRemove);
 
     }

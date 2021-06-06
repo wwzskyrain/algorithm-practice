@@ -22,12 +22,64 @@ public class ContinuousSubarraySum {
      * @return
      */
     public boolean checkSubarraySum(int[] nums, int k) {
-        return solution(nums, k);
+        return solution1(nums, k);
     }
 
+    @Test
+    public void test_1() {
+        int[] nums = {23, 2, 4, 6, 7};
+        int k = 6;
+        Assert.assertTrue(checkSubarraySum(nums, k));
+    }
+
+    @Test
+    public void test_2() {
+        int[] nums = {23, 2, 6, 4, 7};
+        int k = 6;
+        Assert.assertTrue(checkSubarraySum(nums, k));
+    }
+
+    @Test
+    public void test_3() {
+        int[] nums = {23, 2, 6, 4, 7};
+        int k = 13;
+        Assert.assertFalse(checkSubarraySum(nums, k));
+    }
+
+    @Test
+    public void test_4() {
+        int[] nums = {23, 2, 4, 6, 6};
+        int k = 7;
+        Assert.assertFalse(checkSubarraySum(nums, k));
+    }
+
+    public boolean solution1(int[] nums, int k) {
+// 该解法(滑动窗口)是错误的，
+        if (nums.length < 2) {
+            return false;
+        }
+
+        int sum = nums[0] % k;
+        int i = 1;
+        int j = 0;
+        while (i < nums.length && j <= i) {
+            if (sum == k) {
+                return true;
+            } else if (sum < k) {
+                sum += nums[i++] % k;
+            } else {
+                sum = sum - nums[j++] % k;
+            }
+        }
+        return false;
+
+    }
 
     public boolean solution(int[] nums, int k) {
 
+        /**
+         * key=前缀和mod k， value=第一次出现的index
+         */
         Map<Integer, Integer> mem = new HashMap<Integer, Integer>(16) {{
             put(0, -1);
         }};

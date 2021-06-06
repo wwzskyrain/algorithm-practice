@@ -7,7 +7,7 @@ import study.erik.algorithm.leetcode.util.TreeNode;
  * @author erik.wang
  * @date 2019/04/07
  **/
-public class BuildBinaryTree {
+public class BuildBinaryTreeWithPreOrderAndInorder {
 
     /**
      * title=Construct Binary Tree from Preorder and Inorder Traversal
