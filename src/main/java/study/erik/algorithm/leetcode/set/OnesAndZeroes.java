@@ -18,7 +18,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 @RunWith(Parameterized.class)
 public class OnesAndZeroes {
 
-    @Parameter(0)
+    @Parameter
     public String[] str;
     @Parameter(1)
     public Integer  m;

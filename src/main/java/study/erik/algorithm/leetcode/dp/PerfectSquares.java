@@ -3,8 +3,6 @@ package study.erik.algorithm.leetcode.dp;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * @author erik.wang
  * @date 2020-04-23 15:23
@@ -20,7 +18,7 @@ public class PerfectSquares {
      * @return
      */
     public int numSquares(int n) {
-        return solution(n);
+        return solutionWithSimpleCode(n);
     }
 
     /**
@@ -57,7 +55,26 @@ public class PerfectSquares {
             }
             i++;
         }
-//        System.out.printf("%d = %s\n", n, Arrays.toString(dp));
+        return dp[n];
+    }
+
+    /**
+     * 顺手就写出了这种解法，因为和昨天的 硬币题 是一样的，虽然那里求的是种类数，这里求得是最小个数.
+     * 思路: 从平方数开始外循环，逐步添加新的平方数。新的平方数在之前的最优解中构造更有解.
+     *
+     * @param n
+     * @return
+     */
+    public int solutionWithSimpleCode(int n) {
+        int[] dp = new int[n + 1];
+        for (int i = 0; i < dp.length; i++) {
+            dp[i] = i;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            for (int j = i * i; j < dp.length; j++) {
+                dp[j] = Math.min(dp[j], dp[j - i * i] + 1);
+            }
+        }
         return dp[n];
     }
 
@@ -65,6 +82,7 @@ public class PerfectSquares {
     public void test_() {
         Assert.assertEquals(2, numSquares(13));
         Assert.assertEquals(3, numSquares(12));
+        Assert.assertEquals(1, numSquares(4));
     }
 
 }

@@ -1,9 +1,16 @@
 package study.erik.algorithm.leetcode.tree;
 
-
 import study.erik.algorithm.leetcode.util.TreeNode;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 
@@ -111,13 +118,15 @@ public class BinaryTreeTraversalSolutions {
         TreeNode probe = root;
 
         while (!stack.isEmpty() || probe != null) {
+            //这个写法可以精简一下
 
-            if (probe != null) {     //先左后右
+            if (probe != null) {
+                //先左后右
                 stack.push(probe);
                 probe = probe.left;
             } else {
-//           左指针为空或者右指针为空。
-//           左指针为空的话，就是要访问该节点了
+                //           左指针为空或者右指针为空，总之是当前指针为空
+                //           左指针为空的话，就是要访问该节点了
                 probe = stack.pop();
                 result.add(probe.val);
                 probe = probe.right;
@@ -127,7 +136,6 @@ public class BinaryTreeTraversalSolutions {
         return result;
 
     }
-
 
     /**
      * 后续遍历二叉树-非递归算法

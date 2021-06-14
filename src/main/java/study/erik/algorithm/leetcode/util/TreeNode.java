@@ -31,6 +31,12 @@ public class TreeNode {
         return doBuild(treeNodeArray);
     }
 
+    /**
+     * 广度有效遍历法来构造二叉树
+     *
+     * @param input
+     * @return
+     */
     public static TreeNode buildTree(String input) {
 
         String[] splitStr = input.split(",");
