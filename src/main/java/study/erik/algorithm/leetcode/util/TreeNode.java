@@ -39,6 +39,9 @@ public class TreeNode {
      */
     public static TreeNode buildTree(String input) {
 
+        if (input == null || input.trim().length() == 0) {
+            return null;
+        }
         String[] splitStr = input.split(",");
         TreeNode[] tree = new TreeNode[splitStr.length + 1];
         int i = 0;
