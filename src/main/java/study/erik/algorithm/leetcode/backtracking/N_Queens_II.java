@@ -16,7 +16,7 @@ public class N_Queens_II {
     @LetCodeCommit(no = 52, title = "N-Queens II", time = 86, space = 77,
             selfRemark = "和N_Queens一样的，前者是求解，后者求解的个数；我也是稍稍改一下就完成了的",
             types = Back_Tracking,
-            related = {"Palindrome Partitioning","Binary Watch", })
+            related = {"Palindrome Partitioning", "Binary Watch", })
     public int totalNQueens(int n) {
 
         char[][] board = new char[n][n];
