@@ -14,7 +14,8 @@ public class KthSmallestElementInBST {
     @LetCodeCommit(title = "230. Kth Smallest Element in a BST",
             selfRemark = "中序遍历，调一调就可以了")
     public int kthSmallest(TreeNode root, int k) {
-
+        // data[0]表示第k个。
+        // data[1]表示第k个最小值
         int[] data = new int[2];
         data[0] = k;
         inOrder(root, data);

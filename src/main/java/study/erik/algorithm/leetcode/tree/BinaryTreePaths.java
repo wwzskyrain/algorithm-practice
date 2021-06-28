@@ -4,7 +4,7 @@ import org.junit.Test;
 import study.erik.algorithm.leetcode.util.TreeNode;
 import study.erik.algorithm.util.LetCodeCommit;
 
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,40 +15,30 @@ import java.util.List;
 public class BinaryTreePaths {
 
     @LetCodeCommit(title = "257. Binary Tree Paths",
-            selfRemark = "以后在使用到Stack的场景中，可以直接用LinkList，不要用Deque了")
+            selfRemark = "以后在使用到Stack的场景中，可以直接用LinkList，不要用Deque了。"
+                    + "哈哈，还可以优化，如果知道栈的最大深度，还可以用数组",
+    related = {"Remove Invalid Parentheses"})
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> paths = new LinkedList<>();
-        if (root != null) {
-            LinkedList<Integer> path = new LinkedList<>();
-            solution(root, path, paths);
-        }
+        solutionWithPreOrder(root, "", paths);
         return paths;
     }
 
-    public void solution(TreeNode root, LinkedList<Integer> currentPath, List<String> paths) {
+    public void solutionWithPreOrder(TreeNode root, String path, List<String> paths) {
+
+        if (root == null) {
+            return;
+        }
 
         if (root.left == null && root.right == null) {
             //发现叶子结点啦
-            StringBuilder sb = new StringBuilder();
-            Iterator<Integer> iterator = currentPath.descendingIterator();
-            while (iterator.hasNext()) {
-                sb.append(iterator.next()).append("->");
-            }
-            sb.append(root.val);
-            paths.add(sb.toString());
+            paths.add(path + root.val);
             return;
         }
-        if (root.left != null) {
-            currentPath.push(root.val);
-            solution(root.left, currentPath, paths);
-            currentPath.pop();
-        }
 
-        if (root.right != null) {
-            currentPath.push(root.val);
-            solution(root.right, currentPath, paths);
-            currentPath.pop();
-        }
+        solutionWithPreOrder(root.left, path + root.val + "->", paths);
+        solutionWithPreOrder(root.right, path + root.val + "->", paths);
+
     }
 
 
