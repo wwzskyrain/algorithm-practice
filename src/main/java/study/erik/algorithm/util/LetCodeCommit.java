@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @date 2020-08-04 09:09
  */
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE, ElementType.CONSTRUCTOR})
 public @interface LetCodeCommit {
 
     String title() default "";
