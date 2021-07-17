@@ -22,21 +22,21 @@ public class LinkedListCycleII {
             return null;
         }
 
-        ListNode f = head;
-        ListNode s = head;
+        ListNode fastNode = head;
+        ListNode slowNode = head;
         do {
-            f = f.next.next;
-            s = s.next;
-            if (f == s) {
+            fastNode = fastNode.next.next;
+            slowNode = slowNode.next;
+            if (fastNode == slowNode) {
                 //to find the begin node.
-                s = head;
-                while (s != f) {
-                    s = s.next;
-                    f = f.next;
+                slowNode = head;
+                while (slowNode != fastNode) {
+                    slowNode = slowNode.next;
+                    fastNode = fastNode.next;
                 }
-                return s;
+                return slowNode;
             }
-        } while (f != null && f.next != null);
+        } while (fastNode != null && fastNode.next != null);
         return null;
     }
 
