@@ -48,6 +48,11 @@ public class ListNode {
         return head;
     }
 
+    /**
+     * 输入demo .
+     * @param input
+     * @return
+     */
     public static ListNode buildLinkedList(String input) {
 
         String[] values = input.split("->");

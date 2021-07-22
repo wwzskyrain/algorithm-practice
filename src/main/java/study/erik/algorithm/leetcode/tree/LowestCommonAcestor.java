@@ -146,7 +146,7 @@ public class LowestCommonAcestor {
      * @param root
      * @param p
      * @param q
-     * @return 返回包含了p或者q结点的最近结点。not null表示p或者q在这个在这个root树中，
+     * @return 返回包含了p或者q结点的最近结点。not null表示p或者q在这个root树中，
      * 当left子树返回不空并且right子树返回不空时，当前root就是最近公共祖先，一路传上去。
      */
     @LetCodeCommit(no = 236, title = "Lowest Common Ancestor of a Binary Tree",
