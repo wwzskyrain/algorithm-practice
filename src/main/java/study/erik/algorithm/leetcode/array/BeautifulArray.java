@@ -6,42 +6,61 @@ package study.erik.algorithm.leetcode.array;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
 import study.erik.algorithm.util.LetCodeCommit;
+
+import java.util.ArrayList;
 
 /**
  * @author yueyi
  * @version : BeautifulArray.java, v 0.1 2021年07月29日 12:18 上午 yueyi Exp $
  */
-@RunWith(Parameterized.class)
 public class BeautifulArray {
 
     @LetCodeCommit(title = "Beautiful Array")
     public int[] beautifulArray(int n) {
-        return resolveWithRecursive(n);
+        ArrayList<Integer> res = new ArrayList<>();
+        res.add(1);
+        while (res.size() < n) {
+            ArrayList<Integer> tmp = new ArrayList<>();
+            for (int i : res) {
+                if (i * 2 - 1 <= n) {
+                    tmp.add(i * 2 - 1);
+                }
+            }
+            for (int i : res) {
+                if (i * 2 <= n) {
+                    tmp.add(i * 2);
+                }
+            }
+            res = tmp;
+        }
+        return res.stream().mapToInt(i -> i).toArray();
     }
 
-    private int[] r1 = {1};
-    private int[] r2 = {2, 1};
-    private int[] r3 = {2, 1, 3};
-    private int[] r4 = {2, 1, 4, 3};
-    private int[] r5 = {3, 1, 2, 5, 4};
+    public int[] resolveWithIteration(int n) {
+        ArrayList<Integer> res = new ArrayList<>();
+        res.add(1);
+        while (res.size() < n) {
+            ArrayList<Integer> tmp = new ArrayList<>();
+            for (int i : res) {
+                if (i * 2 - 1 <= n) {
+                    tmp.add(i * 2 - 1);
+                }
+            }
+            for (int i : res) {
+                if (i * 2 <= n) {
+                    tmp.add(i * 2);
+                }
+            }
+            res = tmp;
+        }
+        return res.stream().mapToInt(i -> i).toArray();
+    }
 
     public int[] resolveWithRecursive(int n) {
         switch (n) {
             case 1:
-                return r1;
-            case 2:
-                return r2;
-            case 3:
-                return r3;
-            case 4:
-                return r4;
-            case 5:
-                return r5;
+                return new int[] {1};
         }
         int halfN = n / 2 + (n % 2 == 0 ? 0 : 1);
         int[] right = resolveWithRecursive(halfN);
@@ -50,33 +69,29 @@ public class BeautifulArray {
             right[i] += right[i];
             left[i] = right[i] - 1;
         }
+        // 左右合并，左边是奇数，右边是偶数
         int[] result = new int[n];
-        for (int i = 0; i < result.length; i++) {
-            if (i < left.length) {
-                result[i] = left[i];
-                continue;
+        int x = 0, y = 0, z = 0;
+        while (x < left.length) {
+            if (left[x] <= n) {
+                result[z++] = left[x];
             }
-            result[i] = right[i - left.length];
+            x++;
+        }
+        while (y < right.length) {
+            if (right[y] <= n) {
+                result[z++] = right[y];
+            }
+            y++;
         }
         return result;
     }
 
-    @Parameter
-    public int   n;
-    @Parameter(1)
-    public int[] except;
-
-    @Parameters
-    public static Object[][] data() {
-        return new Object[][] {
-                {4, new int[] {2, 1, 4, 3}},
-                {5, new int[] {3, 1, 2, 5, 4}}
-        };
-    }
-
     @Test
-    public void test_except() {
-        Assert.assertArrayEquals(except, beautifulArray(n));
+    public void test_() {
+        for (int i = 4; i < 100; i++) {
+            Assert.assertArrayEquals(resolveWithIteration(i), resolveWithRecursive(i));
+        }
     }
 
 }
