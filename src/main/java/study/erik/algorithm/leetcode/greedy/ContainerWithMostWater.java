@@ -18,7 +18,7 @@ public class ContainerWithMostWater {
      * @return
      */
     public int maxArea(int[] height) {
-        return solution1(height);
+        return resolve(height);
     }
 
     /**
@@ -45,12 +45,39 @@ public class ContainerWithMostWater {
         return maxArea;
     }
 
+    /**
+     * 这一道题，我们去年在面试拼多多的时候，一道手写code题目
+     * 在面试官的指导下，我写出来了。这里直接就写出来，可见印象深刻
+     * @param height
+     * @return
+     */
+    public int resolve(int[] height) {
+        int low = 0, high = height.length - 1;
+        int maxArea = 0;
+        while (low < high) {
+            int lowH = height[low];
+            int highH = height[high];
+            int newArea = Math.min(lowH, highH) * (high - low);
+            maxArea = Math.max(maxArea, newArea);
+            if (lowH < highH) {
+                low++;
+            } else {
+                high--;
+            }
+        }
+        return maxArea;
+    }
 
     @Test
     public void test_solution() {
         int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-        Assert.assertEquals(49, solution1(height));
+        Assert.assertEquals(49, maxArea(height));
     }
 
+    @Test
+    public void test_solution_1() {
+        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+        Assert.assertEquals(49, solution1(height));
+    }
 
 }
