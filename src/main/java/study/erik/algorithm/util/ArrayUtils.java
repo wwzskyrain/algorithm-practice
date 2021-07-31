@@ -20,4 +20,41 @@ public class ArrayUtils {
             System.out.println(Arrays.toString(arr));
         }
     }
+
+    /**
+     * 构造二维数组
+     *
+     * @param intervals demo： intervals = [[1,4],[3,6],[2,8]]
+     */
+    public static int[][] buildArray2Dimension(String intervals) {
+        intervals = intervals.replace("[[", "");
+        intervals = intervals.replace("]]", "");
+        String[] split1 = intervals.split("],\\[");
+        int[][] twoDimensionArray = new int[split1.length][];
+        for (int i = 0; i < split1.length; i++) {
+            String arr2Str = split1[i];
+            String[] split2 = arr2Str.split(",");
+            twoDimensionArray[i] = new int[split2.length];
+            for (int j = 0; j < split2.length; j++) {
+                twoDimensionArray[i][j] = Integer.valueOf(split2[j]);
+            }
+        }
+        return twoDimensionArray;
+    }
+
+    /**
+     * 构造一维数组
+     *
+     * @param intervals demo： intervals = [3,6,5,1,8]
+     */
+    public static int[] buildArray(String intervals) {
+        intervals = intervals.replace("[", "");
+        intervals = intervals.replace("]", "");
+        String[] split = intervals.split(",");
+        int[] array = new int[split.length];
+        for (int i = 0; i < split.length; i++) {
+            array[i] = Integer.valueOf(split[i]);
+        }
+        return array;
+    }
 }
