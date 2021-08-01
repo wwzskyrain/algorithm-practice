@@ -3,6 +3,9 @@ package study.erik.algorithm.leetcode.dp;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author erik.wang
  * @date 2019/05/30
@@ -16,39 +19,7 @@ public class JumpGameI {
      * @return
      */
     public boolean canJump(int[] nums) {
-        return solution1(nums);
-    }
-
-    /**
-     * 这个题目的描述很有意思，而dp的思路却很简单。
-     * 题意是描述能不能跳过去，而不能跳过去的关键就是存在0点。但是dp的思路却不在这里。
-     * 可以通过判断0点来加快'可以跳过去'测试case。但是dp的思路却不在这里。
-     * dp思路：根据问题定义名词：好点、坏点。好点是能够跳过去的点，即能够满足题意的点。其他的为坏点。
-     * 有了思路，写代码就简单了，一遍成型，加一处小修改，就成功；可是效率很低，13%，内存使用量甚少，少于99%。
-     * 加速策略：
-     * 1.   没有0就可以直接返回true
-     * 2.   赋值canJump时由远及近而不是由近及远 + 加快到30%
-     * 附原题链接 https://leetcode.com/problems/jump-game/
-     *
-     * @param nums
-     * @return
-     */
-    public boolean solution1(int[] nums) {
-        boolean[] canJump = new boolean[nums.length];
-        int length = nums.length;
-        canJump[length - 1] = true;
-
-        for (int i = nums.length - 2; i >= 0; i--) {
-            int span = nums[i];
-            while (span > 0) {
-                if (i + span < length && canJump[i + span]) {
-                    canJump[i] = true;
-                    break;
-                }
-                span--;
-            }
-        }
-        return canJump[0];
+        return solution3(nums);
     }
 
     /**
@@ -64,6 +35,7 @@ public class JumpGameI {
         int maxArrivedIndex = 0;
         for (int i = 0; i < nums.length; i++) {
             if (i <= maxArrivedIndex) {
+                // 只有是在maxArrivedIndex之内的才是有效的。
                 int arriveIndex = nums[i] + i;
                 maxArrivedIndex = Math.max(maxArrivedIndex, arriveIndex);
                 if (maxArrivedIndex >= nums.length - 1) {
@@ -74,14 +46,40 @@ public class JumpGameI {
         return false;
     }
 
+    /**
+     * 有一种解法：递推式的自底向上推研法的入队出队实现。
+     * 效果没有solution2好，因为解法二是只需要一次迭代就可以了。
+     * 等等，这个题好奇怪呀，如果没有0的话，那么必定是会到的。
+     * 所以，要是不能到的话，就是到了只能到坏点。
+     * @param nums
+     * @return
+     */
+    public boolean solution3(int[] nums) {
+
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(0);
+        while (!queue.isEmpty()) {
+            Integer index = queue.poll();
+            if (index >= nums.length - 1) {
+                return true;
+            }
+            for (int i = 1; i <= nums[index]; i++) {
+                queue.add(index + i);
+            }
+        }
+        return false;
+    }
+
     @Test
     public void test_solution() {
 
-        int[] array1 = new int[]{2, 3, 1, 1, 4};
-        int[] array2 = new int[]{3, 2, 1, 0, 4};
+        int[] array1 = new int[] {2, 3, 1, 1, 4};
+        int[] array2 = new int[] {3, 2, 1, 0, 4};
+        int[] array3 = new int[] {0};
 
-        Assert.assertTrue(solution2(array1));
-        Assert.assertFalse(solution2(array2));
+        Assert.assertTrue(canJump(array1));
+        Assert.assertFalse(canJump(array2));
+        Assert.assertTrue(canJump(array3));
     }
 
 }
