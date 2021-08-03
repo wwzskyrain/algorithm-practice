@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 import study.erik.algorithm.util.ArrayUtils;
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -19,14 +20,7 @@ import java.util.Queue;
 @RunWith(Parameterized.class)
 public class JumpGameIII {
 
-    /**
-     * title = Jump Game III
-     * url = https://leetcode.com/problems/jump-game-iii/
-     *
-     * @param arr
-     * @param start
-     * @return
-     */
+    @LetCodeCommit(title = "Jump Game III")
     public boolean canReach(int[] arr, int start) {
         return resolveWithDfs(arr, start);
     }
@@ -48,7 +42,7 @@ public class JumpGameIII {
 
     /**
      * 成绩：24.75% ，95.74%
-     * 用队列来玩，有点bfs的感觉，时间不是很好
+     * 用队列来解答，有点bfs的感觉，时间不是很好
      *
      * @param arr
      * @param start
