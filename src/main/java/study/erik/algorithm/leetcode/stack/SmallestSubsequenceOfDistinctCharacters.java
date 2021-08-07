@@ -21,7 +21,7 @@ public class SmallestSubsequenceOfDistinctCharacters {
 
     @LetCodeCommit(title = "Smallest Subsequence of Distinct Characters")
     public String smallestSubsequence(String s) {
-        return resolveWithDp(s);
+        return resolveMonotonicStack(s);
     }
 
     /**
@@ -30,7 +30,7 @@ public class SmallestSubsequenceOfDistinctCharacters {
      * @param s
      * @return
      */
-    public String resolveWithDp(String s) {
+    public String resolveMonotonicStack(String s) {
         int[] lastChar = new int[26];
         for (int i = 0; i < s.length(); i++) {
             lastChar[s.charAt(i) - 'a'] = i;
