@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.series;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
 import java.util.List;
@@ -155,22 +156,6 @@ public class Palindromic {
 
         Assert.assertEquals("a", longestPalindrome1("abcda"));
         Assert.assertEquals("bb", longestPalindrome1("cbbd"));
-    }
-
-    /**
-     * title: 131. Palindrome Partitioning
-     *
-     * @param s
-     * @return
-     */
-    public List<List<String>> partition(String s) {
-        char[] charArray = s.toCharArray();
-        short[][] isPalindrome = new short[charArray.length][charArray.length];
-        for (int i = 0; i < isPalindrome.length - 1; i++) {
-            isPalindrome[i][i + 1] = 1;
-        }
-
-        return null;
     }
 
     @Test
