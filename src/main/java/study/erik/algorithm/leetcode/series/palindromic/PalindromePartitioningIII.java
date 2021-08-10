@@ -79,6 +79,9 @@ public class PalindromePartitioningIII {
         }
         return mem[i][k] = min;
     }
+    // dp[k][end] 表示把s[0...end]分k段的最小代价
+    // dp[3][5] = min ( dp[2][4]+cost[5][5], dp[2][3]+cost[4][5], dp[2][2]+cost[3][5], dp[2][1]+cost[2][5], dp[2][0]+cost[1][5] )
+    // TODO: 2021/8/10 8-14 周末来写自底向上的写法。
 
     @Parameter
     public String s;
