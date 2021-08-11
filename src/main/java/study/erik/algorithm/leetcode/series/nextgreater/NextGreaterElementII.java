@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2021 All Rights Reserved.
  */
-package study.erik.algorithm.leetcode.series;
+package study.erik.algorithm.leetcode.series.nextgreater;
 
 import org.junit.Assert;
 import org.junit.Test;
