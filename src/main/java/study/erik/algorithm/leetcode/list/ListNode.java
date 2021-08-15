@@ -1,7 +1,10 @@
 package study.erik.algorithm.leetcode.list;
 
+import study.erik.algorithm.util.ArrayUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ListNode {
     public int val;
@@ -49,7 +52,20 @@ public class ListNode {
     }
 
     /**
+     * 输入demo： [2,1,5]
+     *
+     * @param input
+     * @return
+     */
+    public static ListNode buildWithArrayStr(String input) {
+        int[] array = ArrayUtils.buildArray(input);
+        List<Integer> list = IntStream.of(array).boxed().collect(Collectors.toList());
+        return buildLinkedList(list);
+    }
+
+    /**
      * 输入demo .
+     *
      * @param input
      * @return
      */
