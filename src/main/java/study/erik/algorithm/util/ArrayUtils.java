@@ -42,6 +42,22 @@ public class ArrayUtils {
         return twoDimensionArray;
     }
 
+    public static char[][] buildArray2DimensionToChar(String intervals) {
+        intervals = intervals.replace("[[", "");
+        intervals = intervals.replace("]]", "");
+        String[] split1 = intervals.split("],\\[");
+        char[][] twoDimensionArray = new char[split1.length][];
+        for (int i = 0; i < split1.length; i++) {
+            String arr2Str = split1[i];
+            String[] split2 = arr2Str.split(",");
+            twoDimensionArray[i] = new char[split2.length];
+            for (int j = 0; j < split2.length; j++) {
+                twoDimensionArray[i][j] = split2[j].charAt(1);
+            }
+        }
+        return twoDimensionArray;
+    }
+
     /**
      * 构造一维数组
      *

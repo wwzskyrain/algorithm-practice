@@ -14,6 +14,7 @@ public class StudentAttendanceRecordII {
 
     @LetCodeCommit(title = "Student Attendance Record II")
     public int checkRecord(int n) {
+        
         return 0;
     }
 }
