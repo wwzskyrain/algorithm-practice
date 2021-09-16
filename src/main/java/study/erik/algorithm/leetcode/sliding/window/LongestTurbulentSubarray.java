@@ -7,7 +7,8 @@ import org.junit.Test;
  * @author erik.wang
  * @date 2020-06-18 21:50
  * <p>
- * title =  Longest Turbulent Subarray
+ * title =
+ * Longest Turbulent Subarray
  */
 public class LongestTurbulentSubarray {
 
