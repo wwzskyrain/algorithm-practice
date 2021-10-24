@@ -1,14 +1,14 @@
 package study.erik.algorithm.leetcode.util;
 
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
+import java.util.Objects;
 
 public class TreeNode {
 
-    public int val;
-    public TreeNode left = null;
+    public int      val;
+    public TreeNode left  = null;
     public TreeNode right = null;
 
     public TreeNode(int x) {
@@ -19,6 +19,21 @@ public class TreeNode {
         this.val = val;
         this.left = left;
         this.right = right;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {return true;}
+        if (!(o instanceof TreeNode)) {return false;}
+        TreeNode treeNode = (TreeNode) o;
+        return val == treeNode.val &&
+                (left != null && left.equals(treeNode.left)) &&
+                (right != null && right.equals(treeNode.right));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val, left, right);
     }
 
     public static TreeNode buildTree(List<Integer> values) {
