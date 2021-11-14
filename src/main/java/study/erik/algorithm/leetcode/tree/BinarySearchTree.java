@@ -13,7 +13,6 @@ import java.util.List;
  **/
 public class BinarySearchTree {
 
-
     /**
      * title = Unique Binary Search Trees
      *
@@ -73,6 +72,7 @@ public class BinarySearchTree {
             List<TreeNode> right = generateSubTree(i + 1, end);
 
             for (int j = 0; j < left.size(); j++) {
+                //左子树和右子树是相互独立的，所以是乘机的关系，所以是二维来实现
                 for (int k = 0; k < right.size(); k++) {
 
                     TreeNode root = new TreeNode(i);
@@ -148,7 +148,6 @@ public class BinarySearchTree {
      *              这里下放一词有歧义，似乎是在左右子树是的。其实就是的。
      *              根节点的取值区间并不是（左子树的最大值，右子树的最小值），而是（Min，Max）。
      *              其实各节点的取值区间无所谓，因为它是出发点。
-     *
      * @return
      */
     public boolean doValid(TreeNode root, int lower, int upper) {
@@ -161,7 +160,6 @@ public class BinarySearchTree {
                 && doValid(root.left, lower, root.val)
                 && doValid(root.right, root.val, upper);
     }
-
 
     /**
      * title = Convert Sorted Array to Binary Search Tree
@@ -189,21 +187,22 @@ public class BinarySearchTree {
         return root;
     }
 
-
     public class ListNode {
-     int val;
-     ListNode next;
-     ListNode(int x) { val = x; }
- }
+        int      val;
+        ListNode next;
+
+        ListNode(int x) {val = x;}
+    }
 
     /**
      * title = Convert Sorted List to Binary Search Tree
      * 不同的是，输入为'链表'，而不是数组
+     *
      * @param head
      * @return
      */
     public TreeNode sortedListToBST(ListNode head) {
-// TODO: 2019/4/7  跟上一题没区别
+        // TODO: 2019/4/7  跟上一题没区别
         return null;
     }
 
@@ -214,6 +213,5 @@ public class BinarySearchTree {
         System.out.println(Integer.MAX_VALUE + 1);
         System.out.println(Integer.MIN_VALUE - 1);
     }
-
 
 }
