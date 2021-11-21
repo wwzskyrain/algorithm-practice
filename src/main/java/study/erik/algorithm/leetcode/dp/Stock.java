@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 public class Stock {
 
@@ -32,7 +33,6 @@ public class Stock {
 
     }
 
-
     /**
      * title = Best Time to Buy and Sell Stock
      * link = https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
@@ -53,10 +53,6 @@ public class Stock {
      */
     public int maxProfitI2(int[] prices) {
 
-        if (prices.length == 0) {
-            return 0;
-        }
-
         int maxProfit = 0;
         int minPrice = prices[0];
         for (int i = 1; i < prices.length; i++) {
@@ -69,10 +65,9 @@ public class Stock {
         return maxProfit;
     }
 
-
     @Test
     public void test_max_profit_I_2() {
-        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
+        int[] prices = new int[] {7, 1, 5, 3, 6, 4};
         Assert.assertEquals(5, maxProfitI2(prices));
     }
 
@@ -90,12 +85,65 @@ public class Stock {
         int maxProfit = 0;
         for (int i = 1; i < prices.length; i++) {
             if (prices[i] > prices[i - 1]) {
+                // 这里面出现当天买当天买的情况；即当连续两天都是价格上涨的时候。
+                // 这种操作与第一天买憋到第三天买，是一样的。因为第二天的卖出和买入两个操作是持平了。
                 maxProfit += prices[i] - prices[i - 1];
             }
         }
 
         return maxProfit;
 
+    }
+
+    /**
+     * 买股票的一个分支：冷静日
+     * 状态机来解释，真tm👍🏻。 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75928/Share-my-DP-solution-
+     * (By-State-Machine-Thinking)
+     * 我这里的代码写法更简单而已，把空间压缩到了O(1)。时间是O(n)，而成绩是100%和83%
+     *
+     * @param prices
+     * @return
+     */
+    @LetCodeCommit(title = "Best Time to Buy and Sell Stock with Cooldown")
+    public int maxProfit(int[] prices) {
+        int s0 = 0;
+        int s1 = -prices[0];
+        int s2 = 0;
+        int max = 0;
+        int tempS2 = 0;
+        for (int i = 1; i < prices.length; i++) {
+            int p = prices[i];
+            tempS2 = s2;
+            s2 = s1 + p;
+            s1 = Math.max(s1, s0 - p);
+            s0 = Math.max(tempS2, s0);
+            max = Math.max(max, s2);
+        }
+        return max;
+    }
+
+    @LetCodeCommit(title = "Best Time to Buy and Sell Stock with Transaction Fee",
+            selfRemark = "两个状态来搞定。")
+    public int maxProfit(int[] prices, int fee) {
+
+        int s1 = -prices[0];
+        int s2 = 0;
+        int tempS1 = 0;
+        int max = 0;
+        for (int i = 1; i < prices.length; i++) {
+            tempS1 = s1;
+            int p = prices[i];
+            s1 = Math.max(s1, s2 - p);
+            s2 = Math.max(s2, tempS1 + p - fee);
+            max = Math.max(max, s2);
+        }
+        return max;
+    }
+
+    @Test
+    public void test_() {
+        Assert.assertEquals(8, maxProfit(new int[] {1, 3, 2, 8, 4, 9}, 2));
+        Assert.assertEquals(6, maxProfit(new int[] {1, 3, 7, 5, 10, 3}, 3));
     }
 
     /**
@@ -131,21 +179,21 @@ public class Stock {
      * 不过很希望能解释清楚这个公式2，因为这是一个思考方式，叫做'全局最优和局部最优'理论嗯。
      * 但是这个题目不能这样结束的。
      * 幸好在网上找到了一篇可以贯穿这个系列题目解法。
-     * link = https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/kadanes-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input
+     * link = https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/kadanes-algorithm-since-no-one-has-mentioned
+     * -about-this-so-far-in-case-if-interviewer-twists-the-input
      * 他让我明白了一点，他详细分析了这个题目中的变量，并且建立了一个很细节的交易求最值的模型。
      * 有时候大道至简；那是应为化繁为简了。所以细节分析还是很重要的。
+     *
      * @param prices
      * @return
      */
     public int maxProfitIV1(int k, int[] prices) {
-        if (prices.length == 0)
-            return 0;
+        if (prices.length == 0) {return 0;}
         int n = prices.length;
         //分为两种情况，当k>=n/2时，可以进行最大次数的交易。就是随便买，随便卖
         if (k >= n / 2) {
             int maxPro = 0;
-            for (int i = 1; i < n; i++)
-                maxPro += (prices[i] > prices[i - 1] ? prices[i] - prices[i - 1] : 0);
+            for (int i = 1; i < n; i++) {maxPro += (prices[i] > prices[i - 1] ? prices[i] - prices[i - 1] : 0);}
             return maxPro;
         }
         //第二种情况
@@ -171,20 +219,19 @@ public class Stock {
     /**
      * 解法：我自己也有一套解法，不过还没以试验过，连代码都没来及写呢
      * 我已经记录在一张纸上了
+     *
      * @param k
      * @param prices
      * @return
      */
     public int maxProfitIV2(int k, int[] prices) {
 
-        if (prices.length == 0)
-            return 0;
+        if (prices.length == 0) {return 0;}
         int n = prices.length;
         //分为两种情况，当k>=n/2时，可以进行最大次数的交易。就是随便买，随便卖
         if (k >= n / 2) {
             int maxPro = 0;
-            for (int i = 1; i < n; i++)
-                maxPro += (prices[i] > prices[i - 1] ? prices[i] - prices[i - 1] : 0);
+            for (int i = 1; i < n; i++) {maxPro += (prices[i] > prices[i - 1] ? prices[i] - prices[i - 1] : 0);}
             return maxPro;
         }
         //第二种情况
@@ -195,7 +242,7 @@ public class Stock {
 
     @Test
     public void test_maxProfitIII1() {
-        int[] prices = new int[]{3, 3, 5, 0, 0, 3, 1, 4};
+        int[] prices = new int[] {3, 3, 5, 0, 0, 3, 1, 4};
         int maxProfitIII2 = maxProfitIII1(prices);
         Assert.assertEquals(6, maxProfitIII2);
     }
@@ -219,16 +266,14 @@ public class Stock {
 
         return aSell2;
 
-
     }
 
     @Test
     public void test_maxProfitIII2() {
-        int[] prices = new int[]{3, 3, 5, 0, 0, 3, 1, 4};
+        int[] prices = new int[] {3, 3, 5, 0, 0, 3, 1, 4};
         int maxProfitIII2 = maxProfitIII2(prices);
         Assert.assertEquals(6, maxProfitIII2);
     }
-
 
     /**
      * title = Best Time to Buy and Sell Stock IV
@@ -244,18 +289,17 @@ public class Stock {
         if (prices == null || prices.length < 2) {
             return 0;
         }
-////        List<Integer> upZones = upZones(prices);
-//        Collections.sort(upZones);
-//        Collections.reverse(upZones);
-//
-//        int maxProfit = 0;
-//        for (int i = 0; i < upZones.size() && i < k; i++) {
-//            maxProfit += upZones.getKeys(i);
-//        }
+        ////        List<Integer> upZones = upZones(prices);
+        //        Collections.sort(upZones);
+        //        Collections.reverse(upZones);
+        //
+        //        int maxProfit = 0;
+        //        for (int i = 0; i < upZones.size() && i < k; i++) {
+        //            maxProfit += upZones.getKeys(i);
+        //        }
 
-//        return maxProfit;
+        //        return maxProfit;
         return 0;
     }
-
 
 }
