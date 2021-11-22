@@ -2,6 +2,9 @@ package study.erik.algorithm.leetcode.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +15,10 @@ import java.util.List;
  * @date 2020-03-14 09:25
  * @description
  */
+@RunWith(Parameterized.class)
 public class WordBreakI {
 
+    @LetCodeCommit(title = "Word Break")
     public boolean wordBreak(String s, List<String> wordDict) {
         return solution1(s, wordDict);
     }
