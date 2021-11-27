@@ -30,6 +30,7 @@ public class MaximalSquare {
      * 解法来源：leetcode的diss区域
      *
      * extension：如果要求的是'矩形'而不是放行，就需要另外一种解法，而不是dp了。--单调栈
+     *
      * @param matrix
      * @return
      */
@@ -37,23 +38,23 @@ public class MaximalSquare {
         if (matrix.length == 0) {
             return 0;
         }
-        if (matrix.length == 1) {
-            for (int i = 0; i < matrix[0].length; i++) {
-                if (matrix[0][i] == '1') {
-                    return 1;
-                }
-            }
-            return 0;
-        }
-
         int maxEdge = 0;
-        int[][] edges = new int[matrix.length + 1][matrix[0].length + 1];
-        for (int i = 1; i < edges.length; i++) {
-            for (int j = 1; j < edges[i].length; j++) {
-                if (matrix[i - 1][j - 1] == '1') {
-                    edges[i][j] = Math.min(edges[i - 1][j - 1], Math.min(edges[i - 1][j], edges[i][j - 1])) + 1;
-                    maxEdge = Math.max(maxEdge, edges[i][j]);
-                }
+        int[][] mat = new int[matrix.length][matrix[0].length];
+        for (int j = 0; j < mat[0].length; j++) {
+            mat[0][j] = matrix[0][j] == '0' ? 0 : 1;
+            maxEdge = Math.max(maxEdge, mat[0][j]);
+        }
+        for (int i = 1; i < matrix.length; i++) {
+            mat[i][0] = matrix[i][0] == '0' ? 0 : 1;
+            maxEdge = Math.max(maxEdge, mat[i][0]);
+        }
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[i].length; j++) {
+                mat[i][j] = (matrix[i][j] == '0') ?
+                        0 :
+                        (Math.min(mat[i - 1][j - 1], Math.min(mat[i - 1][j], mat[i][j - 1])) + 1);
+
+                maxEdge = Math.max(maxEdge, mat[i][j]);
             }
         }
         return maxEdge * maxEdge;

@@ -27,6 +27,7 @@ public class ArrayUtils {
      * @param intervals demo： intervals = [[1,4],[3,6],[2,8]]
      */
     public static int[][] buildArray2Dimension(String intervals) {
+        intervals = intervals.replace(" ", "");
         intervals = intervals.replace("[[", "");
         intervals = intervals.replace("]]", "");
         String[] split1 = intervals.split("],\\[");

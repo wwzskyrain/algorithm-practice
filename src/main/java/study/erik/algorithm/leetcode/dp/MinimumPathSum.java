@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
@@ -53,6 +54,25 @@ public class MinimumPathSum {
             }
         }
         return sum[sum.length - 1][sum[sum.length - 1].length - 1];
+    }
+
+    @LetCodeCommit(title = "64. Minimum Path Sum",
+            selfRemark = "完全手写的")
+    public int solution2(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int j = 1; j < n; j++) {
+            grid[0][j] += grid[0][j - 1];
+        }
+        for (int i = 1; i < m; i++) {
+            grid[i][0] += grid[i - 1][0];
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                grid[i][j] += Math.min(grid[i - 1][j], grid[i][j - 1]);
+            }
+        }
+        return grid[m - 1][n - 1];
     }
 
     @Test
