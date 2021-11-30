@@ -111,20 +111,19 @@ public class Palindromic {
         int lower = 0;
         int high = 0;
         int length = s.length();
-        int[][] d = new int[length][];
-        for (int i = 0; i < d.length; i++) {
-            d[i] = new int[length];
-            d[i][i] = 1;
+        int[][] dp = new int[length][length];
+        for (int i = 0; i < dp.length; i++) {
+            dp[i][i] = 1;
         }
 
         for (int i = 0; i < length - 1; i++) {
             if (s.charAt(i) == s.charAt(i + 1)) {
-                d[i][i + 1] = 1;
+                dp[i][i + 1] = 1;
                 longestLength = 2;
                 lower = i;
                 high = i + 1;
             } else {
-                d[i][i + 1] = 0;
+                dp[i][i + 1] = 0;
             }
         }
 
@@ -133,16 +132,16 @@ public class Palindromic {
                 int x = i;
                 int y = x + span;
                 if (s.charAt(x) == s.charAt(y)) {
-                    d[x][y] = d[x + 1][y - 1];
+                    dp[x][y] = dp[x + 1][y - 1];
 
-                    if (d[x][y] == 1 && y - x + 1 > longestLength) {
+                    if (dp[x][y] == 1 && y - x + 1 > longestLength) {
                         lower = x;
                         high = y;
                         longestLength = y - x + 1;
                     }
 
                 } else {
-                    d[x][y] = 0;
+                    dp[x][y] = 0;
                 }
             }
         }
