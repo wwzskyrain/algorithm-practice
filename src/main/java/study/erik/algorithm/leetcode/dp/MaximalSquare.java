@@ -3,6 +3,8 @@ package study.erik.algorithm.leetcode.dp;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Optional;
+
 /**
  * @author erik.wang
  * @date 2020-04-22 15:12
@@ -70,5 +72,19 @@ public class MaximalSquare {
                 {'1', '0', '0', '1', '0'}};
 
         Assert.assertEquals(4, maximalSquare(matrix));
+    }
+
+    public String switchCase(String industryCode) {
+        switch (Optional.ofNullable(industryCode).orElse("")) {
+            case "t001":
+                return "too1";
+            default:
+                return "null";
+        }
+    }
+
+    @Test
+    public void test_switch_null() {
+        Assert.assertEquals("null", switchCase(null));
     }
 }
