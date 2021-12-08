@@ -57,6 +57,8 @@ public class TreeNode {
         if (input == null || input.trim().length() == 0) {
             return null;
         }
+        input = input.replace("[", "");
+        input = input.replace("]", "");
         String[] splitStr = input.split(",");
         TreeNode[] tree = new TreeNode[splitStr.length + 1];
         int i = 0;
