@@ -13,7 +13,8 @@ import java.util.Map;
  */
 public class LongestConsecutiveSequence {
 
-    @LetCodeCommit(title = "128. Longest Consecutive Sequence")
+    @LetCodeCommit(title = "128. Longest Consecutive Sequence",
+            selfRemark = "此题还有直接技术发，不用非得并查集-大材小用")
     public int longestConsecutive(int[] nums) {
 
         Map<Integer, Integer> map = new HashMap<>();
@@ -72,10 +73,9 @@ public class LongestConsecutiveSequence {
         }
     }
 
-
     @Test
     public void test_solution() {
-        Assert.assertEquals(4, longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
+        Assert.assertEquals(4, longestConsecutive(new int[] {100, 4, 200, 1, 3, 2}));
     }
 
 }
