@@ -38,6 +38,8 @@ public class BinarySearchTree {
                 nums[i] += nums[j] * nums[i - 1 - j];
             }
         }
+        StringBuilder sb = new StringBuilder();
+        sb.reverse().toString();
         return nums[n];
     }
 
