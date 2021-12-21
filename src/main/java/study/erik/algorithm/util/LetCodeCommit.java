@@ -25,8 +25,9 @@ public @interface LetCodeCommit {
 
     String postLink() default "";
 
-
     String diff() default "e";
+
+    String tag() default "";
 
     /**
      * 相关题目
@@ -55,6 +56,5 @@ public @interface LetCodeCommit {
      * @return
      */
     QuestionType[] types() default {};
-
 
 }
