@@ -70,6 +70,9 @@ public class ArrayUtils {
     public static int[] buildArray(String intervals) {
         intervals = intervals.replace("[", "");
         intervals = intervals.replace("]", "");
+        if (intervals.length() == 0) {
+            return new int[0];
+        }
         String[] split = intervals.split(",");
         int[] array = new int[split.length];
         for (int i = 0; i < split.length; i++) {
