@@ -1,8 +1,15 @@
 package study.erik.algorithm.leetcode.search;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.core.Is;
+import org.hamcrest.core.IsEqual;
 import org.junit.Assert;
 import org.junit.Test;
 import study.erik.algorithm.util.ArrayUtils;
+import study.erik.algorithm.util.MatcherUtils;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author erik.wang
@@ -148,6 +155,176 @@ public class BinarySearch {
         Assert.assertEquals(0, findLessThanAndEqualToTarget(nums, 3));
         Assert.assertEquals(1, findLessThanAndEqualToTarget(nums, 4));
         Assert.assertEquals(1, findLessThanAndEqualToTarget(nums, 5));
+    }
+
+    /**
+     * 找到num的插入位置，如果重复，插入到第一个重复元素的位置
+     * 也可以看第二个版本
+     * 注意两个版本的区别
+     * 1.当结束条件是left<=right时，right的初始值是size，而且返回位置去right
+     * 2.当结束条件是left<right时，right的初始值是size-1，而且返回位置去left
+     * 3.至于当重复时，放到重复元素的后面还是前面，在处理valueM = num时处理即可
+     *
+     * @param list list
+     * @param num  num
+     * @return 插入位置
+     * @see BinarySearch#findInsertIndex2(List, Integer)
+     */
+    public int findInsertIndex1(List<Integer> list, Integer num) {
+        int left = 0;
+        int right = list.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            Integer valueM = list.get(mid);
+            if (valueM < num) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return left;
+    }
+
+    /**
+     * 找到num的插入位置，如果重复，插入到第一个重复元素的位置
+     * 也可以看第二个版本
+     *
+     * @param list
+     * @param num
+     * @return
+     */
+    public int findInsertIndex2(List<Integer> list, Integer num) {
+        int left = 0;
+        int right = list.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            Integer valueM = list.get(mid);
+            if (valueM < num) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return right;
+    }
+
+    /**
+     * 有重复元素时，放最后面
+     *
+     * @param list
+     * @param num
+     * @return
+     */
+    public int findInsertIndex3(List<Integer> list, Integer num) {
+        int left = 0;
+        int right = list.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            Integer valueM = list.get(mid);
+            if (valueM <= num) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return right;
+    }
+
+    /**
+     * 有重复元素时，放最后面
+     *
+     * @param list
+     * @param num
+     * @return
+     */
+    public int findInsertIndex4(List<Integer> list, Integer num) {
+        int left = 0;
+        int right = list.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            Integer valueM = list.get(mid);
+            if (valueM <= num) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return left;
+    }
+
+    @Test
+    public void test_findInsertIndex3() {
+        List<Integer> list = Arrays.asList(1);
+
+        Assert.assertThat(0, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 0)),
+                new IsEqual<>(findInsertIndex4(list, 0))));
+
+        Assert.assertEquals(1, findInsertIndex3(list, 1));
+        Assert.assertEquals(1, findInsertIndex4(list, 1));
+
+        Assert.assertThat(1, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 1)),
+                new IsEqual<>(findInsertIndex4(list, 1))));
+
+        Assert.assertThat(1, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 2)),
+                new IsEqual<>(findInsertIndex4(list, 2))
+        ));
+
+        list = Arrays.asList(1, 3);
+        Assert.assertThat(0, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 0)),
+                new IsEqual<>(findInsertIndex4(list, 0))));
+
+        Assert.assertThat(1, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 1)),
+                new IsEqual<>(findInsertIndex4(list, 1))));
+
+        Assert.assertThat(1, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 2)),
+                new IsEqual<>(findInsertIndex4(list, 2))));
+
+        Assert.assertThat(2, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 3)),
+                new IsEqual<>(findInsertIndex4(list, 3))));
+
+        Assert.assertThat(2, CoreMatchers.allOf(
+                new IsEqual<>(findInsertIndex3(list, 4)),
+                new IsEqual<>(findInsertIndex4(list, 4))));
+
+    }
+
+    @Test
+    public void test_findInsertIndex1() {
+        List<Integer> list = Arrays.asList(1);
+        Assert.assertThat(0, MatcherUtils.allOfEquals(
+                findInsertIndex1(list, 0),
+                findInsertIndex2(list, 0)));
+
+        Assert.assertThat(0, MatcherUtils.allOfEquals(
+                findInsertIndex1(list, 1),
+                findInsertIndex2(list, 1)));
+
+        Assert.assertThat(1, MatcherUtils.allOfEquals(
+                findInsertIndex1(list, 2),
+                findInsertIndex2(list, 2)));
+
+        list = Arrays.asList(1, 3);
+        Assert.assertThat(0, MatcherUtils.allOfEquals(
+                findInsertIndex1(list, 1),
+                findInsertIndex2(list, 1)));
+
+        Assert.assertThat(1, MatcherUtils.allOfEquals(
+                findInsertIndex1(list, 2),
+                findInsertIndex2(list, 2)));
+        Assert.assertThat(1, MatcherUtils.allOfEquals(
+                findInsertIndex1(list, 3),
+                findInsertIndex2(list, 3)));
+        Assert.assertThat(2, MatcherUtils.allOfEquals(
+                findInsertIndex1(list, 4),
+                findInsertIndex2(list, 4)));
+
     }
 
 }

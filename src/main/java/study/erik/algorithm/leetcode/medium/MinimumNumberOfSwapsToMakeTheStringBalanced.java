@@ -22,7 +22,10 @@ public class MinimumNumberOfSwapsToMakeTheStringBalanced {
     @LetCodeCommit(title = "1963. Minimum Number of Swaps to Make the String Balanced",
             selfRemark = "真实感受，这题做的挺灰心的：一个m题，我愣是没做出来。"
                     + "我还用了二位dp呢，代码看起来很好，就是没搞定，因为确实不合适。"
-                    + "在看评论区的答案，是一个贪心解法，根本没有体现min最小值，哎。")
+                    + "在看评论区的答案，是一个贪心解法，根本没有体现min最小值。",
+            related = {"https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/",
+                    "https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/",
+                    "https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/"})
     public int minSwaps(String s) {
         int open = 0;
         for (int i = 0; i < s.length(); i++) {
