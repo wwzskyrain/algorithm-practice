@@ -6,6 +6,8 @@ package study.erik.algorithm.leetcode.array.hard;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 import study.erik.algorithm.util.ArrayUtils;
@@ -22,17 +24,8 @@ import java.util.stream.Collectors;
  * @author yueyi
  * @version : CountOfSmallerNumbersAfterSelf.java, v 0.1 2022年01月08日 12:09 下午 yueyi Exp $
  */
+@RunWith(Parameterized.class)
 public class CountOfSmallerNumbersAfterSelf {
-
-    private class ArrayValWithOrigIdx {
-        int val;
-        int originalIdx;
-
-        public ArrayValWithOrigIdx(int val, int originalIdx) {
-            this.val = val;
-            this.originalIdx = originalIdx;
-        }
-    }
 
     /**
      * Runtime: 900 ms, faster than 7.35%
@@ -70,10 +63,63 @@ public class CountOfSmallerNumbersAfterSelf {
         return left;
     }
 
-    @LetCodeCommit(title = "315. Count of Smaller Numbers After Self")
+    @LetCodeCommit(title = "315. Count of Smaller Numbers After Self",
+            related = {"327. Count of Range Sum",
+                    "493. Reverse Pairs",
+                    "1365. How Many Numbers Are Smaller Than the Current Number"})
     public List<Integer> countSmaller(int[] nums) {
-        return solution1(nums);
+        //return solution1(nums);
         //return solution2(nums);
+        return solution3(nums);
+    }
+
+    /**
+     * 思路不错，但是超时了。时间复杂度确实不稳定
+     *
+     * @param nums
+     * @return
+     */
+    public List<Integer> solution3(int[] nums) {
+
+        int[] result = new int[nums.length];
+        Node root = new Node(nums.length - 1);
+        for (int i = nums.length - 2; i >= 0; i--) {
+            add(root, nums, i, result);
+        }
+        return Arrays.stream(result).boxed().collect(Collectors.toList());
+    }
+
+    public static class Node {
+        public int  index;
+        public int  leftCount  = 0;
+        public int  rightCount = 0;
+        public Node left;
+        public Node right;
+
+        public Node(int index) {
+            this.index = index;
+        }
+    }
+
+    public void add(Node root, int[] nums, int index, int[] result) {
+        int rootNum = nums[root.index];
+        int curNum = nums[index];
+        if (curNum > rootNum) {
+            result[index] += root.leftCount + 1;
+            root.rightCount++;
+            if (root.right != null) {
+                add(root.right, nums, index, result);
+            } else {
+                root.right = new Node(index);
+            }
+        } else {
+            root.leftCount++;
+            if (root.left != null) {
+                add(root.left, nums, index, result);
+            } else {
+                root.left = new Node(index);
+            }
+        }
     }
 
     public List<Integer> solution2(int[] nums) {
@@ -91,6 +137,16 @@ public class CountOfSmallerNumbersAfterSelf {
         List<Integer> resultList = new LinkedList<>();
         for (int i : result) {resultList.add(i);}
         return resultList;
+    }
+
+    private class ArrayValWithOrigIdx {
+        int val;
+        int originalIdx;
+
+        public ArrayValWithOrigIdx(int val, int originalIdx) {
+            this.val = val;
+            this.originalIdx = originalIdx;
+        }
     }
 
     private void mergeSortAndCount(ArrayValWithOrigIdx[] nums, int start, int end, int[] result) {
