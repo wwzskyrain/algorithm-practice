@@ -25,6 +25,7 @@ import java.util.function.Supplier;
 public class SlidingWindowMedian {
 
     @LetCodeCommit(title = "Sliding Window Median",
+            tag = "好题-堆",
             selfRemark = "这个题目真不容易"
                     + "1.treeSet的存储值和比较值是不同的。"
                     + "2.balance的过程和insert的过程是有点绕的。特别是insert的过程"
