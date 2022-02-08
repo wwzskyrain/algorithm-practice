@@ -80,4 +80,19 @@ public class ArrayUtils {
         }
         return array;
     }
+
+    public static double[] buildDoubleArray(String doubleString) {
+        doubleString = doubleString.replace("[", "");
+        doubleString = doubleString.replace("]", "");
+        if (doubleString.length() == 0) {
+            return new double[0];
+        }
+        String[] split = doubleString.split(",");
+        double[] doubleArray = new double[split.length];
+        for (int i = 0; i < split.length; i++) {
+            doubleArray[i] = Double.parseDouble(split[i]);
+        }
+        return doubleArray;
+
+    }
 }
