@@ -1,5 +1,7 @@
 package study.erik.algorithm.leetcode.ds;
 
+import study.erik.algorithm.util.LetCodeCommit;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -12,6 +14,7 @@ class AllOne {
     private Map<String, Integer>              keyValueMap = new HashMap<>();
     private TreeMap<Integer, HashSet<String>> counterMap  = new TreeMap<>();
 
+    @LetCodeCommit(title = "432. All O`one Data Structure")
     public AllOne() {
 
     }
