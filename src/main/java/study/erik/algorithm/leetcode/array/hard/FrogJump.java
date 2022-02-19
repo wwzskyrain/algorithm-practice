@@ -13,6 +13,11 @@ import org.junit.runners.Parameterized.Parameters;
 import study.erik.algorithm.util.ArrayUtils;
 import study.erik.algorithm.util.LetCodeCommit;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author yueyi
  * @version : FrogJump.java, v 0.1 2022年02月12日 6:08 下午 yueyi Exp $
@@ -35,6 +40,7 @@ public class FrogJump {
                     continue;
                 }
                 // 这里不用dp[i][j]而是dp[i][diff]、dp[i][diff-1]、dp[i][diff+1]
+                // 不用担心stone[i]+diff这个unit处是否有石头
                 dp[i][diff] = true;
                 if (diff - 1 >= 0) {
                     dp[i][diff - 1] = true;
@@ -48,6 +54,39 @@ public class FrogJump {
             }
         }
         return false;
+    }
+
+    public boolean canCross1(int[] stones) {
+        Map<Integer, Set<Integer>> map = new HashMap<>();
+        for (int unit : stones) {
+            map.put(unit, new HashSet<>());
+        }
+        Set<Integer> zoneUnitJump = map.get(0);
+        if (zoneUnitJump == null) {
+            return false;
+        }
+        zoneUnitJump.add(1);
+        for (int unit : stones) {
+            Set<Integer> skipSet = map.get(unit);
+            for (Integer skip : skipSet) {
+                int nextUnit = unit + skip;
+                if (nextUnit == stones[stones.length - 1]) {
+                    return true;
+                }
+                Set<Integer> nextUnitSkip = map.get(unit + skip);
+                if (nextUnitSkip != null) {
+                    nextUnitSkip.add(skip);
+                    if (skip - 1 >= 0) {
+                        nextUnitSkip.add(skip - 1);
+                    }
+                    if (skip + 1 <= stones.length) {
+                        nextUnitSkip.add(skip + 1);
+                    }
+                }// 【优点】else 说明该nextUnit处不是石头，落水了，就不管了
+            }
+        }
+        return false;
+
     }
 
     @Parameter
@@ -67,7 +106,7 @@ public class FrogJump {
 
     @Test
     public void test_() {
-        Assert.assertEquals(expect, canCross(stones));
+        Assert.assertEquals(expect, canCross1(stones));
     }
 
 }
