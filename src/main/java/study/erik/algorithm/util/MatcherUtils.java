@@ -4,7 +4,9 @@
  */
 package study.erik.algorithm.util;
 
+import org.hamcrest.BaseMatcher;
 import org.hamcrest.CoreMatchers;
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.IsEqual;
 
@@ -23,6 +25,35 @@ public class MatcherUtils {
                 Arrays.stream(v1s)
                         .map(IsEqual::new)
                         .collect(Collectors.toList()));
+    }
+
+    public static class ListValueEqualMatcher<T> extends BaseMatcher<T> {
+
+        private List<T> actualList;
+
+        public ListValueEqualMatcher(List<T> actualList) {
+            this.actualList = actualList;
+        }
+
+        @Override
+        public boolean matches(Object item) {
+
+            if (item instanceof List) {
+                List<?> expectList = (List<?>) item;
+                for (Object expectEle : expectList) {
+                    if (!actualList.remove(expectEle)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void describeTo(Description description) {
+            description.appendText("hahah");
+        }
     }
 
 }

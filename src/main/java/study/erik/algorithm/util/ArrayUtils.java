@@ -5,6 +5,8 @@
 package study.erik.algorithm.util;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author yueyi
@@ -46,6 +48,13 @@ public class ArrayUtils {
         return twoDimensionArray;
     }
 
+    public static List<List<Integer>> buildList2Dimension(String intervals) {
+        int[][] array2Dimension = buildArray2Dimension(intervals);
+        return Arrays.stream(array2Dimension)
+                .map(ints -> Arrays.stream(ints).boxed().collect(Collectors.toList()))
+                .collect(Collectors.toList());
+    }
+
     public static char[][] buildArray2DimensionToChar(String intervals) {
         intervals = intervals.replace("[[", "");
         intervals = intervals.replace("]]", "");
@@ -76,7 +85,7 @@ public class ArrayUtils {
         String[] split = intervals.split(",");
         int[] array = new int[split.length];
         for (int i = 0; i < split.length; i++) {
-            array[i] = Integer.valueOf(split[i]);
+            array[i] = Integer.valueOf(split[i].trim());
         }
         return array;
     }
