@@ -16,7 +16,8 @@ public class MaximumXOROfTwoNumbersInAnArray {
 
     @LetCodeCommit(title = "Maximum XOR of Two Numbers in an Array", no = 421,
             selfRemark = "本题的难点在于把一个O(n*n)的题目化成O(n)的题目。当然，肯定要在计算步骤上花功夫。"
-                    + "这里就是把计算复合在一块。")
+                    + "这里就是把计算复合在一块。",
+            related = "1707. Maximum XOR With an Element From Array")
     public int findMaximumXOR(int[] nums) {
         int max = 0;
         for (int i = 0; i < nums.length - 1; i++) {
@@ -36,15 +37,18 @@ public class MaximumXOROfTwoNumbersInAnArray {
         for (int k = MOST_HIGH_BIT; k >= 0; k--) {
             int bit = (num >> k) & 1;
             if (bit == 0) {
-                if (cur.right == null) { //匹配失败
+                if (cur.right == null) {
+                    //匹配失败，不计数只左移
                     cur = cur.left;
                     max = max * 2;
-                } else {//匹配成功
+                } else {
+                    //匹配成功
                     max = max * 2 + 1;
                     cur = cur.right;
                 }
             } else {
-                if (cur.left == null) {//匹配失败
+                if (cur.left == null) {
+                    //匹配失败，不计数只左移
                     cur = cur.right;
                     max = max * 2;
                 } else { //匹配成功
@@ -75,8 +79,8 @@ public class MaximumXOROfTwoNumbersInAnArray {
     }
 
     public class Trie {
-        public Trie left;
-        public Trie right;
+        public Trie left;   //  表示0
+        public Trie right;  //  表示1
     }
 
     @Test
