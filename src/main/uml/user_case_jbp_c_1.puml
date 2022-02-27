@@ -1,0 +1,39 @@
+@startuml
+
+left to right direction
+actor   :小二:    as  xiao
+actor   :主管:    as  zhu     #pink;line:red;text:red;line.bold
+rectangle 任务相关 {
+    usecase (查看客户的任务列表)     as (task_list)
+    usecase (查看客户的任务详情)     as (task_detail)
+}
+
+usecase (查看客户的商机列表)     as (opp_list)
+rectangle 商机动作 {
+    usecase (新建商机实例)          as (new_opp)
+    usecase (拓展商机)              as (expand_opp)
+    usecase (去作业签约/履约)       as (do_job)
+}
+
+rectangle 客户管理 {
+    usecase (客户分层编辑)          as (customer_layer)
+    usecase (客户转移)              as (customer_transfer)
+}
+
+xiao        -->      (task_list)
+xiao        -->      (task_detail)
+xiao        -->      (opp_list)
+
+(opp_list)  -->      (new_opp)
+(opp_list)  -->      (expand_opp)
+(opp_list)  -->      (do_job)
+
+xiao        -->      (customer_layer)
+xiao        -->      (customer_transfer)
+
+rectangle 任务初始化 {
+    zhu        -->     (圈选客户)
+}
+
+
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+participant bob
+participant alice
+bob->alice:     hello alice
+activate alice
+alice->alice:   自调用
+deactivate alice
+@enduml

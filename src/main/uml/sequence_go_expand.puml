@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor BD                    as bd
+participant 商机列表页        as oppo_list
+participant 客户基础关系      as  kasale
+participant 商机中心         as  oppo_center
+participant 新作业中心       as   job_center
+
+bd          -> oppo_list   :   1.点击去拓展/继续拓展
+oppo_list   -> kasale      :   2.拓展/继续拓展req
+kasale      -> kasale      :   3.合作单中有作业id,跳7
+kasale      -> job_center  :   4.创建作业单
+kasale      -> kasale      :   5.合作单保存作业id
+kasale      -> oppo_center :   6.推进商机状态：拓展
+kasale      -> oppo_list   :   7.返回作业链路页面的url
+oppo_list   -> job_center  :   8.跳转作业平台
+
+@enduml

@@ -7,8 +7,13 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ListNode {
-    public int val;
+    public int      val;
     public ListNode next;
+
+    @Override
+    public String toString() {
+        return val + (next == null ? "" : ("->" + next.toString()));
+    }
 
     public ListNode(int x) {
         val = x;
