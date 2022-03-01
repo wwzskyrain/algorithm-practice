@@ -27,7 +27,9 @@ public class UniqueSubstringsInWraparoundString {
             diff = "m",
             selfRemark = ""
                     + "1.这道题目，bruteforce的话，超时。"
-                    + "2.这道题目很佩服高手，看透了substring和的精髓——每一个字母为结尾的每个subString的个数")
+                    + "2.这道题目很佩服高手，看透了substring和的精髓——每一个字母为结尾的每个subString的个数",
+            related = {"1434. Number of Ways to Wear Different Hats to Each Other",
+                    "1830. Minimum Number of Operations to Make String Sorted"})
     public int findSubstringInWraproundString(String p) {
 
         // count[i]表示已字母 a+i结尾的subString的最大长度。
