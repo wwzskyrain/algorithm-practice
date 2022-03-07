@@ -2,7 +2,6 @@ package study.erik.algorithm.ds.string;
 
 import org.junit.Assert;
 import org.junit.Test;
-import sun.security.provider.Sun;
 
 /**
  * @author erik.wang
