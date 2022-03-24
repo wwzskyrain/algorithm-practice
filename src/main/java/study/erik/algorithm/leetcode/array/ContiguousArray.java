@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class ContiguousArray {
 
-    @LetCodeCommit(title = "Contiguous Array")
+    @LetCodeCommit(title = "525. Contiguous Array")
     public int findMaxLength(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, -1);
