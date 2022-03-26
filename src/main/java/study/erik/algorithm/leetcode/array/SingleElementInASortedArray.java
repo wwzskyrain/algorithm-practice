@@ -22,6 +22,7 @@ public class SingleElementInASortedArray {
 
     @LetCodeCommit(title = "540. Single Element in a Sorted Array",
             diff = "m",
+            tag = "好题，适合面试",
             selfRemark = "小而美的题目，时间100，空间6.;"
                     + "时间耗时0ms，所以肯定是100，因为已经到了最小的精度单位了。"
                     + "空间和一个39成绩的占用情况分别是：61mb和60mb，所以差别也不大了.")
