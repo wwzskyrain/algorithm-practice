@@ -1,7 +1,6 @@
 package study.erik.algorithm.leetcode.search;
 
 import org.hamcrest.CoreMatchers;
-import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,6 +18,9 @@ public class BinarySearch {
 
     /**
      * 基本的二分查找
+     * 对解法1和2命名：
+     * 1： 握手法
+     * 2： 挥手法
      *
      * @param nums   有序无重复元素的数组
      * @param target target
@@ -39,6 +41,32 @@ public class BinarySearch {
             }
         }
         return l;
+    }
+
+    /**
+     * 相对于basicBinarySearch2来说，有三处不同
+     * 1.初始化，h=nums.length
+     * 2.结束条件 l < h ,里面没有等号
+     * 3.递进步骤，h=m,而不是 h = m - 1.
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int basicBinarySearch2(int[] nums, int target) {
+        int l = 0, h = nums.length;
+        while (l < h) {
+            int m = l + (h - l) / 2;
+            int mid = nums[m];
+            if (mid == target) {
+                return m;
+            } else if (mid < target) {
+                l = m + 1;
+            } else {
+                h = m;
+            }
+        }
+        return -1;
     }
 
     @Test

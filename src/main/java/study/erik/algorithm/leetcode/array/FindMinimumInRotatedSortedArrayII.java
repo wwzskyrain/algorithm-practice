@@ -21,8 +21,11 @@ import study.erik.algorithm.util.LetCodeCommit;
 public class FindMinimumInRotatedSortedArrayII {
 
     @LetCodeCommit(title = "154. Find Minimum in Rotated Sorted Array II",
-            selfRemark = "虽然说是一个hard，而且是一个奇怪的二叉查找。更气人的是，这还是一个去年我们腾讯一面的题目。"
-                    + "其实硬怼是可以ok的，但是总以为最好的解法自己不知而说不会。",
+            selfRemark = "虽然说是一个hard，而且是一个奇怪的二叉查找。"
+                    + "更气人的是，这还是一个去年我们腾讯一面的题目。"
+                    + "其实硬怼是可以ok的，但是总以为最好的解法自己不知而说不会。"
+                    + ""
+                    + "继续做题：我们用夹逼法，统一解决了I和II.",
             diff = "h")
     public int findMin(int[] nums) {
         int l = 0;
@@ -58,6 +61,28 @@ public class FindMinimumInRotatedSortedArrayII {
         } while (true);
     }
 
+    /**
+     * 夹逼法，还是很好用的， 0ms，100%的成绩
+     *
+     * @param nums
+     * @return
+     */
+    public int findMin2(int[] nums) {
+        int l = 0;
+        int h = nums.length - 1;
+        while (l < h) {
+            int m = l + (h - l) / 2;
+            if (nums[m] < nums[h]) {
+                h = m;
+            } else if (nums[m] == nums[h]) {
+                h--;
+            } else {
+                l = m + 1;
+            }
+        }
+        return nums[l];
+    }
+
     @Parameter
     public int[] nums;
     @Parameter(1)
@@ -75,6 +100,6 @@ public class FindMinimumInRotatedSortedArrayII {
 
     @Test
     public void test_() {
-        Assert.assertEquals(expect, findMin(nums));
+        Assert.assertEquals(expect, findMin2(nums));
     }
 }

@@ -147,7 +147,6 @@ public class Solutions {
             } else {
                 low = middle + 1;
             }
-
         }
 
         return false;
