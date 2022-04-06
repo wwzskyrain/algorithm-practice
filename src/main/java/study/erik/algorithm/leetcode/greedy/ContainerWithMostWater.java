@@ -2,12 +2,18 @@ package study.erik.algorithm.leetcode.greedy;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import study.erik.algorithm.util.ArrayUtils;
 
 /**
  * @author erik.wang
  * @date 2020-03-11 16:29
  * @description
  */
+@RunWith(Parameterized.class)
 public class ContainerWithMostWater {
 
     /**
@@ -25,6 +31,7 @@ public class ContainerWithMostWater {
      * 成绩：95% 和 5%
      * 解法分析：我自己并没有想到很好的解法。
      * 这个夹逼法，确实挺高效的，但是准确吗？
+     *
      * @param height
      * @return
      */
@@ -48,6 +55,7 @@ public class ContainerWithMostWater {
     /**
      * 这一道题，我们去年在面试拼多多的时候，一道手写code题目
      * 在面试官的指导下，我写出来了。这里直接就写出来，可见印象深刻
+     *
      * @param height
      * @return
      */
@@ -68,16 +76,53 @@ public class ContainerWithMostWater {
         return maxArea;
     }
 
-    @Test
-    public void test_solution() {
-        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-        Assert.assertEquals(49, maxArea(height));
+    /**
+     * 优化失败——效果不增反减.
+     * @param height
+     * @return
+     */
+    public int solution2(int[] height) {
+        int low = 0, high = height.length - 1;
+        int maxLeft = height[low], maxRight = height[high];
+        int maxArea = 0;
+        while (low < high) {
+            int lowH = height[low];
+            int highH = height[high];
+            if (lowH >= maxLeft || highH >= maxRight) {
+                int newArea = Math.min(lowH, highH) * (high - low);
+                maxArea = Math.max(maxArea, newArea);
+            }
+            if (lowH < highH) {
+                low++;
+            } else {
+                high--;
+            }
+        }
+        return maxArea;
     }
 
     @Test
-    public void test_solution_1() {
-        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-        Assert.assertEquals(49, solution1(height));
+    public void test_solution_2() {
+        int[] height = {1, 1};
+        Assert.assertEquals(1, solution2(height));
+    }
+
+    @Parameter
+    public int[] height;
+    @Parameter(1)
+    public int   expect;
+
+    @Parameters
+    public static Object[][] data() {
+        return new Object[][] {
+                {ArrayUtils.buildArray("1, 8, 6, 2, 5, 4, 8, 3, 7"), 49},
+                {ArrayUtils.buildArray("1, 1"), 1},
+        };
+    }
+
+    @Test
+    public void test_() {
+        Assert.assertEquals(expect, maxArea(height));
     }
 
 }
