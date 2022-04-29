@@ -16,4 +16,6 @@ public class LinkNode<T> {
     public LinkNode(T value) {
         this.value = value;
     }
+
+
 }
