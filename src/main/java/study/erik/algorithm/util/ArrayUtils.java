@@ -4,7 +4,9 @@
  */
 package study.erik.algorithm.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,6 +55,28 @@ public class ArrayUtils {
         return Arrays.stream(array2Dimension)
                 .map(ints -> Arrays.stream(ints).boxed().collect(Collectors.toList()))
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * [["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"]]
+     *
+     * @param input
+     * @return
+     */
+    public static List<List<String>> buildStrList2Dimension(String input) {
+        if (input.equalsIgnoreCase("[]")) {
+            return Collections.emptyList();
+        }
+        input = input.replace(" ", "");
+        input = input.replace("[[", "");
+        input = input.replace("]]", "");
+        String[] split1 = input.split("],\\[");
+        List<List<String>> ret = new ArrayList<>();
+        for (String accounts : split1) {
+            String[] split = accounts.split(",");
+            ret.add(Arrays.stream(split).collect(Collectors.toList()));
+        }
+        return ret;
     }
 
     public static char[][] buildArray2DimensionToChar(String intervals) {
