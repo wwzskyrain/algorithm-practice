@@ -5,6 +5,7 @@
 package study.erik.stream.reduce;
 
 import lombok.Data;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +25,9 @@ public class Grade {
     private Integer score;
     private String  courseName;
 
+    public Grade() {
+    }
+
     public Grade(String studentNo, String classNo, Integer score, String courseName) {
         this.studentNo = studentNo;
         this.classNo = classNo;
@@ -31,8 +35,23 @@ public class Grade {
         this.courseName = courseName;
     }
 
-    public static void main(String[] args) {
+    /**
+     * 测试，由Collectors.toList()返回的list也是支持modify操作的.
+     * 通过调试，list其实是ArrayList.
+     */
+    public static void testListReturnedByCollectorToListCanModify(){
+        List<Grade> list = data().stream().filter(grade -> grade.getClassNo().equals("B")).collect(Collectors.toList());
+        list.add(0, new Grade("100","C",23,"语文"));
+        list.forEach(System.out::println);
+    }
 
+    public static void main(String[] args) {
+        testListReturnedByCollectorToListCanModify();
+        //test_reduce();
+
+    }
+
+    private static List<Grade> test_reduce() {
         List<Grade> grades = data();
         HashMap<String, Integer> studentNo2SumScoreMap = grades.stream()
                 .reduce(new HashMap<>(),
@@ -59,9 +78,7 @@ public class Grade {
                         Map::putAll);
 
         studentNo2SumScoreMap.forEach((k, v) -> System.out.printf("[k=%s, v=%d]\n", k, v));
-
-        Map<String, List<Grade>> studentNo2GradeMap = grades.stream().collect(Collectors.groupingBy(Grade::getStudentNo));
-
+        return grades;
     }
 
     public static List<Grade> data() {
