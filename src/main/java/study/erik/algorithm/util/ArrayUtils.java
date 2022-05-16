@@ -35,16 +35,39 @@ public class ArrayUtils {
             return new int[0][0];
         }
         intervals = intervals.replace(" ", "");
-        intervals = intervals.replace("[[", "");
-        intervals = intervals.replace("]]", "");
-        String[] split1 = intervals.split("],\\[");
-        int[][] twoDimensionArray = new int[split1.length][];
-        for (int i = 0; i < split1.length; i++) {
-            String arr2Str = split1[i];
-            String[] split2 = arr2Str.split(",");
-            twoDimensionArray[i] = new int[split2.length];
-            for (int j = 0; j < split2.length; j++) {
-                twoDimensionArray[i][j] = Integer.valueOf(split2[j]);
+        intervals = intervals.substring(1, intervals.length() - 1);
+        List<String> arrStr = new ArrayList<>();
+        int startIndex = 0, endIndex = 0;
+        char[] chars = intervals.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            switch (c) {
+                case '[':
+                    startIndex = i;
+                    break;
+                case ']':
+                    endIndex = i;
+                    arrStr.add(intervals.substring(startIndex + 1, endIndex));
+                    break;
+                default:
+            }
+        }
+
+        int[][] twoDimensionArray = new int[arrStr.size()][];
+        for (int i = 0; i < arrStr.size(); i++) {
+            String s = arrStr.get(i);
+            if (s.trim().length() == 0) {
+                twoDimensionArray[i] = new int[0];
+                continue;
+            }
+            String[] split = s.split(",");
+            twoDimensionArray[i] = new int[split.length];
+            for (int j = 0; j < split.length; j++) {
+                String s1 = split[j];
+                if (s1.trim().length() == 0) {
+                    continue;
+                }
+                twoDimensionArray[i][j] = Integer.parseInt(s1);
             }
         }
         return twoDimensionArray;
