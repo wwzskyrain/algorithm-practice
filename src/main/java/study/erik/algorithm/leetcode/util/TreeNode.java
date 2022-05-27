@@ -1,10 +1,13 @@
 package study.erik.algorithm.leetcode.util;
 
+import lombok.Getter;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
 import java.util.Objects;
 
+@Getter
 public class TreeNode {
 
     public int      val;
