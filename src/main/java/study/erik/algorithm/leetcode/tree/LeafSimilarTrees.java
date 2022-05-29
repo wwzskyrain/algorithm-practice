@@ -4,6 +4,7 @@
  */
 package study.erik.algorithm.leetcode.tree;
 
+import org.junit.Test;
 import study.erik.algorithm.leetcode.util.TreeNode;
 import study.erik.algorithm.util.LetCodeCommit;
 import study.erik.algorithm.util.QuestionType;
@@ -21,6 +22,33 @@ public class LeafSimilarTrees {
             types = QuestionType.Tree,
             selfRemark = "文不加点，没有本地调试")
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        String s1 = enCodeAllLeaves(root1);
+        String s2 = enCodeAllLeaves(root2);
+        return s1.equals(s2);
+    }
+
+    @Test
+    public void test(){
+        TreeNode root1 = TreeNode.buildTree("[3,5,1,6,2,9,8,null,null,7,4]");
+        TreeNode root2 = TreeNode.buildTree("[3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]");
+        System.out.println(leafSimilar(root1, root2));
+    }
+
+    public String enCodeAllLeaves(TreeNode root) {
+        if (root.left == null && root.right == null) {
+            return root.val + "-";
+        }
+        StringBuilder sb = new StringBuilder();
+        if (root.left != null) {
+            sb.append(enCodeAllLeaves(root.left));
+        }
+        if (root.right != null) {
+            sb.append(enCodeAllLeaves(root.right));
+        }
+        return sb.toString();
+    }
+
+    public boolean solution1(TreeNode root1, TreeNode root2) {
         List<Integer> allLeaf1 = new ArrayList<>();
         List<Integer> allLeaf2 = new ArrayList<>();
         findAllLeaf(allLeaf1, root1);
