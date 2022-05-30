@@ -14,6 +14,10 @@ public class TreeNode {
     public TreeNode left  = null;
     public TreeNode right = null;
 
+    public TreeNode() {
+        val = 0;
+    }
+
     public TreeNode(int x) {
         val = x;
     }
