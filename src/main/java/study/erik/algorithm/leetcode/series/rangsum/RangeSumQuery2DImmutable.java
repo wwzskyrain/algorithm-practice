@@ -1,4 +1,4 @@
-package study.erik.algorithm.leetcode.dp;
+package study.erik.algorithm.leetcode.series.rangsum;
 
 import org.junit.Assert;
 import org.junit.Test;

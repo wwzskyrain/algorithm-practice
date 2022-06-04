@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2021 All Rights Reserved.
  */
-package study.erik.algorithm.leetcode.easy;
+package study.erik.algorithm.leetcode.series.rangsum;
 
 import study.erik.algorithm.util.LetCodeCommit;
 
@@ -14,7 +14,7 @@ public class NumArray {
 
     private long[] preSum;
 
-    @LetCodeCommit(title = "Range Sum Query - Immutable",
+    @LetCodeCommit(title = "303.Range Sum Query - Immutable",
             selfRemark = "一把梭了")
     public NumArray(int[] nums) {
         preSum = new long[nums.length];
