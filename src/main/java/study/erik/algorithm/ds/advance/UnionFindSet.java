@@ -6,12 +6,10 @@ package study.erik.algorithm.ds.advance;
  */
 public class UnionFindSet {
 
-    private int size;
     private int[] parent;
     private int[] height;
 
     public UnionFindSet(int size) {
-        this.size = size;
         parent = new int[size];
         for (int i = 0; i < parent.length; i++) {
             parent[i] = i;
@@ -21,26 +19,29 @@ public class UnionFindSet {
 
     /**
      * 找到祖先结点
+     * 1.这是迭代的方式
+     * 2.在迭代的过程，给这篇森林"平坦化"
      *
      * @return
      */
     public int findWithIteration(int n) {
-        int root = n;
-        while (root != parent[root]) {
-            root = parent[root];
+        while (parent[n] != n) {
+            parent[n] = parent[parent[n]];
+            n = parent[n];
         }
-        int nn = n;
-        while (parent[nn] != root) {
-            int temp = parent[nn];
-            parent[nn] = root;
-            nn = temp;
-        }
-        return root;
+        return n;
     }
 
+    /**
+     * 1.这是'递归方式'
+     * 2.在递归的过程，给这篇森林"平坦化"
+     *
+     * @param n
+     * @return
+     */
     public int findWithRecursion(int n) {
         if (n != parent[n]) {
-            parent[n] = findWithIteration(parent[n]);
+            parent[n] = findWithRecursion(parent[n]);
         }
         return parent[n];
     }
@@ -63,7 +64,6 @@ public class UnionFindSet {
         if (height[px] == height[py]) {
             height[px]++;
             parent[px] = py;
-
         } else if (height[px] < height[py]) {
             parent[px] = py;
         } else {
