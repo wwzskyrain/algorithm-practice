@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
  * @author erik.wang
  * @date 2019/03/23
  **/
-public class Solution {
+public class MinimumCostToHireKWorkers {
 
     /**
      * 857. Minimum Cost to Hire K Workers From N
