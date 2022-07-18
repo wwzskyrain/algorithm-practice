@@ -67,6 +67,7 @@ public class RectangleAreaII {
         int  count;
         long total;
 
+        //只生成当前节点
         public Node(int start, int end, Integer[] X) {
             this.start = start;
             this.end = end;
@@ -91,16 +92,25 @@ public class RectangleAreaII {
             return right;
         }
 
+        /**
+         * 完成更新当前节点并计算区间和。
+         */
         public long update(int i, int j, int val) {
             if (i >= j) {return 0;}
             if (start == i && end == j) {
                 count += val;
             } else {
+                // [i,j]不能完整的被线段树的当前线段节点匹配，所以就要去左右子线段中拼接完成.
                 getLeft().update(i, Math.min(getRangeMid(), j), val);
                 getRight().update(Math.max(getRangeMid(), i), j, val);
             }
 
-            if (count > 0) {total = X[end] - X[start];} else {total = getLeft().total + getRight().total;}
+            if (count > 0) {
+                //表示确实有这段区间
+                total = X[end] - X[start];
+            } else {
+                total = getLeft().total + getRight().total;
+            }
 
             return total;
         }
