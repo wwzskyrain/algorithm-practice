@@ -11,6 +11,9 @@ package study.erik.algorithm.ds;
 public class SegmentTree {
     /**
      * 又写了一个线段树.
+     * l、r是线段树的边界：其实是一维数组的idx
+     * max则是该线段[l,r]的一个聚合值。
+     * lChild、rChild则是其左右两个子线段，会把当前这个线段完全"瓜分"。
      */
     public static class SegmentTreeNode {
         private final int             l;
@@ -36,6 +39,11 @@ public class SegmentTree {
 
     private SegmentTreeNode tree;
 
+    /**
+     * 把arr按照不同粒度来瓜分到不同层次的线段中.
+     *
+     * @param arr
+     */
     public void build(int[] arr) {
         this.tree = build(0, arr.length - 1, arr);
     }
@@ -55,6 +63,15 @@ public class SegmentTree {
         return queryMax(l, r, this.tree);
     }
 
+    /**
+     * 查询区间[l,r]的最值。
+     * 入参的[l,r]不一定刚好对应线段树的某一个线段，但是一定可以有线段树中的线段组合而成.
+     *
+     * @param l
+     * @param r
+     * @param root
+     * @return
+     */
     private int queryMax(int l, int r, SegmentTreeNode root) {
         if (root.l == l && root.r == r) {
             return root.max;
