@@ -18,7 +18,6 @@ public class MinimumCostToMergeStonesTest {
             selfRemark = "这是区间dp的例子，还可以用三维dp来解答，但是我不太会")
     public int mergeStones(int[] stones, int K) {
 
-
         int l = stones.length;
         if ((l - 1) % (K - 1) > 0) {
             return -1;
