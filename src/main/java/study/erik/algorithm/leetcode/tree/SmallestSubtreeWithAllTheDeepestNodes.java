@@ -4,6 +4,7 @@
  */
 package study.erik.algorithm.leetcode.tree;
 
+import javafx.util.Pair;
 import org.junit.Test;
 import study.erik.algorithm.leetcode.util.TreeNode;
 import study.erik.algorithm.util.LetCodeCommit;
@@ -19,13 +20,34 @@ public class SmallestSubtreeWithAllTheDeepestNodes {
 
     @LetCodeCommit(title = "Smallest Subtree with all the Deepest Nodes")
     public TreeNode subtreeWithAllDeepest(TreeNode root) {
-        int depth = depth(root);
-        return answer(root, 1, depth);
+        return dfs(root).getKey();
     }
 
     /**
-     * 这里是比较有点意思的：
-     * 求多个结点的最小公共祖先.
+     * 这里用深度来表示目标结点。取巧了
+     *
+     * @param node
+     * @return
+     */
+    public Pair<TreeNode, Integer> dfs(TreeNode node) {
+        if (node == null) {
+            return new Pair<>(null, 0);
+        }
+        Pair<TreeNode, Integer> L = dfs(node.left);
+        Pair<TreeNode, Integer> R = dfs(node.right);
+        if (L.getValue() < R.getValue()) {
+            return new Pair<>(R.getKey(), R.getValue() + 1);
+        }
+        if (L.getValue() > R.getValue()) {
+            return new Pair<>(L.getKey(), L.getValue() + 1);
+        }
+        return new Pair<>(node, L.getValue() + 1);
+    }
+
+    /**
+     * 这里是比较有点价值的：
+     * 求多个结点的最小公共祖先.其中确定目标节点可以泛化
+     *
      * @param node
      * @param curDepth
      * @param maxDepth
