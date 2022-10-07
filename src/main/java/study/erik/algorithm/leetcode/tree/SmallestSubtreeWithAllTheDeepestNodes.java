@@ -15,7 +15,6 @@ import java.util.Objects;
  * @author yueyi
  * @version : SmallestSubtreeWithAllTheDeepestNodes.java, v 0.1 2022年08月29日 07:13 yueyi Exp $
  */
-//@RunWith(Parameterized.class)
 public class SmallestSubtreeWithAllTheDeepestNodes {
 
     @LetCodeCommit(title = "Smallest Subtree with all the Deepest Nodes")
