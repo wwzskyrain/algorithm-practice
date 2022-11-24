@@ -6,20 +6,21 @@ package study.erik.algorithm.ds.sort;
  */
 public class HeapSort {
 
-
     public static void adjust(int[] heap, int s, int e) {
 
         //暂存
         int t = heap[s];
         for (int i = 2 * s; i < e; i *= 2) {
-            if (i < e && heap[i] < heap[i + 1]) {
+            // s的位置已经空出来了，必须从s的两个孩子中出来一个填补。
+            if (heap[i] < heap[i + 1]) {
                 i++;
             }
             if (heap[i] < t) {
                 break;
             }
+            //用i去替补了s
             heap[s] = heap[i];
-            //给下一个赋值使用
+            //然后i就空出来了，用s标注
             s = i;
         }
         heap[s] = t;
@@ -37,6 +38,5 @@ public class HeapSort {
             adjust(heap, 1, i - 1);
         }
     }
-
 
 }
