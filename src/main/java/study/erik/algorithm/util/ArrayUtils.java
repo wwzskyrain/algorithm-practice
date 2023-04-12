@@ -26,6 +26,31 @@ public class ArrayUtils {
     }
 
     /**
+     * demo = ["a","a","a","a","b","b","b","b","c","c","c","c","c","d","d","d"]
+     *
+     * @param str
+     * @return
+     */
+    public static char[] buildCharArr(String str) {
+        str = str.replace("[", "");
+        str = str.replace("]", "");
+        String[] split = str.split(",");
+        char[] ret = new char[split.length];
+        for (int i = 0; i < split.length; i++) {
+            ret[i] = split[i].charAt(0);
+        }
+        return ret;
+    }
+
+    public static char[] buildCharArr(String[] split) {
+        char[] ret = new char[split.length];
+        for (int i = 0; i < split.length; i++) {
+            ret[i] = split[i].charAt(0);
+        }
+        return ret;
+    }
+
+    /**
      * 构造二维数组
      *
      * @param intervals demo： intervals = [[1,4],[3,6],[2,8]]
