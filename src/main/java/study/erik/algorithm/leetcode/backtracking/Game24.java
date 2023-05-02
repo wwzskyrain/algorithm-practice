@@ -3,8 +3,12 @@ package study.erik.algorithm.leetcode.backtracking;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author erik.wang
@@ -93,9 +97,7 @@ public class Game24 {
         return false;
     }
 
-    private List<List> allResult = new ArrayList<>();
-
-    public void dfs(double[] nums, int target, Deque<String> results) {
+    public void dfsWithResult(double[] nums, int target, Deque<String> results, List<List> allResult) {
         if (nums.length == 1) {
             if (Math.abs(nums[0] - target) < 0.01) {
                 allResult.add(new ArrayList<>(results));
@@ -117,60 +119,71 @@ public class Game24 {
 
                 copyNums[copyNums.length - 1] = nums[i] + nums[j];
                 results.push(String.format("(%f + %f) = %f", nums[i], nums[j], copyNums[copyNums.length - 1]));
-                dfs(copyNums, target, results);
+                dfsWithResult(copyNums, target, results, allResult);
                 results.pop();
-
 
                 copyNums[copyNums.length - 1] = nums[i] - nums[j];
                 results.push(String.format("(%f - %f) = %f", nums[i], nums[j], copyNums[copyNums.length - 1]));
-                dfs(copyNums, target, results);
+                dfsWithResult(copyNums, target, results, allResult);
                 results.pop();
-
 
                 copyNums[copyNums.length - 1] = nums[j] - nums[i];
 
                 results.push(String.format("(%f - %f) = %f", nums[j], nums[i], copyNums[copyNums.length - 1]));
-                dfs(copyNums, target, results);
+                dfsWithResult(copyNums, target, results, allResult);
                 results.pop();
 
                 copyNums[copyNums.length - 1] = nums[i] * nums[j];
                 results.push(String.format("(%f * %f) = %f", nums[j], nums[i], copyNums[copyNums.length - 1]));
-                dfs(copyNums, target, results);
+                dfsWithResult(copyNums, target, results, allResult);
                 results.pop();
-
 
                 if (!(new Double(0).equals(nums[i]))) {
                     copyNums[copyNums.length - 1] = nums[j] / nums[i];
                     results.push(String.format("(%f / %f) = %f", nums[j], nums[i], copyNums[copyNums.length - 1]));
-                    dfs(copyNums, target, results);
+                    dfsWithResult(copyNums, target, results, allResult);
                     results.pop();
                 }
 
                 if (!(new Double(0).equals(nums[j]))) {
                     copyNums[copyNums.length - 1] = nums[i] / nums[j];
-                    results.push(String.format("(%f * %f) = %f", nums[i], nums[j], copyNums[copyNums.length - 1]));
-                    dfs(copyNums, target, results);
+                    results.push(String.format("(%f / %f) = %f", nums[i], nums[j], copyNums[copyNums.length - 1]));
+                    dfsWithResult(copyNums, target, results, allResult);
                     results.pop();
                 }
             }
         }
     }
 
-    @Test
-    public void test_dfs_to_find_solution() {
+    public void test_and_print(int[] num, int target) {
 
-
-        int[] nums3 = {8, 1, 6, 6};
-        double[] nums3Copy = new double[nums3.length];
-        for (int i = 0; i < nums3.length; i++) {
-            nums3Copy[i] = nums3[i];
+        double[] nums3Copy = new double[num.length];
+        for (int i = 0; i < num.length; i++) {
+            nums3Copy[i] = num[i];
         }
-        dfs(nums3Copy, 24, new LinkedList<>());
+        List<List> allResult = new ArrayList();
+        dfsWithResult(nums3Copy, target, new LinkedList<>(), allResult);
+        System.out.println(Arrays.toString(num) + ":");
         for (List list : allResult) {
             Collections.reverse(list);
-            System.out.println(list);
+            System.out.println("\t" + list);
         }
+    }
 
+    @Test
+    public void testWithResult() {
+
+        int[] nums = {8, 4, 6};
+        test_and_print(nums, 24);
+
+        int[] nums1 = {1, 2, 1, 2};
+        test_and_print(nums1, 24);
+
+        int[] nums3 = {7, 8, 9};
+        test_and_print(nums3, 24);
+
+        int[] nums4 = {3, 5, 1, 1};
+        test_and_print(nums4, 24);
     }
 
     @Test
