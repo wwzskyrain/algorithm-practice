@@ -11,7 +11,7 @@ import study.erik.algorithm.util.LetCodeCommit;
  * @version : VerbalArithmeticPuzzle.java, v 0.1 2023年04月26日 08:13 yueyi Exp $
  */
 @LetCodeCommit(title = "1307. Verbal Arithmetic Puzzle",
-        selfRemark = "已经确定是backtracking了")
+        selfRemark = "已经确定是backtracking了。这个题就不写了——lee也没有写")
 public class VerbalArithmeticPuzzle {
 
     String[] words;
@@ -20,6 +20,7 @@ public class VerbalArithmeticPuzzle {
     public boolean isSolvable(String[] words, String result) {
         this.words = words;
         this.result = result;
+
         return true;
     }
 
