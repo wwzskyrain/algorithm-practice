@@ -30,18 +30,18 @@ public class BuildingBoxes {
      * 这篇文章找规律找的特别好。
      * 我承认自己没有找到很好，虽然和这篇文章的思路一致，但不够深刻
      *
-     *
      * @param n
      * @return
      */
     public int resolve(int n) {
+        //这个都看不明白了，再写一个
         int cur = 0, i = 0, j = 0;
         while (cur < n) {
             ++j;
             i += j;
             cur += i;
         }
-        if (cur == n) { return i; }
+        if (cur == n) {return i;}
         cur -= i;
         i -= j;
         j = 0;
@@ -50,6 +50,24 @@ public class BuildingBoxes {
             cur += j;
         }
         return i + j;
+    }
+
+    public int resolveWithExplain(int n) {
+        int boxOnFloor = 0;
+        int totalBox = 0;
+        //for的结束是两部分:boxOnFloor + 1表示在totalBox时，在不增加一个截面时，最多能(按规则)叠放的多少个box
+        for (int i = 1; totalBox + (boxOnFloor + 1) <= n; i++) {
+            //第一个for是规规矩矩的放到不能放
+            // i可以看做靠墙的那一面是当前水平方向的第i个截面
+            boxOnFloor += i;
+            totalBox += boxOnFloor;
+        }
+        for (int j = 1; totalBox < n; j++) {
+            //第二个for开始下(i)(i+1)(i+2)的基础上放，前提是不需是(i+1)(i+2)(i+3)，前提已经在第一个for达到了
+            boxOnFloor++;
+            totalBox += j;
+        }
+        return boxOnFloor;
     }
 
     @Parameter
