@@ -19,7 +19,7 @@ import study.erik.algorithm.util.LetCodeCommit;
 @RunWith(Parameterized.class)
 public class BuildingBoxes {
 
-    @LetCodeCommit(title = "Building Boxes")
+    @LetCodeCommit(title = "1739. Building Boxes")
     public int minimumBoxes(int n) {
         return resolve(n);
     }
