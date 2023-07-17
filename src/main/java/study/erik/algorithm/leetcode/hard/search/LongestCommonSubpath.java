@@ -45,7 +45,7 @@ public class LongestCommonSubpath {
                     //找长度为m的子串
                     hash = (hash * base + paths[i][j]) % mod;
                     if (j >= m) {
-                        //主要：这里'-d*paths[i][j - m]'时，需要做好MOD计算
+                        //注意：这里'-d*paths[i][j - m]'时，需要做好MOD计算
                         hash = (mod + hash - d * paths[i][j - m] % mod) % mod;
                     } else {
                         d = d * base % mod;
