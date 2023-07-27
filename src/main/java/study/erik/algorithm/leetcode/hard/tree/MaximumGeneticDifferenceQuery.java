@@ -73,10 +73,12 @@ public class MaximumGeneticDifferenceQuery {
     public static class Tire {
         private Tire[] children = new Tire[2];
         private int    count;
+        //root的节点，其count=0，其实是一个头结点。
 
         public void increase(int num, int c) {
             Tire cur = this;
             for (int i = 18; i >= 0; i--) {
+                //第i位，体现在cur的两个子孩子上。
                 int bit = ((num >> i) & 1);
                 if (cur.children[bit] == null) {
                     cur.children[bit] = new Tire();
@@ -103,6 +105,7 @@ public class MaximumGeneticDifferenceQuery {
                     ans |= (1 << i);
                     cur = cur.children[1 - bit];
                 } else {
+                    //这棵树其实是18层树，每一个节点cur，肯定要通过左孩子或者右孩子到达底部的
                     cur = cur.children[bit];
                 }
             }
