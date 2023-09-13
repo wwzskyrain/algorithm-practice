@@ -53,7 +53,7 @@ public class TrappingWaterRain {
     }
 
     /**
-     * 双指针法
+     * 双指针法，这个是最好的解法了。
      *
      * @param height 成绩相当好，92
      * @return
@@ -71,8 +71,11 @@ public class TrappingWaterRain {
             if (maxL < maxR) {
                 int lH = height[l];
                 if (lH < maxL) {
+                    //这里的时候，l的左边有一个maL比lH高，l的右边有一个maxR，更比lH高，所以这一个柱子肯定能接水(maxL-lH)的水
                     result += maxL - lH;
                 } else {
+                    //新的maxL出来了，注意该柱子，已经不可能接到水了，无论这个lH是否会高于maxR(lH已经高于maxL了)，因为啥，
+                    //很简单呀，它要接水，左边肯定要有一个比它高的，而它就是新的左侧最高的，谁能在它的左边帮它拦住啊。
                     maxL = lH;
                 }
                 l++;

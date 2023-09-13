@@ -24,7 +24,8 @@ public class K_thSmallestInLexicographicalOrder {
                     + "当然可以先序遍历然后计数，但是肯定会超时的。"
                     + "这里直接用计算的方式了。"
                     + "处理计算方法本身有点复杂外，"
-                    + "对于求k_th的也是要注意边界值的。")
+                    + "对于求k_th的也是要注意边界值的。" +
+                    "这是我自己能想出来的吗？")
     public int findKthNumber(int n, int k) {
         int cur = 1;
         k--;
@@ -35,8 +36,9 @@ public class K_thSmallestInLexicographicalOrder {
                 // 这里要=，因为这里是k走前头，前了1，cur走后头。
                 k -= nextStep;
                 cur++;
-                continue;
+                continue; //不用从cur到下一层（cur*=10），直接去兄弟节点（cur++）吧。
             }
+            //当前cur算一个，所以k--，到下一层吧。
             k--;
             cur *= 10;
         }
@@ -77,7 +79,7 @@ public class K_thSmallestInLexicographicalOrder {
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {13, 5, 13},
                 {1, 1, 1},
                 {100, 10, 17}

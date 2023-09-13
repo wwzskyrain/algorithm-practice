@@ -36,29 +36,36 @@ public class TrappingRainWaterII {
         boolean[][] visited = new boolean[iLength][jLength];
         PriorityQueue<int[]> p = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
 
+        //把四周的柱子都放到优先级队列中。
+        //把第一行和最后一行，入队
         for (int j = 0; j < jLength; j++) {
-            p.add(new int[] {0, j, heightMap[0][j]});
-            p.add(new int[] {iLength - 1, j, heightMap[iLength - 1][j]});
+            p.add(new int[]{0, j, heightMap[0][j]});
+            p.add(new int[]{iLength - 1, j, heightMap[iLength - 1][j]});
             visited[0][j] = visited[iLength - 1][j] = true;
         }
-
+        //把第一列和最后一列，入队
         for (int i = 1; i < iLength - 1; i++) {
-            p.add(new int[] {i, 0, heightMap[i][0]});
-            p.add(new int[] {i, jLength - 1, heightMap[i][jLength - 1]});
+            p.add(new int[]{i, 0, heightMap[i][0]});
+            p.add(new int[]{i, jLength - 1, heightMap[i][jLength - 1]});
             visited[i][0] = visited[i][jLength - 1] = true;
         }
 
         int result = 0;
-        int[][] directions = new int[][] {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+        int[][] directions = new int[][]{{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
         while (!p.isEmpty()) {
             int[] cell = p.poll();
             for (int[] dir : directions) {
                 int i = cell[0] + dir[0];
                 int j = cell[1] + dir[1];
-                if (i < 0 || i >= iLength || j < 0 || j >= jLength || visited[i][j]) {continue;}
+                if (i < 0 || i >= iLength || j < 0 || j >= jLength || visited[i][j]) {
+                    continue;
+                }
+                //[i,j]，如果柱子[i,j]比较低，低于cell，则可以知道，该柱子位置可以接水。
+                //首先，该柱子的其他方向（非cell方向）肯定会高于该柱子。
+                //其次，该柱子能接水（cell[2] - heightMap[i][j]），因为木桶原理啊。
                 result += Math.max(0, cell[2] - heightMap[i][j]);
                 visited[i][j] = true;
-                p.add(new int[] {i, j, Math.max(cell[2], heightMap[i][j])});
+                p.add(new int[]{i, j, Math.max(cell[2], heightMap[i][j])});
             }
         }
 
@@ -68,11 +75,11 @@ public class TrappingRainWaterII {
     @Parameter
     public int[][] heightMap;
     @Parameter(1)
-    public int     expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray2Dimension("[[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]"), 4},
                 {ArrayUtils.buildArray2Dimension("[[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]"), 10},
         };
