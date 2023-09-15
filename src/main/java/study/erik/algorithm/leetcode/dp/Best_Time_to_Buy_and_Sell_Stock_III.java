@@ -29,12 +29,12 @@ public class Best_Time_to_Buy_and_Sell_Stock_III {
             selfRemark = "这个就有点意思了。这个就不能简单的分析就能写的了。所以要系统的分析了。上dp")
     public int maxProfit(int[] prices) {
         //可以定义四个数组，分别是buy1，sell1，buy2，sell2
-        //buy1[i]表示在i天购买prices[i]后的收益
-        //sell1[i]表示在i天卖出prices[i]后的最大收益，注意，sell1之前必须完成buy1.
+        //buy1[i]表示，在i天购买prices[i]的前提下的最大收益
+        //sell1[i]表示，在i天卖出prices[i]的前提下的最大收益，注意，sell1之前必须完成buy1.
         //所以sell1[i] = prices[i] + max(buy1[0], buy1[1], ..., buy1[i-1])；
-        //buy2[i]表示在i天购买prices[i]后的最大收益，注意，buy2之前必须完成sell1。
+        //buy2[i]表示在i天购买prices[i](第二次购买)的前提下的最大收益，注意，buy2之前必须完成sell1。
         //所以buy2[i] = -prices[i] + max(sell1[0], sell1[0], ..., sell1[i-1])
-        //sell2[i]表示在i天购买prices[i]后的最大收益，注意，sell2之前必须完成buy2.
+        //sell2[i]表示在i天卖出prices[i](第二次卖出)的前提下的最大收益，注意，sell2之前必须完成buy2.
         //所以sell2[i] = prices[i] + max(buy2[0], buy2[0], ..., buy2[i-1])
         //总结，sell1、buy2、sell2的定义和取值表达式都很类似。
         //我们的目标是求sell1和sell2的最大值。

@@ -25,7 +25,8 @@ public class Best_Time_to_Buy_and_Sell_Stock_IV {
                     "总结一下解法：" +
                     "主流的解法就是我们的这种，然而有人用了一个三维数组来表示状态，其中一个维度只有两个元素，既买卖，对应我们的buy数组和sell数组。" +
                     "还有一种更高深的解法：wqs法(Alien Trick)法，不做研究，不做了解。" +
-                    "至此，股票题目就结束了，虽然还有两个变形题目，但都是medium(我们都有ac)，难度到这里就算过关了。")
+                    "至此，股票题目的难度已经是hard的，" +
+                    "但是后面还有两个变形题目，虽然都是medium，但是能更好地帮我们加深理解这个算法，所以请继续。")
     public int maxProfitSolution1(int k, int[] prices) {
         int len = prices.length;
         if (k >= len / 2) return quickSolve(prices);

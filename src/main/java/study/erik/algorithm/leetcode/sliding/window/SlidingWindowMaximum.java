@@ -42,7 +42,8 @@ public class SlidingWindowMaximum {
      * @return
      */
     @LetCodeCommit(no = 239, title = "Sliding Window Maximum",
-            selfRemark = "这个题目是我们的拿手好题，因为完全是自己coding，并且优化的")
+            selfRemark = "这个题目是我们的拿手好题，因为完全是自己coding，并且优化的。" +
+                    "单点递减队列：入队从队尾，需要维护单调递减特性；出队去队头即可。")
     public int[] maxSlidingWindow1(int[] nums, int k) {
 
         Deque<Integer> deque = new LinkedList<>();

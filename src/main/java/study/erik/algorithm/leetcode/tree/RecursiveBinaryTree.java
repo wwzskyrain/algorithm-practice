@@ -31,52 +31,6 @@ public class RecursiveBinaryTree {
 
 
     /**
-     * title = Binary Tree Maximum Path Sum
-     * 这是一个很好的实践——分析问题，定义辅助函数；
-     *
-     * @param root
-     * @return
-     */
-    public int maxPathSum(TreeNode root) {
-        maxPathSumHelper(root);
-        return maxPathSumResult;
-    }
-
-    private int maxPathSumResult = Integer.MIN_VALUE;
-
-    /**
-     * 这时一个DFS函数，定义函数：以root为路径起点的最大路径和，在这个过程中，更新最大路径和(可以不以root为路径起点的)
-     *
-     * @return 以root为路径起点的最大路径和
-     */
-    private int maxPathSumHelper(TreeNode root) {
-
-        if (root == null) {
-            return 0;
-        }
-
-        int leftSum = maxPathSumHelper(root.left);
-        int rightSum = maxPathSumHelper(root.right);
-
-        //跟新 maxSum
-        int sum = root.val;
-        //无论root.val是正是负，都有链接的价值
-        if (leftSum > 0) {
-            sum += leftSum;
-        }
-        if (rightSum > 0) {
-            sum += rightSum;
-        }
-
-        maxPathSumResult = Math.max(maxPathSumResult, sum);
-
-//        返回值
-        return Math.max(Math.max(leftSum + root.val, root.val), rightSum + root.val);
-
-
-    }
-
-    /**
      * title = Sum Root to Leaf Numbers
      * @param root
      * @return
