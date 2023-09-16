@@ -23,7 +23,8 @@ public class DungeonGame {
     @LetCodeCommit(title = "174. Dungeon Game",
             diff = "h",
             selfRemark = "这个题目不难呀，为啥我之前竟然有6次提交失败。"
-                    + "不过这个题目的原意就是我么小时候玩的小霸王游戏")
+                    + "不过这个题目的原意就是我么小时候玩的小霸王游戏。" +
+                    "洋洋洒洒写完了，一点注释都没有，搞的我这会不能一下子搞懂，真是很low。")
     public int calculateMinimumHP(int[][] dungeon) {
         if (dungeon.length == 1 && dungeon[0].length == 1) {
             return Math.max(1, 1 - dungeon[0][0]);
@@ -31,14 +32,20 @@ public class DungeonGame {
         int i = dungeon.length - 1;
         int j = dungeon[i].length - 1;
         dungeon[i][j] = dungeon[i][j] > 0 ? 1 : 1 - dungeon[i][j];
+        /*
+        定义dungeon[i][j]为到达从[i][j]房间到达右下角的最小生命值——和原问题定义一样。
+        * */
+
         j--;
         while (j >= 0) {
+            //最后一行
             dungeon[i][j] = Math.max(1, dungeon[i][j + 1] - dungeon[i][j]);
             j--;
         }
         i = dungeon.length - 2;
         j = dungeon[0].length - 1;
         while (i >= 0) {
+            //最后一列
             dungeon[i][j] = Math.max(1, dungeon[i + 1][j] - dungeon[i][j]);
             i--;
         }

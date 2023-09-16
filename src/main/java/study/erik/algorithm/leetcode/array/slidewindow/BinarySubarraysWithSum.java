@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2022 All Rights Reserved.
  */
-package study.erik.algorithm.leetcode.array;
+package study.erik.algorithm.leetcode.array.slidewindow;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,7 +20,8 @@ import study.erik.algorithm.util.LetCodeCommit;
 @RunWith(Parameterized.class)
 public class BinarySubarraysWithSum {
 
-    @LetCodeCommit(title = "930. Binary Subarrays With Sum")
+    @LetCodeCommit(title = "930. Binary Subarrays With Sum",
+            selfRemark = "前缀和能够直接求出子数组的个数，还是听厉害的。")
     public int numSubarraysWithSum(int[] nums, int goal) {
         return solutionWithPreSum(nums, goal);
     }
@@ -55,11 +56,16 @@ public class BinarySubarraysWithSum {
      * @return 返回子数组个数，子数组的和最大为S
      */
     public int atMost(int[] A, int S) {
-        if (S < 0) {return 0;}
+        if (S < 0) {
+            return 0;
+        }
         int res = 0, i = 0, n = A.length;
         for (int j = 0; j < n; j++) {
             S -= A[j];
-            while (S < 0) {S += A[i++];}
+            while (S < 0) {
+                S += A[i++];
+            }
+            //此时[i...j]是满足S边界的。
             res += j - i + 1;
         }
         return res;
@@ -68,13 +74,13 @@ public class BinarySubarraysWithSum {
     @Parameter
     public int[] nums;
     @Parameter(1)
-    public int   goal;
+    public int goal;
     @Parameter(2)
-    public int   expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 //{ArrayUtils.buildArray("[1,1,1,1,1]"), 5, 1},
                 {ArrayUtils.buildArray("[1,0,1,0,1]"), 2, 4},
                 {ArrayUtils.buildArray("[0,0,0,0,0]"), 0, 15},

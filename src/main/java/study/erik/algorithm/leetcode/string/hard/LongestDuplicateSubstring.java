@@ -38,6 +38,7 @@ public class LongestDuplicateSubstring {
             int mid = low + (high - low) / 2;
             int index = check(s, mid);
             if (index > -1) {
+                //存在mid长度的重复子字符串
                 low = mid + 1;
                 maxLength = mid;
                 optIndex = index;
@@ -53,6 +54,12 @@ public class LongestDuplicateSubstring {
 
     int MOD = (int) 1e7 + 7;
 
+    /**
+     *
+     * @param s
+     * @param len
+     * @return
+     */
     public int check(String s, int len) {
         if (len < 1) {
             return -1;

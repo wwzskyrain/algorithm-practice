@@ -23,7 +23,9 @@ import java.util.stream.IntStream;
 @RunWith(Parameterized.class)
 public class Candy {
 
-    @LetCodeCommit(title = "135. Candy")
+    @LetCodeCommit(title = "135. Candy",
+            selfRemark = "分糖果。" +
+                    "这解法也太简单了吧。")
     public int candy(int[] ratings) {
         if (ratings.length == 0) {
             return 0;
@@ -50,11 +52,11 @@ public class Candy {
     @Parameter
     public int[] ratings;
     @Parameter(1)
-    public int   expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray("[1,0,2]"), 5},
                 {ArrayUtils.buildArray("[1,2,2]"), 4},
         };

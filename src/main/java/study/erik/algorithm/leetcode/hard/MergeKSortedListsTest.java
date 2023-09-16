@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.hard;
 
 import org.junit.Test;
 import study.erik.algorithm.leetcode.list.ListNode;
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 public class MergeKSortedListsTest {
 
+    @LetCodeCommit(title = "23. Merge k Sorted Lists")
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) {
             return null;

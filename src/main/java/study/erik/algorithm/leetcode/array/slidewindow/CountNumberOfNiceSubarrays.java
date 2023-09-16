@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2022 All Rights Reserved.
  */
-package study.erik.algorithm.leetcode.array.subarray;
+package study.erik.algorithm.leetcode.array.slidewindow;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,7 +20,11 @@ import study.erik.algorithm.util.LetCodeCommit;
 @RunWith(Parameterized.class)
 public class CountNumberOfNiceSubarrays {
 
-    @LetCodeCommit(title = "1248. Count Number of Nice Subarrays")
+    @LetCodeCommit(title = "1248. Count Number of Nice Subarrays",
+            selfRemark = "好数组的定义是具有k个基数的subarray。" +
+                    "除了atMost(k)-atMost(k-1)之外，能直接求解吗：" +
+                    "直接求出所有的这样的subarray." +
+                    "不好不好，看转体文档。")
     public int numberOfSubarrays(int[] nums, int k) {
         return atMost(nums, k) - atMost(nums, k - 1);
     }
@@ -47,13 +51,13 @@ public class CountNumberOfNiceSubarrays {
     @Parameter
     public int[] nums;
     @Parameter(1)
-    public int   k;
+    public int k;
     @Parameter(2)
-    public int   expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray("[1,1,2,1,1]"), 3, 2},
                 {ArrayUtils.buildArray("[2,4,6]"), 1, 0},
                 {ArrayUtils.buildArray("[2,2,2,1,2,2,1,2,2,2]"), 2, 16}
