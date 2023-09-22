@@ -2,12 +2,15 @@ package study.erik.algorithm.leetcode.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
  * @date 2020-03-13 18:51
  * @description
  */
+@LetCodeCommit(title = "940.Distinct Subsequences II",
+        selfRemark = "")
 public class DistinctSubSequenceII {
 
     public int distinctSubseqII(String S) {
@@ -25,9 +28,10 @@ public class DistinctSubSequenceII {
      * 下面来说解题过程：用seq[0..25]表示当前序列S[0...i]的以a/b/../z结尾的子序列个数；
      * 此时，对于S[i+1]，（假设为字符C）的加入，则seq[C-'a']是之前seq的累加+1.最后一个1是不算C
      * 之前的所有子序列，而独独只有S[i+1]单个字母为子序列。这个1不会与之前相同的以C为结尾的重复吗？
-     * 当然不重复了，假设之前已经有一个C出现过，记做C1，那么我们担心的是C1作为一个子序列和C作为一个
-     * 子序列重复。而当C出现时，我们会吧C1作为一个子序列，在append上C作为一个子序列；这样的话，就没有
-     * C1作为子序列了，所以当前就只有C作为子序列了。
+     * 当然不重复了，假设之前已经有一个C出现过，那么我们担心的是之前C作为一个单字符的子序列和当前C作为一个单字符的子序列会重复。
+     * 其实而当C出现时，之前的单字符子序列就会被追加当前C，既形成CC，就不存在C，这个单字符子序列了。
+     * 所以，我们+1，以当前C作为单字符自序列就不重复了。
+     *
      * @param S
      * @return
      */
@@ -48,7 +52,7 @@ public class DistinctSubSequenceII {
             for (int j = 0; j < seq.length; j++) {
                 sum = (sum + seq[j]) % M;
             }
-            seq[index] = sum + 1; //这个1是有来头的。
+            seq[index] = sum + 1; //这个1是有来头的——之前打头的那个子字符串已经不存在了，因为已经加上后缀了。
         }
         int result = 0;
         for (int i = 0; i < seq.length; i++) {

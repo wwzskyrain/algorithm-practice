@@ -2,11 +2,14 @@ package study.erik.algorithm.leetcode.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
  * @date 2020-05-02 10:02
+ *
  */
+@LetCodeCommit(title = "664. Strange Printer")
 public class StrangePrinter {
 
     @Test

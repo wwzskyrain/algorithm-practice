@@ -28,16 +28,19 @@ public class MakingALargeIsland {
     @LetCodeCommit(title = "827. Making A Large Island",
             diff = "h",
             selfRemark = "这个题目用一般的方法，是会超时的；"
-                    + "所以这里用了着色法")
+                    + "所以这里用了着色法。" +
+                    "还有一个就是并查集发，不过需要把二维进行一个维度处理。")
     public int largestIsland(int[][] grid) {
         int N = grid.length;
+        //不同的颜色，you不同的区域面积，最坏也不可能有N*N中颜色要用的。
         int[] colorArea = new int[N * N + 2];
-        int color = 2;
+        int color = 2; //从2开始着色。
         int maxArea = 0;
         for (int x = 0; x < N; x++) {
             for (int y = 0; y < N; y++) {
                 if (grid[x][y] == 1) {
                     colorArea[color] = areaDfs(x, y, color, grid);
+                    //这些都是原先的小岛面积
                     maxArea = Math.max(maxArea, colorArea[color]);
                     color++;
                 }
@@ -47,7 +50,8 @@ public class MakingALargeIsland {
         for (int x = 0; x < N; x++) {
             for (int y = 0; y < N; y++) {
                 if (grid[x][y] == 0) {
-                    Set<Integer> seenColor = new HashSet<>();
+                    //来，看看这个单元能否链接一下小岛。
+                    Set<Integer> seenColor = new HashSet<>(); //存放链接的小岛
                     List<Integer> neighbor = neighbor(x, y, grid.length);
                     for (Integer pos : neighbor) {
                         int xx = pos / N, yy = pos % N;
@@ -57,6 +61,7 @@ public class MakingALargeIsland {
                         }
                     }
                     int newArea = 1;
+                    //计算连城一片的小岛的面积，并更新最大值。
                     for (Integer col : seenColor) {
                         newArea += colorArea[col];
                     }
@@ -67,15 +72,16 @@ public class MakingALargeIsland {
         return maxArea;
     }
 
-    private int[][] dirs = new int[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    private int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
-    public int areaDfs(int x, int y, int index, int[][] grid) {
+    //把grid[x][y]着色为color，并dfs下去，最后计算被上色的面积。
+    public int areaDfs(int x, int y, int color, int[][] grid) {
         int res = 1;
-        grid[x][y] = index;
+        grid[x][y] = color;
         for (Integer pos : neighbor(x, y, grid.length)) {
             int xX = pos / grid.length, yY = pos % grid.length;
             if (grid[xX][yY] == 1) {
-                res += areaDfs(xX, yY, index, grid);
+                res += areaDfs(xX, yY, color, grid);
             }
         }
         return res;
@@ -96,11 +102,11 @@ public class MakingALargeIsland {
     @Parameter
     public int[][] gridTest;
     @Parameter(1)
-    public int     expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
 
                 {ArrayUtils.buildArray2Dimension("[[1]]"), 1},
                 {ArrayUtils.buildArray2Dimension("[[0,0],[0,0]]"), 1},

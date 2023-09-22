@@ -24,6 +24,58 @@ public class MaximalRectangle {
         return solution1(matrix);
     }
 
+    /**
+     * 这个思路听好的。巧妙的点在于，计算左右边界
+     *
+     * @param matrix
+     * @return
+     */
+    public int solution2(char[][] matrix) {
+        if (matrix.length == 0) return 0;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[] left = new int[n];    //当前高度的左边界
+        int[] right = new int[n];   //当前高度的右边界
+        int[] height = new int[n];  //当前高度
+        Arrays.fill(left, 0);
+        Arrays.fill(right, n);
+        Arrays.fill(height, 0);
+        int maxA = 0;
+        for (int i = 0; i < m; i++) {
+            int cur_left = 0, cur_right = n;
+            for (int j = 0; j < n; j++) { // compute height (can do this from either side)
+                if (matrix[i][j] == '1') {
+                    height[j]++;
+                } else {
+                    height[j] = 0;
+                }
+            }
+            for (int j = 0; j < n; j++) { // compute left (from left to right)
+                if (matrix[i][j] == '1') {
+                    //非常巧妙的点。
+                    left[j] = Math.max(left[j], cur_left);
+                } else {
+                    left[j] = 0;
+                    cur_left = j + 1;
+                }
+            }
+            // compute right (from right to left)
+            for (int j = n - 1; j >= 0; j--) {
+                if (matrix[i][j] == '1') {
+                    right[j] = Math.min(right[j], cur_right);
+                } else {
+                    right[j] = n;
+                    cur_right = j;
+                }
+            }
+            // compute the area of rectangle (can do this from either side)
+            for (int j = 0; j < n; j++) {
+                maxA = Math.max(maxA, (right[j] - left[j]) * height[j]);
+            }
+        }
+        return maxA;
+    }
+
     /*
     解法：来源于博客  https://www.cnblogs.com/grandyang/p/4322667.html
     分析：问题转化为'直方图中的最大矩阵'；
@@ -61,16 +113,13 @@ public class MaximalRectangle {
         }
         return res;
     }
-    
+
     @Test
     public void test_solution() {
         char[][] matrix = new char[][]{
-                {'1', '0', '1', '1', '0'},
-                {'1', '0', '1', '0', '0'},
-                {'1', '0', '1', '1', '1'},
-                {'1', '1', '1', '1', '1'},
-                {'1', '0', '0', '1', '0'}};
+                {'1', '0', '1', '1', '0'}, {'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}
+        };
 
-        Assert.assertEquals(6, solution1(matrix));
+        Assert.assertEquals(6, solution2(matrix));
     }
 }

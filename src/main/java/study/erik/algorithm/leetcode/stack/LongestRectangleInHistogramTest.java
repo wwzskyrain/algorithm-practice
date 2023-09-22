@@ -11,7 +11,7 @@ import org.junit.Test;
 public class LongestRectangleInHistogramTest {
 
     /**
-     * title = largest-rectangle-in-histogram
+     * title = 84. Largest Rectangle in Histogram
      * url = https://leetcode.com/problems/largest-rectangle-in-histogram/
      * @param heights
      * @return
@@ -48,7 +48,6 @@ public class LongestRectangleInHistogramTest {
             } else {
                 // 出栈，把大于当前bar高度的bar都出栈。
                 // 出栈时，计算该bar所顶头的矩阵的面积
-                //
                 while (stackSize != 0 && heights[stack[stackSize - 1]] > currentHeight) {
                     int popIndex = stack[--stackSize];
                     int popHeight = heights[popIndex];

@@ -17,14 +17,13 @@ import study.erik.algorithm.util.LetCodeCommit;
  * @author yueyi
  * @version : CountOfRangeSum.java, v 0.1 2022年01月11日 11:31 下午 yueyi Exp $
  */
+@LetCodeCommit(title = "327. Count of Range Sum")
 @RunWith(Parameterized.class)
 public class CountOfRangeSumI {
 
     int count = 0;
     int lower;
     int upper;
-
-    @LetCodeCommit(title = "327. Count of Range Sum")
     public int countRangeSum(int[] nums, int lower, int upper) {
         long[] sum = new long[nums.length + 1];
         long[] temp = new long[nums.length + 1];

@@ -8,21 +8,21 @@ import java.util.stream.Collectors;
 /**
  * @author erik.wang
  * @date 2020-03-04 16:31
- * @description
- * url = https://leetcode.com/problems/word-ladder-ii/
+ * @description url = https://leetcode.com/problems/word-ladder-ii/
  * title = Word Ladder II
  * 分析：在I的基础上，找到所有的最近路径。但是广度搜索难取路径，为此三种方法
  * 1.   先用I中的广度搜索算法，找到最短路径长度shortestLength，然后用深度搜索找到这些路径，
- *      在深度搜索时用shortestLength做深度限制，从而加快遍历，不然肯定会超时的 ———— 来自三年前我的提交
+ * 在深度搜索时用shortestLength做深度限制，从而加快遍历，不然肯定会超时的 ———— 来自三年前我的提交
  * 2.   用双队列来做BFS，一个队列用来存放结点，一个队列用来存放结点对应的路径————来自讨论区
  * 3.   用DFS，要优化，不然会搜索整个空间树；用当前已知最短深度来控制搜索路径。
- *      最后，把所有可能的路径过滤一下，用最短路径的长度来过滤。
+ * 最后，把所有可能的路径过滤一下，用最短路径的长度来过滤。
  */
 public class WordLadderII {
 
     /**
-     *  解法三：优化的DFS
-     *  评价：思想很完美，代码也和优美，可惜超时了；因为开始搜索时，不一定就能碰到最优解。
+     * 解法三：优化的DFS
+     * 评价：思想很完美，代码也和优美，可惜超时了；因为开始搜索时，不一定就能碰到最优解。
+     *
      * @param beginWord
      * @param endWord
      * @param wordList
@@ -122,8 +122,8 @@ public class WordLadderII {
      * 解法二：双队列的广度搜索：
      * 评价：时间和空间都不好，不过思想还是可以的
      * 注意点：
-     *  1.因为要找到所有的最短路径，所以一直到一条最短路径后，不要停，要把这一层阶段都访问晚。
-     *      所以要一层一层的访问：可以设置一个层结点入队，也可以直接读出该层的所有结点。
+     * 1.因为要找到所有的最短路径，所以一直到一条最短路径后，不要停，要把这一层阶段都访问晚。
+     * 所以要一层一层的访问：可以设置一个层结点入队，也可以直接读出该层的所有结点。
      *
      * @param beginWord
      * @param endWord
@@ -178,13 +178,15 @@ public class WordLadderII {
     /**
      * 解法一：
      * 评价：三年前的提交的了，成绩中等。
+     * 哎呦，竟然看不懂。我必须要弄懂
+     *
      * @param beginWord
      * @param endWord
      * @param wordList
      * @return
      */
     public List<List<String>> findLadders(String beginWord, String endWord, Set<String> wordList) {
-        List<List<String>> result=new ArrayList<List<String>>();
+        List<List<String>> result = new ArrayList<List<String>>();
         ArrayList<String> path = new ArrayList<String>();
         if (beginWord == null || endWord == null || beginWord.length() != endWord.length()) {
             return result;
@@ -193,6 +195,7 @@ public class WordLadderII {
         dfs(endWord, beginWord, path, result);
         return result;
     }
+
     void dfs(String start, String end, ArrayList<String> pathArray,
              List<List<String>> result) {
         // 找到了，需要reverse加入的所有单词
@@ -223,6 +226,7 @@ public class WordLadderII {
             }
         }
     }
+
     HashMap<String, Integer> path = new HashMap<String, Integer>();
 
     // bfs生成path
@@ -246,6 +250,9 @@ public class WordLadderII {
                     String newWord = new String(strCharArr);
                     if (newWord.equals(end) == true || dict.contains(newWord)) {
                         // 每个单词在path中只能出现一次，也就是每个单词只能出现在一层中，这样就很巧妙的解决了环的问题。
+                        // 看不懂上一行的神奇的注释。我知道为啥把所有的可选地单词放在一个map中，大家都打平了。
+                        // 因为如果在后续的层次（后续的bfs中）有出现了先前出现的word，说明当前出现的这个已经不是最优了，
+                        // 直接不要了。
                         if (path.get(newWord) == null) {
                             int depth = (int) path.get(current);
                             path.put(newWord, depth + 1);
@@ -256,6 +263,4 @@ public class WordLadderII {
             }
         }
     }
-
-
 }

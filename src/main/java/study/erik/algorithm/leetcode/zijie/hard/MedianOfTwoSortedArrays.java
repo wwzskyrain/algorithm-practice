@@ -19,8 +19,7 @@ import java.util.Collection;
 @RunWith(Parameterized.class)
 public class MedianOfTwoSortedArrays {
 
-    @LetCodeCommit(title = "4. Median of Two Sorted Arrays",
-    selfRemark = "参考 https://leetcode.cn/problems/median-of-two-sorted-arrays/solutions/8999/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-2/?company_slug=bytedance 题解4")
+    @LetCodeCommit(title = "4. Median of Two Sorted Arrays", selfRemark = "参考 https://leetcode.cn/problems/median-of-two-sorted-arrays/solutions/8999/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-2/?company_slug=bytedance 题解4")
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;
@@ -30,7 +29,7 @@ public class MedianOfTwoSortedArrays {
         }
         int iMin = 0, iMax = m;
         while (iMin <= iMax) {
-            //寻找目标分叉——i的合适位置
+            //寻找目标分叉——i的合适位置：目标是num1[0,...,i]和num2[0,...,j]就是两数组合并之后的左半部分。
             int i = (iMax + iMin) / 2;
             int j = (m + n + 1) / 2 - i; //j对于m和n的和为奇偶都可以。
 
@@ -50,7 +49,7 @@ public class MedianOfTwoSortedArrays {
                 } else {
                     maxLeft = Math.max(nums2[j - 1], nums1[i - 1]);
                 }
-
+                //m+n为奇数，则按照我们的设计：要么左右两边个数相同(m+n为偶数)，要么左边多一个(m+n为奇数)
                 if ((m + n) % 2 == 1) {
                     return maxLeft;
                 }
@@ -72,10 +71,8 @@ public class MedianOfTwoSortedArrays {
     @Parameterized.Parameters
     public static Collection primeNumbers() {
         return Arrays.asList(new Object[][]{
-                {2.00000, ArrayUtils.buildArray("[1,3]"), ArrayUtils.buildArray("[2]")},
-                {2.50000, ArrayUtils.buildArray("[1,2]"), ArrayUtils.buildArray("[3,4]")},
-                {2.50000, ArrayUtils.buildArray("[1,3]"), ArrayUtils.buildArray("[2,7]")},
-        });
+                {2.00000, ArrayUtils.buildArray("[1,3]"), ArrayUtils.buildArray("[2]")}, {2.50000, ArrayUtils.buildArray("[1,2]"), ArrayUtils.buildArray("[3,4]")}, {2.50000, ArrayUtils.buildArray("[1,3]"), ArrayUtils.buildArray("[2,7]")},
+                });
     }
 
     @Parameterized.Parameter

@@ -2,12 +2,14 @@ package study.erik.algorithm.leetcode.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
  * @date 2020-03-13 16:13
  * @description
  */
+@LetCodeCommit(title = "115 Distinct Subsequences")
 public class DistinctSubSequenceI {
 
     public int numDistinct(String s, String t) {

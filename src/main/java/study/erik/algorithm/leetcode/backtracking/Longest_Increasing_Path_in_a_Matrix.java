@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author erik.wang
  * @date 2020-03-30 16:34
  */
-public class LongestIncreasingPathInMatrixTest {
+public class Longest_Increasing_Path_in_a_Matrix {
 
     public int longestIncreasingPath(int[][] matrix) {
         return solution(matrix);

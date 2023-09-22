@@ -22,7 +22,8 @@ import java.util.LinkedList;
 @RunWith(Parameterized.class)
 public class EvaluateReversePolishNotation {
 
-    @LetCodeCommit(title = "150. Evaluate Reverse Polish Notation")
+    @LetCodeCommit(title = "150. Evaluate Reverse Polish Notation",
+            selfRemark = "测试格式化")
     public int evalRPN(String[] tokens) {
 
         Deque<Integer> stack = new LinkedList<>();
@@ -57,15 +58,15 @@ public class EvaluateReversePolishNotation {
     @Parameter
     public String[] tokens;
     @Parameter(1)
-    public int    expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
-                {new String[] {"2", "1", "+", "3", "*"}, 9},
-                {new String[] {"4", "13", "5", "/", "+"}, 6},
-                {new String[] {"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}, 22},
-        };
+        return new Object[][]{
+                {new String[]{"2", "1", "+", "3", "*"}, 9},
+                {new String[]{"4", "13", "5", "/", "+"}, 6},
+                {new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}, 22},
+                };
     }
 
     @Test

@@ -19,7 +19,8 @@ import java.util.TreeMap;
 @RunWith(Parameterized.class)
 public class MaximumProfitInJobScheduling {
 
-    @LetCodeCommit(title = "1235. Maximum Profit in Job Scheduling")
+    @LetCodeCommit(title = "1235. Maximum Profit in Job Scheduling",
+    selfRemark = "这不就是一个简单的dp吗，为啥就是hard题目呢？")
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
         //dp(k,v)表示时间k为止，最大的收益
         TreeMap<Integer, Integer> dp = new TreeMap<>();

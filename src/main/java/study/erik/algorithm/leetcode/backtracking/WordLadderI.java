@@ -13,7 +13,7 @@ public class WordLadderI {
      * 1.   最短路径，应该首先想到bfs
      * 2.   在找子节点的时候，用了一个小技巧，那就是 掩码法
      * 3.   另外一个亮点就是'双向bfs'，其注意要点
-     *      1.   要记录每个已访问结点的level，因为相遇时，两个方向的路径之和才是最短路径
+     *      1.  要记录每个已访问结点的level，因为相遇时，两个方向的路径之和才是最短路径
      *      2.  两个最短路径之和一定是最短路径吗？是的呢，可以从反证法入手。
      */
     public int ladderLengthWithBFS(String beginWord,

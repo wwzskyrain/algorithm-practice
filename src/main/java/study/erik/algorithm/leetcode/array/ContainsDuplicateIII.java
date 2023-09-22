@@ -24,7 +24,8 @@ import java.util.Map;
 public class ContainsDuplicateIII {
 
     @LetCodeCommit(title = "220. Contains Duplicate III",
-            tag = "好题-do-yourself")
+            tag = "好题-do-yourself。" +
+                    "也没有很好，就是简单的锻炼一下数字游戏。")
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (k == 0) {
             return false;
@@ -61,17 +62,17 @@ public class ContainsDuplicateIII {
     }
 
     @Parameter
-    public int[]   nums;
+    public int[] nums;
     @Parameter(1)
-    public int     k;
+    public int k;
     @Parameter(2)
-    public int     t;
+    public int t;
     @Parameter(3)
     public boolean expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray("[1,2,3,1]"), 3, 0, true},
                 {ArrayUtils.buildArray("[1,0,1,1]"), 1, 2, true},
                 {ArrayUtils.buildArray("[1,5,9,1,5,9]"), 2, 3, false},

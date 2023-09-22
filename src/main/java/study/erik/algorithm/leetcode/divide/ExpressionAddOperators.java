@@ -54,6 +54,7 @@ public class ExpressionAddOperators {
         }
         for (int i = pos; i < numsInput.length(); i++) {
             if (i != pos && numsInput.charAt(pos) == '0') {
+                //如果pos是'0'，则只能做次0，后面就不能再继续计算了，即不能有'012'这类前导0的数据
                 break;
             }
             long cur = Long.parseLong(numsInput.substring(pos, i + 1));

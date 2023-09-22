@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.backtracking;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
@@ -9,6 +10,7 @@ import org.junit.Test;
  */
 public class WildcardMatching {
 
+    @LetCodeCommit(title = "Wildcard Matching")
     public boolean isMatch(String s, String p) {
         return solution2(s, p);
     }
@@ -18,10 +20,12 @@ public class WildcardMatching {
      * 我也用了dp呀，为啥就这么慢的。别人也是二维数组的dp，哼。
      * 不要在乎成绩，关键是要清楚这个dp的状态装换哈；
      * 首先把解法参考(照抄)记录下： https://github.com/Blankj/awesome-java-leetcode/blob/master/note/044/README.md
-     *
+     * <p>
      * dp心得：
-     *  1.  当写dp状态转移公式的时候，不要计较dp[i-1][p-1]的具体值哈，一旦计较，就陷入递归中了。
-     *  2.  我们的成绩为什么这么低呢？不知道；
+     * 1.  当写dp状态转移公式的时候，不要计较dp[i-1][p-1]的具体值哈，一旦计较，就陷入递归中了。
+     * 2.  我们的成绩为什么这么低呢？不知道；
+     * <p>
+     * 这个解法挺好的，我都不用再思考其他的了。
      *
      * @param s
      * @param p
@@ -75,6 +79,11 @@ public class WildcardMatching {
         return dp[s.length() - 1][p.length() - 1];
 
     }
+
+    /*
+    dp[i][j]表示匹配情况
+
+    * */
 
 
     public boolean solution(String s, String p) {
