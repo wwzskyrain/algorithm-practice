@@ -65,12 +65,18 @@ public class TrappingRainWaterII {
                 //其次，该柱子能接水（cell[2] - heightMap[i][j]），因为木桶原理啊。
                 result += Math.max(0, cell[2] - heightMap[i][j]);
                 visited[i][j] = true;
+                //2次注释：这里有一个问题，那就是计算该[i,j]柱子的面积时，为什么用cell[2]而不用一个变量——当前的最小值。
+                //还有，[i,j]的入队时，为啥高度要用cell[2]和[i,j]高度的两者较高值呢？也可以用当前最小值min来嘛，比如如果小于min就进入当前最小值min，而大于min则如实进队。
+                //提醒一下，进队列干啥？是为了遍历，蔓延式遍历，从外层向内逐层包围——像黑白棋的反方向。
+                //2次注释的解惑，其实cell[2]就是当前的最小值。用这种写法才是正儿八经的写法，如果单独维护一个curMin，起写法很啰嗦的。
+                //不过，思考的时候，提出"当前最小值"这个概念，是没问题的。
                 p.add(new int[]{i, j, Math.max(cell[2], heightMap[i][j])});
             }
         }
 
         return result;
     }
+
 
     @Parameter
     public int[][] heightMap;
@@ -82,7 +88,7 @@ public class TrappingRainWaterII {
         return new Object[][]{
                 {ArrayUtils.buildArray2Dimension("[[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]"), 4},
                 {ArrayUtils.buildArray2Dimension("[[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]"), 10},
-        };
+                };
     }
 
     @Test
