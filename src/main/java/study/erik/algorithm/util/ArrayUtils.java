@@ -143,6 +143,12 @@ public class ArrayUtils {
         return twoDimensionArray;
     }
 
+
+    public static List<Integer> buildList(String str) {
+        int[] ints = buildArray(str);
+        return Arrays.stream(ints).boxed().collect(Collectors.toList());
+    }
+
     /**
      * 构造一维数组
      *

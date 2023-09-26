@@ -32,12 +32,14 @@ public class BusRoutes {
 
     @LetCodeCommit(title = "815. Bus Routes",
             diff = "h",
-            selfRemark = "最短路径题目")
+            selfRemark = "最短路径题目。去年写的代码，为啥都不注释呢？" +
+                    "怪不得不写注释，因为确实就只有一个考点：BFS。")
     public int numBusesToDestination(int[][] routes, int source, int target) {
 
         if (source == target) {
             return 0;
         }
+        //公交路线映射，key：公交路线（从0开始编号）；value：可以换成到的公交路线集合。
         Map<Integer, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < routes.length; i++) {
             Arrays.sort(routes[i]);

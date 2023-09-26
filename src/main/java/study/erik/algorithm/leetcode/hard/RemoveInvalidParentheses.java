@@ -30,7 +30,8 @@ public class RemoveInvalidParentheses {
     @LetCodeCommit(title = "301. Remove Invalid Parentheses",
             time = 8,
             selfRemark = "虽然成绩不好，但是这个回溯法用的很标准。"
-                    + "也看了评论区的好算法，但是太巧妙，其真确性不容易证明。")
+                    + "也看了评论区的好算法，但是太巧妙，其真确性不容易证明。" +
+                    "新评：好像这个解法的细节太复杂了。")
     public List<String> removeInvalidParentheses(String s) {
 
         Set<String> results = new HashSet<>();
