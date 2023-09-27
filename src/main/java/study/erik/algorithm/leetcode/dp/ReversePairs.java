@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
@@ -19,11 +20,12 @@ public class ReversePairs {
     /**
      * title = Reverse Pairs
      * 这道题目太经典了，我真的不会写。先放着吧
-     * diss大神的'树状数组'的应用，真的看不懂呢？
+     * diss大神的'树状数组'的应用，真的看不懂呢？哈哈，今天就来做这道题目
      *
      * @param nums
      * @return
      */
+    @LetCodeCommit(title = "493. Reverse Pairs")
     public int reversePairs(int[] nums) {
         return solution(nums);
     }

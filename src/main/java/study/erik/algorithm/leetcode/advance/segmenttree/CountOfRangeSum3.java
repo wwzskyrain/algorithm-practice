@@ -1,7 +1,11 @@
-package study.erik.algorithm.leetcode.array.hard;
+package study.erik.algorithm.leetcode.advance.segmenttree;
+
+import study.erik.algorithm.util.LetCodeCommit;
 
 public class CountOfRangeSum3 {
 
+
+    @LetCodeCommit(title = "327. Count of Range Sum")
     /**
      * 线段树的解法——非序列化版本
      *

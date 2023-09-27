@@ -3,6 +3,9 @@ package study.erik.algorithm.ds;
 /**
  * @author erik.wang
  * @date 2020-05-05 12:04
+ *
+ * 都不介绍一下的：
+ * 树状数组(树形数组)。
  */
 public class BinaryIndexTree {
 

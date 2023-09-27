@@ -1,11 +1,11 @@
-package study.erik.algorithm.leetcode.array.hard;
+package study.erik.algorithm.leetcode.advance.BIT;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class CountOfRangSum4 {
+public class CountOfRangeSum4 {
 
     public int countRangeSum(int[] nums, int lower, int upper) {
         long sum = 0;

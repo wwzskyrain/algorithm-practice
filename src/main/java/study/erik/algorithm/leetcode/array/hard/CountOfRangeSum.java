@@ -15,7 +15,9 @@ import java.util.TreeSet;
  * @author yueyi
  * @version : CountOfRangeSum.java, v 0.1 2022年01月11日 11:31 下午 yueyi Exp $
  */
-@LetCodeCommit(title = "327. Count of Range Sum", selfRemark = "没想到，计算区间和的个数，竟然用preSum+归并排序的思路" + "而归并排序可以用作计数，也是神奇。")
+@LetCodeCommit(title = "327. Count of Range Sum",
+        selfRemark = "没想到，计算区间和的个数，竟然用preSum+归并排序的思路" +
+        "而归并排序可以用作计数，也是神奇。")
 public class CountOfRangeSum {
 
     int count = 0;

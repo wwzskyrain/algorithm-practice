@@ -1,4 +1,6 @@
-package study.erik.algorithm.leetcode.array.hard;
+package study.erik.algorithm.leetcode.advance.segmenttree;
+
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +9,7 @@ import java.util.TreeSet;
 
 public class CountOfRangeSum2 {
 
-
+    @LetCodeCommit(title = "327. Count of Range Sum")
     //线段树解法：序列化版本
     public int countRangeSumSolution2(int[] nums, int lower, int upper) {
         long sum = 0;
@@ -57,6 +59,7 @@ public class CountOfRangeSum2 {
     }
 
     //统计落在left和right区间的目标值的数量。
+    //这个count写法，比较高明
     public int count(SegNode root, int left, int right) {
         if (left > root.hi || right < root.lo) {
             return 0;

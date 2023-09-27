@@ -64,6 +64,8 @@ public class CountOfSmallerNumbersAfterSelf {
     }
 
     @LetCodeCommit(title = "315. Count of Smaller Numbers After Self",
+            selfRemark = "这个题目我第一时间竟然没有想到归并排序的解法。" +
+                    "可能是因为我被线段树的解法给耽误了。",
             related = {"327. Count of Range Sum",
                     "493. Reverse Pairs",
                     "1365. How Many Numbers Are Smaller Than the Current Number"})
