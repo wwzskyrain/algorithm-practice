@@ -22,12 +22,7 @@ import java.util.Arrays;
 @RunWith(Parameterized.class)
 public class ReversePairs {
 
-    @LetCodeCommit(title = "Reverse Pairs",
-    related = {
-            "Arithmetic Slices II - Subsequence",
-            "Minimum Score Triangulation of Polygon",
-            "Minimum Swaps to Arrange a Binary Grid"
-    })
+    @LetCodeCommit(title = "Reverse Pairs")
     public int reversePairs(int[] nums) {
         return solutionWithMergeSortII(nums, 0, nums.length - 1);
     }
