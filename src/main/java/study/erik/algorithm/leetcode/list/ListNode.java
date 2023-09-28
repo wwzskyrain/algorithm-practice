@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ListNode {
-    public int      val;
+    public int val;
     public ListNode next;
 
     @Override
@@ -66,6 +66,17 @@ public class ListNode {
         int[] array = ArrayUtils.buildArray(input);
         List<Integer> list = IntStream.of(array).boxed().collect(Collectors.toList());
         return buildLinkedList(list);
+    }
+
+
+    public static ListNode buildLinkedList(int[] input) {
+        ListNode curHead = null;
+        for (int i = input.length - 1; i >= 0; i--) {
+            ListNode node = new ListNode(input[i]);
+            node.next = curHead;
+            curHead = node;
+        }
+        return curHead;
     }
 
     /**
