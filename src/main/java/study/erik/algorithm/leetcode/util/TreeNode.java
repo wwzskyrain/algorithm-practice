@@ -56,7 +56,7 @@ public class TreeNode {
     /**
      * 广度有效遍历法来构造二叉树
      *
-     * @param input
+     * @param input demo=[5,8,9,2,1,3,7,4,6]
      * @return
      */
     public static TreeNode buildTree(String input) {

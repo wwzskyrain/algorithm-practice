@@ -22,8 +22,10 @@ import java.util.List;
 @RunWith(Parameterized.class)
 public class MinimumRemoveToMakeValidParentheses {
 
-    @LetCodeCommit(title = "1249. Minimum Remove to Make Valid Parentheses")
+    @LetCodeCommit(title = "1249. Minimum Remove to Make Valid Parentheses",
+            selfRemark = "这个题还是Facebook的题目呢。")
     public String minRemoveToMakeValid(String s) {
+        //用于括弧匹配——匹配成功则消除。
         List<Integer> stack = new ArrayList<>();
         int n = s.length();
         for (int i = 0; i < n; i++) {
@@ -41,6 +43,7 @@ public class MinimumRemoveToMakeValidParentheses {
         }
         int i = 0;
         int j = 0;
+        //stack剩下的都是匹配不成功的index了，把这些舍去吧。
         StringBuilder sb = new StringBuilder();
         while (i < n) {
             if (j < stack.size() && i == stack.get(j)) {
@@ -60,11 +63,11 @@ public class MinimumRemoveToMakeValidParentheses {
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {"lee(t(c)o)de)", "lee(t(c)o)de"},
                 {"a)b(c)d", "ab(c)d"},
                 {"))((", ""},
-        };
+                };
     }
 
     @Test
