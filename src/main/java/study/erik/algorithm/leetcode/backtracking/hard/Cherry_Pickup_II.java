@@ -18,7 +18,7 @@ import study.erik.algorithm.util.LetCodeCommit;
  * @version : CherryPickupII.java, v 0.1 2023年05月14日 16:51 yueyi Exp $
  */
 @RunWith(Parameterized.class)
-public class CherryPickupII {
+public class Cherry_Pickup_II {
 
     @LetCodeCommit(title = "1463. Cherry Pickup II",
             diff = "h",

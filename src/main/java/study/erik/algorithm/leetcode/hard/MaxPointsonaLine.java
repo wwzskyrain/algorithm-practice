@@ -37,12 +37,14 @@ public class MaxPointsonaLine {
         for (int i = 0; i < points.length; i++) {
             map.clear();
             int max = 0;
+            //从任何一个点出发，看其他点和它构成的线，有多少条是同一个斜率，斜率相同则处在同一条直线上。
             for (int j = i + 1; j < points.length; j++) {
                 int dx = points[j][0] - points[i][0];
                 int dy = points[j][1] - points[i][1];
                 int g = gcd(dx, dy);
                 dx /= g;
                 dy /= g;
+                //这里能这样写，还有一个暗含的条件，那就是有坐标都是整数。
                 String key = dx + "_" + dy;
                 Integer c = map.getOrDefault(key, 0);
                 c++;
@@ -71,14 +73,14 @@ public class MaxPointsonaLine {
     @Parameter
     public int[][] points;
     @Parameter(1)
-    public int     expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray2Dimension("[[1,1],[2,2],[3,3]]"), 3},
                 {ArrayUtils.buildArray2Dimension("[[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]"), 4},
-        };
+                };
     }
 
     @Test

@@ -20,10 +20,12 @@ import java.util.TreeMap;
  * @author yueyi
  * @version : ArrayDoubledPairs.java, v 0.1 2021年08月12日 9:07 上午 yueyi Exp $
  */
+
 @RunWith(Parameterized.class)
 public class ArrayDoubledPairs {
 
-    @LetCodeCommit(title = "Array of Doubled Pairs")
+    @LetCodeCommit(title = "Array of Doubled Pairs",
+            selfRemark = "这里还是比较简单的。因为用到了排序。")
     public boolean canReorderDoubled(int[] arr) {
         return resolve(arr);
     }
@@ -47,18 +49,18 @@ public class ArrayDoubledPairs {
     }
 
     @Parameter
-    public int[]   arr;
+    public int[] arr;
     @Parameter(1)
     public boolean expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray("[3,1,3,6]"), false},
                 {ArrayUtils.buildArray("[2,1,2,6]"), false},
                 {ArrayUtils.buildArray("[4,-2,2,-4]"), true},
                 {ArrayUtils.buildArray("[1,2,4,16,8,4]"), false},
-        };
+                };
     }
 
     @Test
