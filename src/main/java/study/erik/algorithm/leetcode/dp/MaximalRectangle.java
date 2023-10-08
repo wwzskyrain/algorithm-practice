@@ -43,24 +43,30 @@ public class MaximalRectangle {
         int maxA = 0;
         for (int i = 0; i < m; i++) {
             int cur_left = 0, cur_right = n;
-            for (int j = 0; j < n; j++) { // compute height (can do this from either side)
+            for (int j = 0; j < n; j++) {       // compute height (can do this from either side)
                 if (matrix[i][j] == '1') {
                     height[j]++;
                 } else {
                     height[j] = 0;
                 }
             }
-            for (int j = 0; j < n; j++) { // compute left (from left to right)
+            for (int j = 0; j < n; j++) {       // compute left (from left to right)
                 if (matrix[i][j] == '1') {
-                    //非常巧妙的点。
+                    //非常巧妙的点。计算left[j]其实要和计算height[j]同步思考。
+                    //这里matrix[i][j] == '1'，height[j]加一的。
+                    //那么left[i]是否可以保持不变呢？这是一个好问题。我还不能直接解答。
+                    //当可以保持的时候，说明j的左边（j-1-left[j], j-1）没有塌方；
+                    //当不能保持而被迫，说明j的左边（j-1-left[j], j-1）中有一个塌方了，可能就是左边邻居一，也可能是左边邻居二.
                     left[j] = Math.max(left[j], cur_left);
                 } else {
+                    //cur_left-1，表示最近的一个是0的square，那么当前left[i]休想再往左边找了。
+                    //又因为j是从0开始往右便利，当时square=0的时候，它就更新，所以可以进一步理解为
+                    //cur_left是第一个不是square=0的位置。
                     left[j] = 0;
                     cur_left = j + 1;
                 }
             }
-            // compute right (from right to left)
-            for (int j = n - 1; j >= 0; j--) {
+            for (int j = n - 1; j >= 0; j--) {  // compute right (from right to left)
                 if (matrix[i][j] == '1') {
                     right[j] = Math.min(right[j], cur_right);
                 } else {

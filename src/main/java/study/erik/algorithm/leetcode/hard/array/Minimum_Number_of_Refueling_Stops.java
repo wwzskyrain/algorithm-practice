@@ -84,8 +84,6 @@ public class Minimum_Number_of_Refueling_Stops {
             ans++;
         }
         if (fuel < 0) return -1;
-
-
         return ans;
     }
 
