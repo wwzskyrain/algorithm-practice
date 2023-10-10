@@ -1,37 +1,28 @@
 package study.erik.algorithm.leetcode.series.robber;
 
+
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import study.erik.algorithm.util.ArrayUtils;
+import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
- * @author erik.wang
- * @date 2020-03-29 08:36
+ * 日期：2023/10/10 ，时间：10:22
+ * 作者：yueyi
+ * 描述：
  */
-public class HouseRobber2Test {
+@RunWith(Parameterized.class)
+public class House_Robber_II {
 
-    /**
-     * title = House Robber 2
-     * url = https://leetcode.com/problems/house-robber-ii/
-     *
-     * @param nums
-     * @return
-     */
+    @LetCodeCommit(title = "213. House Robber II",
+            selfRemark = "直接用两遍第一题的解法，再求max即可。" +
+                    "不要觉得low，这是一种问题拆解思路，很可取的。")
     public int rob(int[] nums) {
-        return solution(nums);
-    }
-
-    /**
-     * 成绩：100% 和 6%
-     * 思路：
-     * 这里 f(0,n) = max{ f(0,n-1), f(1,n-2) + nums[n] }
-     * 所以，直接用两遍第一题的解法，再求max即可。
-     * 小结：如果没有第一题的铺垫，还真的很难办呢。差一点就用二位矩阵来解题了
-     * @param nums
-     * @return
-     */
-    public int solution(int[] nums) {
         if (nums.length == 0) {
             return 0;
         }
@@ -54,13 +45,6 @@ public class HouseRobber2Test {
         return Math.max(resultFrom0ToN_1, resultFrom1ToN_2 + nums[nums.length - 1]);
     }
 
-    /**
-     * 成绩：100% 和 5%
-     * 总结：
-     *
-     * @param nums
-     * @return
-     */
     public int solutionForHouseRobber1(int[] nums) {
         if (nums.length == 0) {
             return 0;
@@ -90,15 +74,24 @@ public class HouseRobber2Test {
         return result;
     }
 
-
-    @Test
-    public void test_rob1_solution1() {
-        int[] nums2 = {1, 2, 3, 1};
-        Assert.assertEquals(4, solution(nums2));
-
-        int[] nums1 = {2, 3, 2};
-        Assert.assertEquals(3, solution(nums1));
+    @Parameterized.Parameters
+    public static Collection testData() {
+        return Arrays.asList(new Object[][]{
+                {3, ArrayUtils.buildArray("[2,3,2]")},
+                {4, ArrayUtils.buildArray("[1,2,3,1]")},
+                {3, ArrayUtils.buildArray("[1,2,3]")},
+                });
     }
 
+    @Parameterized.Parameter
+    public int expect;
+    @Parameterized.Parameter(1)
+    public int[] nums;
+
+
+    @Test
+    public void test() {
+        Assert.assertEquals(expect, rob(nums));
+    }
 
 }

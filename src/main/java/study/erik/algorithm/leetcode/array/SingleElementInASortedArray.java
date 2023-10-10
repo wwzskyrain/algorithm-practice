@@ -25,7 +25,8 @@ public class SingleElementInASortedArray {
             tag = "好题，适合面试",
             selfRemark = "小而美的题目，时间100，空间6.;"
                     + "时间耗时0ms，所以肯定是100，因为已经到了最小的精度单位了。"
-                    + "空间和一个39成绩的占用情况分别是：61mb和60mb，所以差别也不大了.")
+                    + "空间和一个39成绩的占用情况分别是：61mb和60mb，所以差别也不大了." +
+                    "哇塞，我还用了递归来实现二分查找。")
     public int singleNonDuplicate(int[] nums) {
         return doSolution(nums, 0, nums.length - 1);
     }
@@ -49,14 +50,14 @@ public class SingleElementInASortedArray {
     @Parameter
     public int[] nums;
     @Parameter(1)
-    public int   expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray("1,1,2,3,3,4,4,8,8"), 2},
                 {ArrayUtils.buildArray("3,3,7,7,10,11,11"), 10},
-        };
+                };
     }
 
     @Test

@@ -25,12 +25,14 @@ public class ShortestPalindrome {
         if (s == null || s.length() == 0) {
             return s;
         }
+        //翻转下
         StringBuilder sb = new StringBuilder();
         for (int i = s.length() - 1; i >= 0; i--) {
             sb.append(s.charAt(i));
         }
         String t = sb.toString();
         for (int i = 0; i <= t.length(); i++) {
+            //最长的去匹配
             String sub = t.substring(i);
             if (s.startsWith(sub)) {
                 return t.substring(0, i) + s;
@@ -43,8 +45,8 @@ public class ShortestPalindrome {
     public static Collection primeNumbers() {
         return Arrays.asList(new Object[][]{
 //                {"aaacecaaa", "aacecaaa"},
-                {"dcbabcd", "abcd"},
-        });
+{"dcbabcd", "abcd"},
+});
     }
 
     @Parameterized.Parameter

@@ -73,8 +73,6 @@ public class Basic_Calculator {
         }
         while (!ops.isEmpty()) calc(nums, ops);
         return nums.peekLast();
-
-
     }
 
     /**
