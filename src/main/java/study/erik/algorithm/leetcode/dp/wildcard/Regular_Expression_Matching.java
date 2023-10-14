@@ -1,4 +1,4 @@
-package study.erik.algorithm.leetcode.dp;
+package study.erik.algorithm.leetcode.dp.wildcard;
 
 
 import org.junit.Assert;
@@ -36,10 +36,10 @@ public class Regular_Expression_Matching {
              */
             for (int j = 1; j <= n; ++j) {
                 if (p.charAt(j - 1) == '*') {
-                    //case1：匹配0次
+                    //case1：匹配0次，相当于p中不算p(j-1)=*,和p(j-2)=某个消息字符
                     f[i][j] = f[i][j - 2];
                     if (matches(s, p, i, j - 1)) {
-                        //case2：匹配一次，匹配掉s中的当前i
+                        //case2：匹配一次，匹配掉s中的当前s(i-1)。注意，如果是.*，这里匹配了s(i-1)，其实之前也是在这里匹配了s(i-2)、...
                         f[i][j] = f[i][j] || f[i - 1][j];
                     }
                 } else {

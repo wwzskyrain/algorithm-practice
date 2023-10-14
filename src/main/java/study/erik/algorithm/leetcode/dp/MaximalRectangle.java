@@ -84,8 +84,9 @@ public class MaximalRectangle {
 
     /*
     解法：来源于博客  https://www.cnblogs.com/grandyang/p/4322667.html
-    分析：问题转化为'直方图中的最大矩阵'；
+    分析：问题转化为'直方图中的最大矩阵'； 84. Largest Rectangle in Histogram
     关键点是：如果matrix[i][j]是'0'，则直方图中的第j个bar，其高度也断崖为0.
+
      */
     public int solution1(char[][] matrix) {
         if (matrix == null || matrix.length == 0) {

@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.stack;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
@@ -10,12 +11,11 @@ import org.junit.Test;
  */
 public class LongestRectangleInHistogramTest {
 
-    /**
-     * title = 84. Largest Rectangle in Histogram
-     * url = https://leetcode.com/problems/largest-rectangle-in-histogram/
-     * @param heights
-     * @return
-     */
+
+    @LetCodeCommit(title = "84. Largest Rectangle in Histogram",
+            selfRemark = "现在看这个单调栈的问题，太简单了。",
+            related = {"85. Maximal Rectangle"}
+    )
     public int largestRectangleArea(int[] heights) {
         return solution1(heights);
     }
@@ -26,7 +26,7 @@ public class LongestRectangleInHistogramTest {
      * 基本思想也是遍历每个bar，然后找bar的左右边界，从而确定宽度；然后 该bar所组成的矩阵面积是宽度*bar高度
      * 遍历所有bar的矩阵面积，找到最大值即可。
      * 使用递增栈，是帮助寻找左右边界的，已达到常量找到左右边界的效果。从而把算法复杂度从N2方降低到N。
-     * extense: 单调栈还有其他的应用，至少这个题还有一个高阶：01矩阵中的最大1子矩阵面积-https://zhuanlan.zhihu.com/p/26465701。todo
+     *
      * @param heights
      * @return
      */
