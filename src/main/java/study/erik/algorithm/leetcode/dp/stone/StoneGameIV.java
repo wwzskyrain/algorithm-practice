@@ -19,7 +19,10 @@ import study.erik.algorithm.util.LetCodeCommit;
 @RunWith(Parameterized.class)
 public class StoneGameIV {
 
-    @LetCodeCommit(title = "Stone Game IV", postLink = "https://leetcode.com/problems/stone-game-iv/")
+    @LetCodeCommit(title = "Stone Game IV",
+            postLink = "https://leetcode.com/problems/stone-game-iv/",
+            selfRemark = "从n堆中那，每次拿一个平方数。谁先拿不动，谁输了." +
+                    "也有点水，用dfs更直观。")
     public boolean winnerSquareGame(int n) {
         // 看代码很简单吧
         boolean[] dp = new boolean[n + 1];
@@ -29,24 +32,46 @@ public class StoneGameIV {
         // dp[i] 在计算过程中是可以优化的——提前返回
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j * j <= i; j++) {
-                if(!dp[i - j * j]){
+                if (!dp[i - j * j]) {
                     dp[i] = true;
                     break;
                 }
             }
         }
-        return dp[n];
+//        return dp[n];
+        return dfs(n, new Boolean[n + 1]);
+    }
 
+    public boolean dfs(int n, Boolean[] dp) {
+        if (dp[n] != null) {
+            return dp[n];
+        }
+        boolean ret = false;
+        if (n == 1) {
+            ret = true;
+        } else {
+            int i = 1;
+            while (i * i <= n) {
+                //如果拿了i*i，对手就会失败，哈哈，那就这样搞。
+                if (!dfs(n - i * i, dp)) {
+                    ret = true;
+                    break;
+                }
+                i++;
+            }
+        }
+        dp[n] = ret;
+        return ret;
     }
 
     @Parameter
-    public int     n;
+    public int n;
     @Parameter(1)
     public boolean expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {1, true},
                 {2, false},
                 {4, true},

@@ -27,6 +27,7 @@ public class JumpGameI {
      * 解法分析：从左边向右走，不断的更新'最大达到下标'。
      * 这是新想出来的做法。
      * 相比较solution1，该解法跟省空间，速度更快。
+     *
      * @param nums
      * @return
      */
@@ -51,6 +52,7 @@ public class JumpGameI {
      * 效果没有solution2好，因为解法二是只需要一次迭代就可以了。
      * 等等，这个题好奇怪呀，如果没有0的话，那么必定是会到的。
      * 所以，要是不能到的话，就是到了只能到坏点。
+     *
      * @param nums
      * @return
      */
@@ -73,9 +75,9 @@ public class JumpGameI {
     @Test
     public void test_solution() {
 
-        int[] array1 = new int[] {2, 3, 1, 1, 4};
-        int[] array2 = new int[] {3, 2, 1, 0, 4};
-        int[] array3 = new int[] {0};
+        int[] array1 = new int[]{2, 3, 1, 1, 4};
+        int[] array2 = new int[]{3, 2, 1, 0, 4};
+        int[] array3 = new int[]{0};
 
         Assert.assertTrue(canJump(array1));
         Assert.assertFalse(canJump(array2));

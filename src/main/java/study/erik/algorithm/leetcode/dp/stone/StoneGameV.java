@@ -19,7 +19,8 @@ import study.erik.algorithm.util.LetCodeCommit;
 @RunWith(Parameterized.class)
 public class StoneGameV {
 
-    @LetCodeCommit(title = "Stone Game V")
+    @LetCodeCommit(title = "Stone Game V",
+            selfRemark = "不玩游戏了，改求最值了。一分，一扔，一得")
     public int stoneGameV(int[] stoneValue) {
 
         int[][] dp = new int[stoneValue.length][stoneValue.length];
@@ -55,16 +56,16 @@ public class StoneGameV {
     @Parameter
     public int[] stoneValue;
     @Parameter(1)
-    public int   expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
-                {new int[] {6, 2, 3, 4, 5, 5}, 18},
-                {new int[] {7, 7, 7, 7, 7, 7, 7}, 28},
-                {new int[] {4}, 0},
-                {new int[] {2, 1, 1}, 3},
-        };
+        return new Object[][]{
+                {new int[]{6, 2, 3, 4, 5, 5}, 18},
+                {new int[]{7, 7, 7, 7, 7, 7, 7}, 28},
+                {new int[]{4}, 0},
+                {new int[]{2, 1, 1}, 3},
+                };
     }
 
     @Test

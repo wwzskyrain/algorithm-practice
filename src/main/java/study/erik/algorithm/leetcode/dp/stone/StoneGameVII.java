@@ -24,6 +24,7 @@ public class StoneGameVII {
         int[][] dp = new int[stones.length][stones.length];
         // dp[i][j] 表示子数组stone[i...j]的先手最大差值
         // dp[i][j] = max(sumI1_J - dp[i+1][j], sumI_1J - dp[i][j-1])
+        // 这就是第一题啊。
         int[] preSum = new int[stones.length];
         for (int i = 0; i < preSum.length; i++) {
             preSum[i] = i == 0 ? stones[0] : stones[i] + preSum[i - 1];

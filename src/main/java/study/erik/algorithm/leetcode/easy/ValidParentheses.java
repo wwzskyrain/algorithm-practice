@@ -14,59 +14,97 @@ public class ValidParentheses {
             selfRemark = "这也算一个细节题了，看test_case都到8了，不过很简单")
     public boolean isValid(String s) {
 
-        if ((s.length() & 1) == 1) {
-            return false;
-        }
-        char[] stack = new char[s.length()];
-        int stackIndex = 0;
-        int i = 0;
+//        if ((s.length() & 1) == 1) {
+//            return false;
+//        }
+//        char[] stack = new char[s.length()];
+//        int stackIndex = 0;
+//        int i = 0;
+//
+//
+//        while (i < s.length()) {
+//            char c = s.charAt(i++);
+//            switch (c) {
+//                case '[':
+//                case '{':
+//                case '(':
+//                    stack[stackIndex++] = c;
+//                    break;
+//                case ']':
+//                    if (stackIndex <= 0) {
+//                        return false;
+//                    }
+//                    if (stack[stackIndex - 1] == '[') {
+//                        stackIndex--;
+////                      出栈
+//                        break;
+//                    }
+//                    return false;
+//                case '}':
+//                    if (stackIndex <= 0) {
+//                        return false;
+//                    }
+//                    if (stack[stackIndex - 1] == '{') {
+//                        stackIndex--;
+////                      出栈
+//                        break;
+//                    }
+//                    return false;
+//
+//                case ')':
+//                    if (stackIndex <= 0) {
+//                        return false;
+//                    }
+//                    if (stack[stackIndex - 1] == '(') {
+//                        stackIndex--;
+////                      出栈
+//                        break;
+//                    }
+//                    return false;
+//
+//                default:
+//                    throw new IllegalArgumentException();
+//            }
+//        }
+//        return stackIndex == 0;
 
-
-        while (i < s.length()) {
-            char c = s.charAt(i++);
+        int l = s.length();
+        char[] stack = new char[l + 1];
+        int index = 0;
+        for (int i = 0; i < l; i++) {
+            char c = s.charAt(i);
             switch (c) {
-                case '[':
                 case '{':
                 case '(':
-                    stack[stackIndex++] = c;
+                case '[':
+                    stack[index++] = c;
+                    break;
+                case '}':
+                    if (index>0 && stack[index - 1] == '{') {
+                        index--;
+                    } else {
+                        return false;
+                    }
                     break;
                 case ']':
-                    if (stackIndex <= 0) {
+                    if (index>0 && stack[index - 1] == '[') {
+                        index--;
+                    } else {
                         return false;
                     }
-                    if (stack[stackIndex - 1] == '[') {
-                        stackIndex--;
-//                      出栈
-                        break;
-                    }
-                    return false;
-                case '}':
-                    if (stackIndex <= 0) {
-                        return false;
-                    }
-                    if (stack[stackIndex - 1] == '{') {
-                        stackIndex--;
-//                      出栈
-                        break;
-                    }
-                    return false;
-
+                    break;
                 case ')':
-                    if (stackIndex <= 0) {
+                    if (index>0 && stack[index - 1] == '(') {
+                        index--;
+                    } else {
                         return false;
                     }
-                    if (stack[stackIndex - 1] == '(') {
-                        stackIndex--;
-//                      出栈
-                        break;
-                    }
-                    return false;
-
+                    break;
                 default:
-                    throw new IllegalArgumentException();
+
             }
         }
-        return stackIndex == 0;
+        return index == 0;
 
     }
 

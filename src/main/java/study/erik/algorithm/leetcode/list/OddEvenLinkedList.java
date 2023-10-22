@@ -29,11 +29,12 @@ public class OddEvenLinkedList {
             if (tail == null) {//第一次赋值
                 tails[i % 2] = p;
             } else {
+                //尾插法
                 tail.next = p;
                 tail = tail.next;
                 tails[i % 2] = tail;
             }
-            p = p.next;
+            p = p.next; //就是为了遍历而已
             tails[i % 2].next = null;
             i++;
         }

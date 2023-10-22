@@ -19,15 +19,16 @@ import study.erik.algorithm.util.LetCodeCommit;
 @RunWith(Parameterized.class)
 public class StoneGameIII {
 
-    @LetCodeCommit(title = "Stone Game III")
+    @LetCodeCommit(title = "Stone Game III",
+            selfRemark = "题意：可以选1、2、3个——从第一个开始")
     public String stoneGameIII(int[] stoneValue) {
         return resolveWithDp(stoneValue);
     }
 
     /**
-     * 有了前面的题目，感觉这个hard题好水.
-     * todo
+     * 有了前面的题目，感觉这个hard题好水. 确实水了点。
      * 1. dp的定义是这一题的关键
+     *
      * @param stoneValue
      * @return
      */
@@ -58,18 +59,18 @@ public class StoneGameIII {
     }
 
     @Parameter
-    public int[]  stoneValue;
+    public int[] stoneValue;
     @Parameter(1)
     public String winner;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
-                {new int[] {1, 2, 3, 7}, "Bob"},
-                {new int[] {1, 2, 3, -9}, "Alice"},
-                {new int[] {1, 2, 3, 6}, "Tie"},
-                {new int[] {1, 2, 3, -1, -2, -3, 7}, "Alice"},
-                {new int[] {-1, -2, -3}, "Tie"}
+        return new Object[][]{
+                {new int[]{1, 2, 3, 7}, "Bob"},
+                {new int[]{1, 2, 3, -9}, "Alice"},
+                {new int[]{1, 2, 3, 6}, "Tie"},
+                {new int[]{1, 2, 3, -1, -2, -3, 7}, "Alice"},
+                {new int[]{-1, -2, -3}, "Tie"}
         };
     }
 

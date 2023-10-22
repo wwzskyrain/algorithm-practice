@@ -28,7 +28,8 @@ public class Sum4II {
         Map<Integer, Integer> sum2CountMap12 = new HashMap<>();
         for (int num1 : nums1) {
             for (int num2 : nums2) {
-                sum2CountMap12.compute(num1 + num2, (key, oldValue) -> oldValue == null ? 1 : ++oldValue);
+                int key = num1 + num2;
+                sum2CountMap12.merge(key, 1, Integer::sum);
             }
         }
         int ret = 0;

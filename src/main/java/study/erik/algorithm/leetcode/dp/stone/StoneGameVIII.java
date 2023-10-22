@@ -28,9 +28,9 @@ import study.erik.algorithm.util.LetCodeCommit;
                 + "但是不是先有左边的'maximize score difference'，后有右边'maximize score difference'。"
                 + "因为有博弈的角度存在，所以最优解是从右往左的。"
                 + "设dp[i]表示先手从i开始的最优解——注意，不一定就抓[0,...,i]，而是可以抓[0,...,i],[0,...,i+1],[0,...,i+2]....[0,...,n-1]"
-                + "则dp[i] = max(dp[i+1], sum(i) - dp[i+1]."
+                + "则dp[i] = max(dp[i+1], sum(i) - dp[i+1])."
                 + "即，要么就是抓[0,...,i]，此时的解=sum(i) - dp[i+1]。"
-                + "要么往后抓抓，也就是dp[i+1]了。"
+                + "要么往后抓抓，也就是dp[i+1]了。 好家伙，这个递归式子给它压榨透了。"
                 + "还可以参考： https://leetcode.com/problems/stone-game-viii/solutions/1224872/top-down-and-bottom-up/")
 public class StoneGameVIII {
 
@@ -83,14 +83,14 @@ public class StoneGameVIII {
     @Parameter
     public int[] stones;
     @Parameter(1)
-    public int   expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
-                {new int[] {-1, 2, -3, 4, -5}, 5},
-                {new int[] {7, -6, 5, 10, 5, -2, -6}, 13},
-                {new int[] {-10, -12}, -22}
+        return new Object[][]{
+                {new int[]{-1, 2, -3, 4, -5}, 5},
+                {new int[]{7, -6, 5, 10, 5, -2, -6}, 13},
+                {new int[]{-10, -12}, -22}
         };
     }
 
