@@ -38,6 +38,8 @@ public class UglyNumberIII {
             long v = m / a + m / b + m / c - m / ab - m / bc - m / ca + m / abc;
             if (v < n) {
                 l = m + 1;
+//            } else if (v == n)  {  // 万万不能加这个==
+//                return (int) m;
             } else {
                 h = m;
             }
@@ -47,9 +49,7 @@ public class UglyNumberIII {
 
     public long gcd(long a, long b) {
         if (a < b) {
-            long t = a;
-            a = b;
-            b = t;
+            gcd(b, a);
         }
         while (a % b != 0) {
             long mod = a % b;
@@ -72,9 +72,10 @@ public class UglyNumberIII {
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
+                {4, 2, 3, 4, 6},
                 {1, 1, 1, 1, 1},
-        };
+                };
     }
 
     @Test
