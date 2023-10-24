@@ -8,11 +8,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import study.erik.algorithm.util.ArrayUtils;
 import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author yueyi
@@ -69,6 +70,27 @@ public class NumberOfDiceRollsWithTargetSum {
             }
         }
         return (int) f[target - n];
+    }
+
+    final Map<String, Integer> memo = new HashMap<>();
+    final int MOD = 1000000007;
+
+    // 这种写法更狠呀，直接用hashMap版本的dfs
+    public int numRollsToTargetWithHashMap(int d, int f, int target) {
+        if (target > d * f || target < d) return 0;
+        if (d == 1) return (target <= f) ? 1 : 0;
+
+        final String key = "" + d + f + target;
+        if (!memo.containsKey(key)) {
+            int currentSum = 0;
+            for (int i = f; i > 0; i--) {
+                //用两个式子来分别 += 和 %=
+                currentSum += numRollsToTarget(d - 1, f, target - i);
+                currentSum %= MOD;
+            }
+            memo.put(key, currentSum);
+        }
+        return memo.get(key);
     }
 
     @Parameterized.Parameters
