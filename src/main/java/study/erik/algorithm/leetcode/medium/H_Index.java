@@ -28,6 +28,11 @@ public class H_Index {
         return resolve3(citations);
     }
 
+    /**
+     * 用binary-search优化
+     * @param citations
+     * @return
+     */
     public int resolve3(int[] citations) {
 
         Arrays.sort(citations);
@@ -50,14 +55,6 @@ public class H_Index {
             }
         }
         return l - 1;
-//        int h = 1;
-//        while (h < n) {
-//            if (citations[n - h] < h) {
-//                break;
-//            }
-//            h++;
-//        }
-//        return h - 1;
     }
 
     public int resolve2(int[] citations) {
