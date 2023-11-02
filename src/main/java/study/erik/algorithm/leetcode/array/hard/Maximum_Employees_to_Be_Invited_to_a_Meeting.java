@@ -42,7 +42,7 @@ public class Maximum_Employees_to_Be_Invited_to_a_Meeting {
         while (!q.isEmpty()) { // 剩下的点都是有入度的，也就是说都在环上。
             int x = q.poll();
             int y = favorite[x];
-            reverseGraph[y].add(x); //构建反向图
+            reverseGraph[y].add(x); //构建反向图，并不是构造所有节点的反向图，不包括环
             if (--deg[y] == 0) {
                 q.add(y);
             }
