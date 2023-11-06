@@ -16,7 +16,8 @@ public class BinaryTreeCameras {
 
     @LetCodeCommit(no = 968, title = "Binary Tree Cameras", diff = "h", time = 53, space = 6,
             types = {Tree, Greedy},
-            selfRemark = "不会做，看的lee大神的结点，思想很好，多看一遍，学会这样思考",
+            selfRemark = "不会做，看的lee大神的结点，思想很好，多看一遍，学会这样思考。算了吧，" +
+                    "这是一个贪心思路，只能大致猜测，而不可能直接确定答案的。",
             extend = "Distribute Coins in Binary Tree")
     public int minCameraCover(TreeNode root) {
         return (post(root) < 1 ? 1 : 0) + camera;
@@ -68,6 +69,12 @@ public class BinaryTreeCameras {
     @Test
     public void test_case_2() {
         TreeNode root = TreeNode.buildTree("0,0,null,0,null,0,null,null,0");
+        Assert.assertEquals(2, minCameraCover(root));
+    }
+
+    @Test
+    public void test_case_3() {
+        TreeNode root = TreeNode.buildTree("[0,0,null,null,0,0,null,null,0,0]");
         Assert.assertEquals(2, minCameraCover(root));
     }
 

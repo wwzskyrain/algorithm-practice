@@ -618,7 +618,7 @@ public class BinaryTreeTraversalSolutions {
     }
 
 
-    class Node {
+    public static class Node {
         public int val;
         public Node left;
         public Node right;

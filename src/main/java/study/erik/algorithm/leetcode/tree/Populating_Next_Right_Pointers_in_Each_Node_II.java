@@ -1,10 +1,12 @@
 package study.erik.algorithm.leetcode.tree;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import study.erik.algorithm.util.ArrayUtils;
 import study.erik.algorithm.util.LetCodeCommit;
+import study.erik.algorithm.leetcode.tree.BinaryTreeTraversalSolutions.Node;
 
 import java.util.*;
 
@@ -16,36 +18,31 @@ import java.util.*;
 @RunWith(Parameterized.class)
 public class Populating_Next_Right_Pointers_in_Each_Node_II {
 
-    @LetCodeCommit(title = "")
-    public int testMethodName(int[] nums) {
-        
-    }
-
-    
-
-    @Parameterized.Parameters
-    public static Collection testData() {
-        return Arrays.asList(new Object[][]{
-                {3, 2, 3},
-                {5, 5, 8},
-                {6, 11, 13},
-        });
-    }
-
-    @Parameterized.Parameter
-    public int expect;
-    @Parameterized.Parameter(1)
-    public int n;
-    @Parameterized.Parameter(2)
-    public int m;
-    @Parameterized.Parameter(3)
-    public int o;
-    @Parameterized.Parameter(4)
-    public int p;
-
-    @Test
-    public void test() {
-        Assert.assertEquals(expect, testMethodName(nums));
+    @LetCodeCommit(title = "117. Populating Next Right Pointers in Each Node II",
+            selfRemark = "这个题目还是比较有意思的。" +
+                    "不用队列也能完成bfs，哈哈哈。" +
+                    "其实这个题目是变相的，也就是说，我们在做bfs的时候，其实也可以用next指针来完成队列的工作。")
+    public Node connect(Node root) {
+        Node cur = root;
+        while (cur != null) {
+            Node curTemp = cur;
+            // 头结点：表示下一行的头结点
+            Node headNode = new Node();
+            Node nextLine = headNode;
+            while (curTemp != null) {
+                if (curTemp.left != null) {
+                    nextLine.next = curTemp.left;
+                    nextLine = nextLine.next;
+                }
+                if (curTemp.right != null) {
+                    nextLine.next = curTemp.right;
+                    nextLine = nextLine.next;
+                }
+                curTemp = curTemp.next;
+            }
+            cur = headNode.next;
+        }
+        return root;
     }
 
 }

@@ -1,4 +1,5 @@
 package study.erik.algorithm.job.huawei.simulation03;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,35 +18,71 @@ import java.util.*;
 public class Main_2 {
 
     @LetCodeCommit(title = "")
-    public int testMethodName(int[] nums) {
-        
+    public boolean checkInclusion(String s1, String s2) {
+        int[] count = getCounter(s1);
+        int[] coumt2 = new int[26];
+        int l1 = s1.length();
+        int l2 = s2.length();
+        if(l1 > l2){
+            return false;
+        }
+        int i = 0;
+        while (i < l1) {
+            coumt2[s2.charAt(i) - 'a']++;
+            i++;
+        }
+        if (checkIntEqual(count, coumt2)) {
+            return true;
+        }
+        while (i < l2) {
+            coumt2[s2.charAt(i - l1) - 'a']--;
+            coumt2[s2.charAt(i) - 'a']++;
+            i++;
+            if (checkIntEqual(count, coumt2)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    
+    public boolean checkIntEqual(int[] c1, int[] c2) {
+        for (int i = 0; i < 26; i++) {
+            if (c1[i] != c2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int[] getCounter(String s) {
+        int l = s.length() - 1;
+        int[] count = new int[26];
+        while (l >= 0) {
+            count[s.charAt(l--) - 'a']++;
+        }
+        return count;
+    }
+
 
     @Parameterized.Parameters
     public static Collection testData() {
         return Arrays.asList(new Object[][]{
-                {3, 2, 3},
-                {5, 5, 8},
-                {6, 11, 13},
+                {true, "adc", "dcda"},
+                {true, "a", "ab"},
+                {true, "ab", "eidbaooo"},
         });
     }
 
     @Parameterized.Parameter
-    public int expect;
+    public boolean expect;
     @Parameterized.Parameter(1)
-    public int n;
+    public String s1;
     @Parameterized.Parameter(2)
-    public int m;
-    @Parameterized.Parameter(3)
-    public int o;
-    @Parameterized.Parameter(4)
-    public int p;
+    public String s2;
 
     @Test
     public void test() {
-        Assert.assertEquals(expect, testMethodName(nums));
+        Assert.assertEquals(expect, checkInclusion(s1, s2));
     }
 
 }
