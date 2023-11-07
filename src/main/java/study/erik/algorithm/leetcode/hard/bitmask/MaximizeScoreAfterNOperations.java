@@ -30,15 +30,6 @@ public class MaximizeScoreAfterNOperations {
         return dfs((1 << 2 * n) - 1, dp, n * 2, nums);
     }
 
-    /**
-     * dp
-     *
-     * @param s    当前待计算的nums对应的状态值
-     * @param dp   备忘录
-     * @param n    n
-     * @param nums nums
-     * @return dp
-     */
     public int dfs(int s, Integer[] dp, int n, int[] nums) {
         if (s == 0) {
             return 0;
