@@ -36,55 +36,24 @@ public class CloneGraph {
     }
 
     @LetCodeCommit(no = 133, title = "Clone Graph", time = 61, space = 59,
-            selfRemark = "没有意思，就是一个图的深拷贝")
+            selfRemark = "没有意思，就是一个图的深拷贝。" +
+                    "额，今天在模拟题目中碰到了，耗一个小时都没做出来。而且看这曾经的做法，距离真经也太远了吧。")
     public Node cloneGraph(Node node) {
-
-        if (node == null) {
+        if(node == null){
             return null;
         }
-
-        Queue<Node> queue = new LinkedList<>();
-        Set<Integer> queuedSet = new HashSet<>();
-
-        queue.add(node);
-        queuedSet.add(node.val);
-        Map<Integer, Node> val2NodeMap = new HashMap<>();
-        while (!queue.isEmpty()) {
-            Node head = queue.remove();
-            Node copyNode = val2NodeMap.getOrDefault(head.val, new Node(head.val));
-            val2NodeMap.put(copyNode.val, copyNode);
-            for (Node neighbor : head.neighbors) {
-                if (!queuedSet.contains(neighbor.val)) {
-                    queue.add(neighbor);
-                    queuedSet.add(neighbor.val);
-                }
-            }
+        if(map.containsKey(node)){
+            return map.get(node);
         }
-
-        queuedSet.clear();
-        queue.add(node);
-        queuedSet.add(node.val);
-
-        while (!queue.isEmpty()) {
-            Node head = queue.remove();
-            Node copyNode = val2NodeMap.get(head.val);
-            List<Node> neighborsCopy = new ArrayList<>();
-            for (Node neighbor : head.neighbors) {
-                neighborsCopy.add(val2NodeMap.get(neighbor.val));
-            }
-            copyNode.neighbors = neighborsCopy;
-
-            for (Node neighbor : head.neighbors) {
-                if (!queuedSet.contains(neighbor.val)) {
-                    queue.add(neighbor);
-                    queuedSet.add(neighbor.val);
-                }
-            }
+        Node nodeCopy = new Node(node.val, new ArrayList<>());
+        map.put(node, nodeCopy);
+        for (Node neighbor : node.neighbors) {
+            nodeCopy.neighbors.add(cloneGraph(neighbor));
         }
-
-        return val2NodeMap.get(1);
+        return node;
     }
 
+    Map<Node,Node> map = new HashMap<>();
 
     @Test
     public void test_case_0() {
