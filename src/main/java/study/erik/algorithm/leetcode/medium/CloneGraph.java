@@ -39,18 +39,20 @@ public class CloneGraph {
             selfRemark = "没有意思，就是一个图的深拷贝。" +
                     "额，今天在模拟题目中碰到了，耗一个小时都没做出来。而且看这曾经的做法，距离真经也太远了吧。")
     public Node cloneGraph(Node node) {
-        if(node == null){
+        if(node == null) { //特殊用例，空图
             return null;
         }
-        if(map.containsKey(node)){
+        if(map.containsKey(node)){ //已经完成copy，就直接返回
             return map.get(node);
         }
-        Node nodeCopy = new Node(node.val, new ArrayList<>());
+        Node nodeCopy = new Node(node.val);
         map.put(node, nodeCopy);
         for (Node neighbor : node.neighbors) {
-            nodeCopy.neighbors.add(cloneGraph(neighbor));
+            Node neighborCopy  = cloneGraph(neighbor);
+            //记住，这里只是单边copy
+            nodeCopy.neighbors.add(neighborCopy);
         }
-        return node;
+        return nodeCopy;
     }
 
     Map<Node,Node> map = new HashMap<>();
