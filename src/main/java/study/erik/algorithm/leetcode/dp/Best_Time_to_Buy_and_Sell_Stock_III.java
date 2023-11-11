@@ -20,6 +20,7 @@ import java.util.Collection;
 public class Best_Time_to_Buy_and_Sell_Stock_III {
 
     /**
+     * You may complete at most two transactions. 最多可以买卖两次
      * 动态规划？数组法
      *
      * @param prices 参见 {@link Best_Time_to_Buy_and_Sell_Stock#maxProfitSolution2(int[])}
@@ -40,7 +41,7 @@ public class Best_Time_to_Buy_and_Sell_Stock_III {
         //我们的目标是求sell1和sell2的最大值。
         //而且，在写代码的时候，可以不用真的定义这四个数组，就直接用四个变量，变量的定义直接定义为对应数组的当前最值。
         //变量的话，其表达式稍微变了一下而已，不再赘述。
-        //我的这个解释要比逛网的解释'https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solutions/552695/mai-mai-gu-piao-de-zui-jia-shi-ji-iii-by-wrnt/'
+        //我的这个解释要比官网的解释'https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solutions/552695/mai-mai-gu-piao-de-zui-jia-shi-ji-iii-by-wrnt/'
         //更容易懂，更接近算法的本质。
         //这个解法，参见该系列题目1的第二个解法
         int buy1 = -prices[0];
