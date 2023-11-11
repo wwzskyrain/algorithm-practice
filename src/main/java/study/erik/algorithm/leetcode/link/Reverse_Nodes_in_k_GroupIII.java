@@ -1,25 +1,20 @@
-package study.erik.algorithm.leetcode.zijie.hard;
+package study.erik.algorithm.leetcode.link;
 
-
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import study.erik.algorithm.leetcode.list.ListNode;
-import study.erik.algorithm.util.ArrayUtils;
 import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 
 /**
- * 日期：2023/9/12 ，时间：10:42
+ * 日期：2023/11/11 10:24
  * 作者：yueyi
  * 描述：
  */
 @RunWith(Parameterized.class)
-public class Reverse_Nodes_in_k_Group {
+public class Reverse_Nodes_in_k_GroupIII {
 
     @LetCodeCommit(title = "25. Reverse Nodes in k-Group",
             selfRemark = "这个题目没太多意思，只是在翻转链表的基础上，增加了k分组而已。" +
@@ -50,20 +45,6 @@ public class Reverse_Nodes_in_k_Group {
         return headerNode.next;
     }
 
-    private ListNode reverse1(ListNode head) {
-        //头插法，用一个头结点
-        ListNode HEADER = new ListNode(1);
-        HEADER.next = null;
-
-        ListNode next;
-        while (head != null) {
-            next = head.next;
-            head.next = HEADER.next;
-            HEADER.next = head;
-            head = next;
-        }
-        return HEADER.next;
-    }
 
     private ListNode reverse(ListNode head) {
         //复杂不好理解
@@ -77,5 +58,4 @@ public class Reverse_Nodes_in_k_Group {
         }
         return pre;
     }
-
 }

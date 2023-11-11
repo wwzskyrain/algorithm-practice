@@ -1,22 +1,24 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2021 All Rights Reserved.
- */
 package study.erik.algorithm.leetcode.link;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import study.erik.algorithm.leetcode.list.ListNode;
+import study.erik.algorithm.util.ArrayUtils;
 import study.erik.algorithm.util.LetCodeCommit;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
- * @author yueyi
- * @version : ReverseNodesKGroup.java, v 0.1 2021年07月19日 7:44 上午 yueyi Exp $
+ * 日期：2023/11/11 10:24
+ * 作者：yueyi
+ * 描述：
  */
-public class ReverseNodesKGroup {
+@RunWith(Parameterized.class)
+public class Reverse_Nodes_in_k_GroupII {
 
-    @LetCodeCommit(title = "Reverse Nodes in k-Group",
+    @LetCodeCommit(title = "25. Reverse Nodes in k-Group",
             selfRemark = "这个细节题终于做完了")
     public ListNode reverseKGroup(ListNode head, int k) {
         return resolve(head, k);
@@ -102,5 +104,4 @@ public class ReverseNodesKGroup {
         head = reverseKGroup(head, 2);
         ListNode.print(head);
     }
-
 }
