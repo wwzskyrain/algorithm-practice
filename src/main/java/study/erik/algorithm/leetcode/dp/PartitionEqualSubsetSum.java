@@ -3,6 +3,8 @@ package study.erik.algorithm.leetcode.dp;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * @author erik.wang
  * @date 2020-05-01 11:11
@@ -33,39 +35,21 @@ public class PartitionEqualSubsetSum {
      * @return
      */
     public boolean canPartition(int[] nums) {
-        return solution(nums);
-    }
-
-    /**
-     * 成绩：34 和 6 ，太低了，肯定用错了方法。
-     * 优化后：成绩 68 和 50，也不是很高，不过也不错了。
-     * 优化点在于把二维dp变成了一维dp，变化也很简单粗暴，如果懂得01背包问题的简化，就很容易理解这一步。
-     * <p>
-     * 解法思路：当然还是01背包问题了。
-     *
-     * @param nums
-     * @return
-     */
-    public boolean solution(int[] nums) {
         if (nums.length == 1) {
             return false;
         }
-        int sum = 0;
-        for (int num : nums) {
-            sum += num;
-        }
+        int sum = Arrays.stream(nums).sum();
         if (sum % 2 != 0) {
             return false;
         }
         sum = sum / 2;
         boolean[] dp = new boolean[sum + 1];
         dp[0] = true;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = dp.length - 1; j >= 0; j--) {
-                if (!dp[j] && j - nums[i] >= 0) {
-                    int k;
-                    dp[j] = ((k = j - nums[i]) >= 0 ? dp[k] : false) || dp[j];
-                }
+        for (int num : nums) {
+            //倒这来，等号右边的dp[j]是dp[i-1][j]， 等号左边的dp[j]是dp[i][j]。
+            //dp[i][j]只有两个可选值，dp[i-1][j]、dp[i-1][j-num];
+            for (int j = dp.length - 1; j >= 0 && j >= num; j--) {
+                dp[j] = dp[j] || dp[j - num];
             }
         }
         return dp[sum];
