@@ -50,6 +50,7 @@ public class SumofSubarrayMinimums {
         long count = 0L;
         int i = 0;
         while (i < A.length) {
+            //没想到用一个单点栈就搞定了，这是把单调栈整明白了。
             if (index == 0) {
                 stack[index++] = i;
                 i++;
@@ -62,10 +63,10 @@ public class SumofSubarrayMinimums {
                 i++;
                 continue;
             }
-            // 出栈呀
+            // 出栈， 只出一个栈顶。下次循环，再出一个栈顶。
             int peek = stack[index - 1];
-            int left = index == 1 ? -1 : stack[index - 2];
-            int right = i;
+            int left = index == 1 ? -1 : stack[index - 2]; //stack[index - 2]是左边界，这什么没有问题吧，哈哈。
+            int right = i; //i就是当前栈顶元素的右边界。
             //注意要转化成long，不然会溢出的。
             count = (count + (long) (peek - left) * (right - peek) * peekA % Mod) % Mod;
             index--;

@@ -1,11 +1,12 @@
 package study.erik.algorithm.leetcode.union.find;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeSet;
 
 /**
  * @author erik.wang
@@ -22,6 +23,7 @@ public class LongestConsecutiveSequence {
         int[] height = new int[nums.length];
         for (int i = 0; i < parent.length; i++) {
             parent[i] = i;
+            height[i] = 1;
         }
         for (int i = 0; i < nums.length; i++) {
             int num = nums[i];
@@ -38,14 +40,18 @@ public class LongestConsecutiveSequence {
                 union(e, i, parent, height);
             }
         }
-        int[] count = new int[nums.length];
-        int max = 0;
-        for (int i : parent) {
-            int root = find(i, parent);
-            count[root]++;
-            max = Math.max(max, count[root]);
+        // int[] count = new int[nums.length];
+        // int max = 0;
+        // for (int i : height) {
+        //     int root = find(i, parent);
+        //     count[root]++;
+        //     max = Math.max(max, count[root]);
+        // }
+        int m = 0;
+        for(int s: height) {
+            m = Math.max(m, s);
         }
-        return max;
+        return m;
     }
 
     private int find(int e, int[] parent) {
@@ -63,13 +69,12 @@ public class LongestConsecutiveSequence {
         }
         int hX = height[rootX];
         int hY = height[rootY];
-        if (hX == hY) {
-            height[rootX]++;
+        if (hX < hY) {
             parent[rootX] = rootY;
-        } else if (hX < hY) {
-            parent[rootX] = hY;
+            height[rootY] += height[rootX];
         } else {
-            parent[rootY] = hX;
+            parent[rootY] = rootX;
+            height[rootX] += height[rootY];
         }
     }
 

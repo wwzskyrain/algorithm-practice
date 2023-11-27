@@ -3,7 +3,9 @@ package study.erik.algorithm.leetcode.sliding.window;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -16,13 +18,16 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     @Test
     public void test_() {
-        Assert.assertEquals(3, lengthOfLongestSubstring("abcabcbb"));
-        Assert.assertEquals(1, lengthOfLongestSubstring("bbb"));
-        Assert.assertEquals(3, lengthOfLongestSubstring("pwwkew"));
+        Assert.assertEquals(2, lengthOfLongestSubstring2("cdd"));
+        Assert.assertEquals(2, lengthOfLongestSubstring2("aab"));
+        Assert.assertEquals(3, lengthOfLongestSubstring2("abcabcbb"));
+        Assert.assertEquals(1, lengthOfLongestSubstring2("bbb"));
+        Assert.assertEquals(3, lengthOfLongestSubstring2("pwwkew"));
     }
 
     /**
      * 这写的啥，一点注释都没有
+     *
      * @param s
      * @return
      */
@@ -32,26 +37,46 @@ public class LongestSubstringWithoutRepeatingCharacters {
             return 0;
         }
 
-        int l, h, maxLength, length;
-        l = h = maxLength = 0;
-        length = s.length();
-        Set<Character> set = new HashSet<>();
-        while (h < length) {
-            char c = s.charAt(h);
-            if (set.contains(c)) {
-                char cc;
-                do {
-                    cc = s.charAt(l++);
-                    set.remove(cc);
-                } while (cc != c);
-            } else {
-                maxLength = Math.max(maxLength, h - l + 1);
+        Set<Character> set = new HashSet();
+        int i = 0, j = 0;
+        int n = s.length();
+        int max = 0;
+        while (j < n) {
+            char c = s.charAt(j++);
+            if (!set.contains(c)) {
+                set.add(c);
+                max = Math.max(max, j - i);
+                continue;
             }
-            h++;
+            while (i < j) {
+                char cI = s.charAt(i++);
+                set.remove(cI);
+                if (cI == c) {
+                    break;
+                }
+            }
             set.add(c);
-
         }
-        return maxLength;
+        return max;
+    }
+
+    public int lengthOfLongestSubstring2(String s) {
+        //半成品
+        Map<Character, Integer> map = new HashMap<>();
+        int max = 0;
+        int i = 0;
+        for (int j = 0; j < s.length(); j++) {
+            char c = s.charAt(j);
+            if (map.containsKey(c)) {
+                Integer idx = map.get(c);
+                int l = j - Math.min(i, idx);
+                max = Math.max(max, l);
+                i = j;
+            }
+            map.put(c, j);
+        }
+        max = Math.max(max, s.length() - i);
+        return max;
     }
 
 
