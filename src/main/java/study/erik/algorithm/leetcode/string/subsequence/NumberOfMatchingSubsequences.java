@@ -6,10 +6,7 @@ package study.erik.algorithm.leetcode.string.subsequence;
 
 import study.erik.algorithm.util.LetCodeCommit;
 
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yueyi
@@ -23,29 +20,29 @@ public class NumberOfMatchingSubsequences {
                     + "看的diss区的解法，直接就直接写了")
     public int numMatchingSubseq(String s, String[] words) {
 
-        Map<Character, Deque<String>> map = new HashMap<>();
-        for (String word : words) {
-            Deque<String> queue = map.getOrDefault(word.charAt(0), new LinkedList<>());
-            queue.addLast(word);
-            map.put(word.charAt(0), queue);
+        Queue<int[]>[] qs = new Queue[26];
+        for(int i = 0;i < qs.length; i++) {
+            qs[i] = new LinkedList<>();
         }
-        int count = 0;
-        for (char c : s.toCharArray()) {
-            // 为目标word逐个与s匹配.
-            Deque<String> queue = map.getOrDefault(c, new LinkedList<>());
-            int size = queue.size();
-            while (size-- > 0) {
-                String subStr = queue.removeFirst();
-                if (subStr.length() == 1) {
-                    count++;
-                    continue;
+        for(int i = 0;i < words.length; i++) {
+            qs[words[i].charAt(0) - 'a'].add(new int[]{i, 0});
+        }
+        int ret = 0;
+        //只需要遍历一遍s。大家都看着s的指针来更新自己的指针。挺有意思的。
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            Queue<int[]> q = qs[c - 'a'];
+            int size = q.size();
+            while(size-- > 0) {
+                int[] arr = q.poll(); // arr[0]是word的idx，arr[1]是当前word的当前字符指针
+                if(arr[1] == words[arr[0]].length() - 1) {
+                    ret++;
+                }else {
+                    arr[1]++;
+                    qs[words[arr[0]].charAt(arr[1]) - 'a'].add(arr);
                 }
-                char c1 = subStr.charAt(1);
-                Deque<String> q = map.getOrDefault(c1, new LinkedList<>());
-                q.addLast(subStr.substring(1));
-                map.put(c1, q);
             }
         }
-        return count;
+        return ret;
     }
 }

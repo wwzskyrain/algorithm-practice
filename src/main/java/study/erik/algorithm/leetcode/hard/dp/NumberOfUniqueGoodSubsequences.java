@@ -28,7 +28,9 @@ public class NumberOfUniqueGoodSubsequences {
         int mod = (int) 1e9 + 7, ends0 = 0, ends1 = 0, has0 = 0;
         for (int i = 0; i < binary.length(); ++i) {
             if (binary.charAt(i) == '1') {
-                ends1 = (ends0 + ends1 + 1) % mod;
+                //如果当前char是1，则只需要计算上end0就可以，因为如果在之前end1的基础上加上1，则会重复end1个啊。所以，不加end1.
+                ends1 += (ends0 + 1);
+                ends1 = (ends1) % mod;
             } else {
                 ends0 = (ends0 + ends1) % mod;
                 has0 = 1;

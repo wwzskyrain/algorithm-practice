@@ -70,11 +70,61 @@ public class TrappingRainWaterII {
                 //提醒一下，进队列干啥？是为了遍历，蔓延式遍历，从外层向内逐层包围——像黑白棋的反方向。
                 //2次注释的解惑，其实cell[2]就是当前的最小值。用这种写法才是正儿八经的写法，如果单独维护一个curMin，起写法很啰嗦的。
                 //不过，思考的时候，提出"当前最小值"这个概念，是没问题的。
+                //注释3，看到注释2中关于“当前最小值”，没想到今天按照感觉又手写的一次，竟然把当前最小值给显示化了。而且ac了。看来，还是概念记忆的清楚啊。
+                //具体代码请看solution2
                 p.add(new int[]{i, j, Math.max(cell[2], heightMap[i][j])});
             }
         }
 
         return result;
+    }
+
+    /**
+     * 用当前最小值的概念来贯穿这个题解
+     */
+    public int trapRainWaterSolution2(int[][] heightMap) {
+        int n = heightMap.length;
+        int m = heightMap[0].length;
+        boolean[][] v = new boolean[n][m];
+        PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(o -> o[2]));
+
+        for (int i = 0; i < n; i++) {
+            q.add(new int[]{i, 0, heightMap[i][0]});
+            q.add(new int[]{i, m - 1, heightMap[i][m - 1]});
+            v[i][0] = true;
+            v[i][m - 1] = true;
+        }
+        for (int j = 1; j < m - 1; j++) {
+            q.add(new int[]{0, j, heightMap[0][j]});
+            q.add(new int[]{n - 1, j, heightMap[n - 1][j]});
+            v[0][j] = true;
+            v[n - 1][j] = true;
+        }
+        //全局维护，当前最小值，也就是木桶原理的最小值
+        int min = q.peek()[2];
+        int t = 0;
+        int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        while (!q.isEmpty()) {
+            int[] cell = q.poll();
+            t += (Math.max(min - cell[2], 0)); //计算当前单元cell是否能对接水做贡献
+            int x = cell[0];
+            int y = cell[1];
+            for (int[] dir : dirs) {
+                int nx = x + dir[0];
+                int ny = y + dir[1];
+                if (nx >= 0 && nx < n && ny >= 0 && ny < m && !v[nx][ny]) {
+                    q.add(new int[]{nx, ny, heightMap[nx][ny]});
+                    v[nx][ny] = true;
+                }
+            }
+            int[] curLowCell = q.peek(); //这已经是一个最小值了
+            if (curLowCell != null) {
+                //队列的最后一个元素出队时，这里要判断空指针
+                //重新计算当前最小值。注意，这里用了max，可以简单思考一下。提示：curLowCell已经是一个最小值了。
+                min = Math.max(min, curLowCell[2]);
+            }
+        }
+        return t;
     }
 
 
@@ -88,7 +138,7 @@ public class TrappingRainWaterII {
         return new Object[][]{
                 {ArrayUtils.buildArray2Dimension("[[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]"), 4},
                 {ArrayUtils.buildArray2Dimension("[[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]"), 10},
-                };
+        };
     }
 
     @Test

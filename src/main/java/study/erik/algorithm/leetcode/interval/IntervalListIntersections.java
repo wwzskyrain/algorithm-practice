@@ -17,7 +17,7 @@ public class IntervalListIntersections {
 
     @LetCodeCommit(title = "986. Interval List Intersections",
             diff = "m",
-            selfRemark = "挺简单的")
+            selfRemark = "挺简单的，厉害了我的我，这么简洁呢")
     public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
         int i = 0;
         int j = 0;
