@@ -107,6 +107,7 @@ public class TrappingRainWaterII {
         while (!q.isEmpty()) {
             int[] cell = q.poll();
             t += (Math.max(min - cell[2], 0)); //计算当前单元cell是否能对接水做贡献
+            //这里是先计算后进队列
             int x = cell[0];
             int y = cell[1];
             for (int[] dir : dirs) {
