@@ -1,5 +1,7 @@
 package study.erik.algorithm.leetcode.medium;
 
+import study.erik.algorithm.util.LetCodeCommit;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,12 +9,17 @@ import java.util.Queue;
 
 public class CourseScheduleIV {
 
+    @LetCodeCommit(title = "1462. Course Schedule IV",
+            selfRemark = "这个题目看好几遍了。")
     public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
         return solution1(numCourses, prerequisites, queries);
 //        return solution2(numCourses, prerequisites, queries);
     }
 
     //广度优先遍历 + 拓扑排序
+    //和深度优先遍历的本质区别在于：
+    //1.广度优先遍历，从入度为0的开始，处理到cur时，i到cur的关系已经确定了（包括间接关系）。借着当前明确的cur和child的关系，所以可以延伸i到child的关系
+    //2.深度优先遍历，不需从入度0开始，处理到cur时，cur到i的关系已经确定了（包括间接关系）。借着当前明确的cur和child的关系，所以可以延伸cur到i的的关系
     public List<Boolean> solution1(int numCourses, int[][] prerequisites, int[][] queries) {
         //1.用list数组来保存图
         List<Integer>[] graph = new List[numCourses];
@@ -40,6 +47,8 @@ public class CourseScheduleIV {
                 isPre[cur][child] = true;
                 for (int i = 0; i < numCourses; i++) {
                     //注意这里的方向：child依赖poll，poll依赖i
+                    //注意，这里可以理解为，i到cur的关系已经处理好了，以此为基础，可以处理i到child的关系了。这一点和dfs是本质区别。
+                    //或者说，i能到cur，就能到child
                     isPre[i][child] = isPre[i][child] | isPre[i][cur];
                 }
                 if (--indegree[child] == 0) {
@@ -55,6 +64,8 @@ public class CourseScheduleIV {
     }
 
     //深度优先遍历 + 拓扑排序
+    //1.不需要记录入度
+    //2.理解dfs函数的定义是关键，这样才能理解dfs中的实现。
     public List<Boolean> solution2(int numCourses, int[][] prerequisites, int[][] queries) {
         List<Integer>[] g = new List[numCourses];
         for (int i = 0; i < g.length; i++) {
@@ -87,7 +98,9 @@ public class CourseScheduleIV {
             dfs(g, neighbor, visited, isPre);
             isPre[cur][neighbor] = true;
             for (int i = 0; i < g.length; i++) {
-                //注意这里的方向：因为neighbor已经访问了，所以那些对于neighbor的间接依赖已经转好好了。
+                //因为neighbor已经处理好了，所以neighbor能到的i，我cur也都能到。
+                //也就是“cur到所有的i”可以通过neighbor过度一下。
+                //或者说，neighbor能到i，那cur也能到i。
                 isPre[cur][i] = isPre[cur][i] | isPre[neighbor][i];
             }
         }

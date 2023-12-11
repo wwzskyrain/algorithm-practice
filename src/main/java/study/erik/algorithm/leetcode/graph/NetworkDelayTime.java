@@ -25,13 +25,16 @@ public class NetworkDelayTime {
     @LetCodeCommit(title = "743. Network Delay Time",
             selfRemark = "求图的最短距离——迪杰特斯拉算法。"
                     + "这里没有用地杰斯特拉算法."
-                    + "")
+                    + "而是用了两层循环，是一种迭代的思路：" +
+                    "")
     public int networkDelayTime(int[][] times, int n, int k) {
         int defaultDistanceLimit = 100 * 100;
         int[] distanceTo = new int[n];
         Arrays.fill(distanceTo, defaultDistanceLimit);
         distanceTo[k - 1] = 0;
         for (int i = 0; i < n; i++) {
+            // 突然就想到这个解法的有效性证明了：
+            // 迭代n-1次，每次迭代可以确保从源点k往前走一步，那么n-1次迭代后可以确保走到所有的n-1个节点了。
             for (int[] time : times) {
                 int u = time[0];
                 int v = time[1];

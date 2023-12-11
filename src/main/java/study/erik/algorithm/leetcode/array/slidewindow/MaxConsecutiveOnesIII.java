@@ -50,7 +50,7 @@ public class MaxConsecutiveOnesIII {
             if (nums[j] == 0) {
                 k--;
             }
-            while (k < 0) {
+            while (k < 0) { //这里用if也足够了
                 if (nums[i] == 0) {
                     k++;
                 }

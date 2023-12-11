@@ -3,8 +3,10 @@ package study.erik.algorithm.leetcode.sliding.window;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * @author erik.wang
@@ -29,23 +31,33 @@ public class LongestRepeatingCharacterReplacement {
      * 再次理解：定名-平移有效窗口法。
      * 不同于基础滑动窗口题目，这是一个'补偿性滑动窗口题'。
      * 本题中，有效窗口平移时，不需要更新(减少)maxCount——多数元素的数量
-     *
-     * @param s
-     * @param k
-     * @return
+     * 1.在窗口左边界缩小时，没有维护maxCount的定义
+     *  这是因为
+     *  1.不需要：因为最优值就是最大窗口，当窗口中最多字符的个数max_count越大，窗口最有。所以，我们只用关心更大值就好了，不用在考虑max_count变小的情况。
+     *  2.维护的代价太大了。要动态排序，涉及到原来数据的--和新数据的++，这就别想了。
      */
     public int characterReplacement(String s, int k) {
 
         int[] count = new int[26];
         int maxCount = 0;
         int start = 0;
+        int ret = 0;
         for (int end = 0; end < s.length(); end++) {
             maxCount = Math.max(maxCount, ++count[s.charAt(end) - 'A']);
-            if (end - start + 1 - maxCount > k) {
+            while (end - start + 1 - maxCount > k) {
+                //一直维护着窗口有效
+                //这里不需要用while，一个if就足够了。但是while更符合思路。
                 count[s.charAt(start++) - 'A']--;
             }
+//            if (end - start + 1 - maxCount > k) {
+//                //一直维护着窗口有效
+//                //这里不需要用while，一个if就足够了。但是while更符合思路。
+//                count[s.charAt(start++) - 'A']--;
+//            }
+            ret = Math.max(ret, end - start + 1);
         }
-        return s.length() - start;
+        return ret;
+//      return s.length() - start;  //直接这样也可以，但是又需要一层思考：按照上面说的，有效窗口只会越来越大，而这里s.length() - start就是最大的有效窗口。
     }
 
 
@@ -72,6 +84,9 @@ public class LongestRepeatingCharacterReplacement {
         }
         return res;
     }
+
+
+
 
 
 }

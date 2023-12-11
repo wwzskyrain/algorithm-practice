@@ -17,7 +17,8 @@ import java.util.*;
 @RunWith(Parameterized.class)
 public class Main_2 {
 
-    @LetCodeCommit(title = "")
+    @LetCodeCommit(title = "743. Network Delay Time",
+            selfRemark = "还有一种非“迪杰斯特拉”的解法，间接而高效")
     public int networkDelayTime(int[][] times, int n, int k) {
         int[][] g = new int[n + 1][n + 1];
         int INF = 0x3f3f3f3f;
@@ -35,17 +36,21 @@ public class Main_2 {
             int min = Integer.MAX_VALUE;
             int minIdx = 0;
             for (int i = 1; i < dp.length; i++) {
-                if(!visited.contains(i) && min > dp[i]) {
+                //1.先找出未访问到节点中到出发点最短的距离
+                if (!visited.contains(i) && min > dp[i]) {
                     min = dp[i];
                     minIdx = i;
                 }
             }
+            //2.把这个结点加入已访问
             visited.add(minIdx);
+            //3.以这个结点为跳板，重新计算未访问节点到出发节点的“更新距离”——不一定更近，所以要用min
             for (int i = 1; i <= n; i++) {
                 if (visited.contains(i) || i == minIdx || g[minIdx][i] == INF) {
                     continue;
                 }
                 int newDp = dp[minIdx] + g[minIdx][i];
+                // 注意：“更新距离”——不一定更近，所以要用min
                 dp[i] = Math.min(dp[i], newDp);
             }
         }
