@@ -4,6 +4,8 @@
  */
 package study.erik.algorithm.util;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,6 +42,69 @@ public class ArrayUtils {
             ret[i] = split[i].charAt(0);
         }
         return ret;
+    }
+
+    /**
+     * 构建二维char数组。
+     * [["5","3",".",".","7",".",".",".","."]
+     * ,["6",".",".","1","9","5",".",".","."]
+     * ,[".","9","8",".",".",".",".","6","."]
+     * ,["8",".",".",".","6",".",".",".","3"]
+     * ,["4",".",".","8",".","3",".",".","1"]
+     * ,["7",".",".",".","2",".",".",".","6"]
+     * ,[".","6",".",".",".",".","2","8","."]
+     * ,[".",".",".","4","1","9",".",".","5"]
+     * ,[".",".",".",".","8",".",".","7","9"]]
+     *
+     * @param str
+     * @return
+     */
+    public static char[][] buildCharArr2Dimension(String str) {
+        str = str.trim();
+        if (str.length() == 0) {
+            return null;
+        }
+        if (str.startsWith("[[")) {
+            str = str.substring(2, str.length());
+        }
+        if (str.endsWith("]]")) {
+            str = str.substring(0, str.length() - 2);
+        }
+
+        String[] split1s = str.split(",\\[");
+        char[][] ret = new char[split1s.length][];
+        for (int i = 0; i < split1s.length; i++) {
+            String split = split1s[i];
+            if (split.endsWith("\n")) {
+                split = split.substring(0, split.length() - 1);
+            }
+            if (split.endsWith("]")) {
+                split = split.substring(0, split.length() - 1);
+            }
+            String[] splits2 = split.split(",");
+            ret[i] = new char[splits2.length];
+            for (int j = 0; j < splits2.length; j++) {
+                ret[i][j] = splits2[j].charAt(1);
+            }
+        }
+        return ret;
+    }
+
+    @Test
+    public void testBuildCharArr2Dimension() {
+        char[][] chars = buildCharArr2Dimension("[[\"5\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"]\n" +
+                ",[\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"]\n" +
+                ",[\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"]\n" +
+                ",[\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"]\n" +
+                ",[\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"]\n" +
+                ",[\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"]\n" +
+                ",[\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"]\n" +
+                ",[\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"]\n" +
+                ",[\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]]");
+
+        for (char[] aChar : chars) {
+            System.out.println(Arrays.toString(aChar));
+        }
     }
 
     public static char[] buildCharArr(String[] split) {

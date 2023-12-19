@@ -25,8 +25,7 @@ public class NetworkDelayTime {
     @LetCodeCommit(title = "743. Network Delay Time",
             selfRemark = "求图的最短距离——迪杰特斯拉算法。"
                     + "这里没有用地杰斯特拉算法."
-                    + "而是用了两层循环，是一种迭代的思路：" +
-                    "")
+                    + "而是用了两层循环，是一种迭代的思路：")
     public int networkDelayTime(int[][] times, int n, int k) {
         int defaultDistanceLimit = 100 * 100;
         int[] distanceTo = new int[n];
@@ -52,15 +51,15 @@ public class NetworkDelayTime {
     @Parameter
     public int[][] times;
     @Parameter(1)
-    public int     n;
+    public int n;
     @Parameter(2)
-    public int     k;
+    public int k;
     @Parameter(3)
-    public int     expect;
+    public int expect;
 
     @Parameters
     public static Object[][] data() {
-        return new Object[][] {
+        return new Object[][]{
                 {ArrayUtils.buildArray2Dimension("[[1,2,1],[2,3,7],[1,3,4],[2,1,2]]"), 3, 2, 6},
                 {ArrayUtils.buildArray2Dimension("[[2,1,1],[2,3,1],[3,4,1]]"), 4, 2, 2},
                 {ArrayUtils.buildArray2Dimension("[[1,2,1]]"), 2, 2, -1},

@@ -43,6 +43,8 @@ public @interface LetCodeCommit {
      */
     String selfRemark() default "";
 
+    FavoriteLevel favorite() default FavoriteLevel.ONE_STAR;
+
     /**
      * 扩展
      *
