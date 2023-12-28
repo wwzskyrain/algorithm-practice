@@ -33,9 +33,10 @@ public class Beautiful_Towers_II {
             //单点递增栈。先算左边的
             while (stack.size() > 1 && maxHeight.get(stack.peek()) > maxHeight.get(i)) {
                 int j = stack.pop();
-                curHeightSum -= 1L * (j - stack.peek()) * maxHeight.get(j);
+                curHeightSum -= (long) (j - stack.peek()) * maxHeight.get(j);
+                //哈哈，算的可真精细哈。可以简单一点，只出栈，在计算
             }
-            curHeightSum += 1L * (i - stack.peek()) * maxHeight.get(i);
+            curHeightSum += (long) (i - stack.peek()) * maxHeight.get(i);
             stack.push(i);
             left[i] = curHeightSum;
         }
@@ -47,9 +48,9 @@ public class Beautiful_Towers_II {
         for (int i = n - 1; i >= 0; i--) {
             while (stack.size() > 1 && maxHeight.get(stack.peek()) > maxHeight.get(i)) {
                 int j = stack.pop();
-                curHeightSum -= 1L * -(j - stack.peek()) * maxHeight.get(j);
+                curHeightSum -= (long) -(j - stack.peek()) * maxHeight.get(j);
             }
-            curHeightSum += 1L * -(i - stack.peek()) * maxHeight.get(i);
+            curHeightSum += (long) -(i - stack.peek()) * maxHeight.get(i);
             stack.push(i);
             res = Math.max(res, left[i] + curHeightSum - maxHeight.get(i));
         }
@@ -60,7 +61,9 @@ public class Beautiful_Towers_II {
     @Parameterized.Parameters
     public static Collection testData() {
         return Arrays.asList(new Object[][]{
-                {13, ArrayUtils.buildList("[5,3,4,1,1]")}, {22, ArrayUtils.buildList("[6,5,3,9,2,7]")}, {18, ArrayUtils.buildList("[3,2,5,5,2,3]")}
+                {13, ArrayUtils.buildList("[5,3,4,1,1]")},
+                {22, ArrayUtils.buildList("[6,5,3,9,2,7]")},
+                {18, ArrayUtils.buildList("[3,2,5,5,2,3]")}
         });
     }
 
