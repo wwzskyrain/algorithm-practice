@@ -2,6 +2,7 @@ package study.erik.algorithm.leetcode.hard;
 
 import org.junit.Assert;
 import org.junit.Test;
+import study.erik.algorithm.util.LetCodeCommit;
 
 /**
  * @author erik.wang
@@ -58,6 +59,7 @@ public class TrappingWaterRain {
      * @param height 成绩相当好，92
      * @return
      */
+    @LetCodeCommit(title = "42. Trapping Rain Water")
     public int trap2(int[] height) {
         if (height.length < 3) {
             return 0;

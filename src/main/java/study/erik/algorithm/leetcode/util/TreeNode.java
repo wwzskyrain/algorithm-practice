@@ -73,7 +73,7 @@ public class TreeNode {
             if (ele.trim().equals("null")) {
                 tree[i++] = null;
             } else {
-                tree[i++] = new TreeNode(Integer.valueOf(ele.trim()));
+                tree[i++] = new TreeNode(Integer.parseInt(ele.trim()));
             }
         }
 
