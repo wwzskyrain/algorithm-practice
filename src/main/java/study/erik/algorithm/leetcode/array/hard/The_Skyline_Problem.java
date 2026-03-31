@@ -1,7 +1,7 @@
 package study.erik.algorithm.leetcode.array.hard;
 
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

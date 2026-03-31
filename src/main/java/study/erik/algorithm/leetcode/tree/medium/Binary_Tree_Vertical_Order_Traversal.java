@@ -1,18 +1,13 @@
 package study.erik.algorithm.leetcode.tree.medium;
 
 
-import javafx.util.Pair;
-import jdk.nashorn.internal.ir.LiteralNode;
-import org.junit.Assert;
-import org.junit.Test;
+import study.erik.util.Pair;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import study.erik.algorithm.leetcode.util.TreeNode;
-import study.erik.algorithm.util.ArrayUtils;
 import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * 日期：2023/10/4 ，时间：16:17
@@ -22,8 +17,7 @@ import java.util.stream.Collectors;
 @RunWith(Parameterized.class)
 public class Binary_Tree_Vertical_Order_Traversal {
 
-    @LetCodeCommit(title = "314. Binary Tree Vertical Order Traversal",
-            selfRemark = "facebook的一个medium题目，还行，题意清晰，思路也很简单。")
+    @LetCodeCommit(title = "314. Binary Tree Vertical Order Traversal", selfRemark = "facebook的一个medium题目，还行，题意清晰，思路也很简单。")
     public List<List<Integer>> verticalOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();

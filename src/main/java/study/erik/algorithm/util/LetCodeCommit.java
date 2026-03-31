@@ -29,6 +29,8 @@ public @interface LetCodeCommit {
 
     String tag() default "";
 
+    String hits() default "";
+
     /**
      * 相关题目
      *

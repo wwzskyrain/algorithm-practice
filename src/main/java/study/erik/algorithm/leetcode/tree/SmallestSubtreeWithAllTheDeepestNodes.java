@@ -4,7 +4,7 @@
  */
 package study.erik.algorithm.leetcode.tree;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 import org.junit.Test;
 import study.erik.algorithm.leetcode.util.TreeNode;
 import study.erik.algorithm.util.LetCodeCommit;

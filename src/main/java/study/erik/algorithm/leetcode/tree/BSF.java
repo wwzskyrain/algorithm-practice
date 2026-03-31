@@ -1,6 +1,6 @@
 package study.erik.algorithm.leetcode.tree;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;

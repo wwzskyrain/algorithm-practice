@@ -12,18 +12,17 @@ import study.erik.algorithm.util.LetCodeCommit;
  */
 public class MaximumScoreOfAGoodSubarray {
 
-    @LetCodeCommit(title = "1793. Maximum Score of a Good Subarray",
-            selfRemark = "这个贪心策略不太好证明的。"
-                    + "贪心算法，要比全局遍历O(n^2)的算法优，优秀在于不用遍历全部的解。"
-                    + "但是难点在于证明这个贪心策略。"
-                    + "学习到了：在每日一题上：见下一个解法")
+    @LetCodeCommit(title = "1793. Maximum Score of a Good Subarray", selfRemark = "这个贪心策略不太好证明的。" + "贪心算法，要比全局遍历O(n^2)的算法优，优秀在于不用遍历全部的解。" + "但是难点在于证明这个贪心策略。" + "学习到了：在每日一题上：见下一个解法")
     public int maximumScore(int[] nums, int k) {
+
         int max = nums[k];
         int i = k;
         int j = k;
         int n = nums.length;
         int curMin = nums[k];
         while (i > 0 || j < n - 1) {
+            // 这个思路也挺好理解的，因为这里是每个while都走一步。
+            // 如果在里层再用一个循环让他多走走，就是到了下一个解法了，一个更直观更高效的解法。
             if (i == 0) {
                 j++;
             } else if (j == n - 1) {

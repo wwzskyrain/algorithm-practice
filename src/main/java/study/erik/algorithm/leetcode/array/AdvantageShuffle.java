@@ -6,9 +6,7 @@ package study.erik.algorithm.leetcode.array;
 
 import study.erik.algorithm.util.LetCodeCommit;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.TreeMap;
 
 /**
  * @author yueyi

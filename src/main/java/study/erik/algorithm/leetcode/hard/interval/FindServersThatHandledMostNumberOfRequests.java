@@ -4,7 +4,7 @@
  */
 package study.erik.algorithm.leetcode.hard.interval;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

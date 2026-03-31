@@ -1,6 +1,6 @@
 package study.erik.algorithm.job.huawei.simulation03;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 
 import java.util.HashMap;
 import java.util.Map;

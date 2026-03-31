@@ -1,6 +1,6 @@
 package study.erik.algorithm.leetcode.dp;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 

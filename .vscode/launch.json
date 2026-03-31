@@ -1,0 +1,414 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "SquareRootCalculations",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.classic.SquareRootCalculations",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "BinaryIndexTree",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.ds.BinaryIndexTree",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "SegmentTree",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.ds.SegmentTree",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "SegmentTree2Test",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.ds.SegmentTree2Test",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "ListValuePropagation",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.jdk.ListValuePropagation",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "PriorityQueueDemo",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.jdk.PriorityQueueDemo",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "ToMap",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.jdk.ToMap",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "IfStream",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.jdk.util.IfStream",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "Main_1",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.job.huawei.real.Main_1",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "RLEIteratorDesign",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.array.RLEIteratorDesign",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "Move",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.bit.Move",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "AllOne",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.AllOne",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "LFUCache",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.LFUCache",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "MaximumFrequencyStack",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.MaximumFrequencyStack",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "MyCalendarI",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.MyCalendarI",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "MyCalendarII",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.MyCalendarII",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "MyCalendarII2",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.MyCalendarII2",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "MyCircularDeque",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.MyCircularDeque",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "MyCircularQueue",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.MyCircularQueue",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "RandomFlipMatrix",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.RandomFlipMatrix",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "RandomPickIndex",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.RandomPickIndex",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "RandomizedCollection",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.RandomizedCollection",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "SnapshotArray",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.SnapshotArray",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "StockSpannerSolution",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.StockSpannerSolution",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "SummaryRanges",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.SummaryRanges",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "TimeBasedKey_ValueStore",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.ds.TimeBasedKey_ValueStore",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "LRUCache",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.medium.LRUCache",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "NumMatrix",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.medium.NumMatrix",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "ArrangingCoins",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.search.binary.ArrangingCoins",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "NumArrayMutable",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.series.rangsum.NumArrayMutable",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "NumArrayMutable2",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.series.rangsum.NumArrayMutable2",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "RadixSort",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.sort1.RadixSort",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "RelativeRanks",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.sort1.RelativeRanks",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "BSF",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.tree.BSF",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "BinarySearchTree",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.tree.BinarySearchTree",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "FlattenAMultilevelDoublyLinkedList",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.tree.FlattenAMultilevelDoublyLinkedList",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "RecursiveBinaryTree",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.tree.RecursiveBinaryTree",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "SmallestSubtreeWithAllTheDeepestNodes",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.tree.SmallestSubtreeWithAllTheDeepestNodes",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "AccountsMerge",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.union.AccountsMerge",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "Interval",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.util.Interval",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "TreeNode",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.leetcode.util.TreeNode",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "LeastCommonParentNodeTest",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.LeastCommonParentNodeTest",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "LeastStreetLamp",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.wangyi.LeastStreetLamp",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "Arrest",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.Arrest",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "ChangeChar",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.ChangeChar",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "CorrectWord",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.CorrectWord",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "IslandNumber",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.IslandNumber",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "Mahjon",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.Mahjon",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.Main",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "TravelingSaleMan",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.TravelingSaleMan",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "UserPreference",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.UserPreference",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "找零钱问题",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.找零钱问题",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "聚众取暖",
+            "request": "launch",
+            "mainClass": "study.erik.algorithm.nowcoder.zijie.聚众取暖",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "TaskLink",
+            "request": "launch",
+            "mainClass": "study.erik.design.task.TaskLink",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "TaskRegister",
+            "request": "launch",
+            "mainClass": "study.erik.design.task.TaskRegister",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "Grade",
+            "request": "launch",
+            "mainClass": "study.erik.stream.reduce.Grade",
+            "projectName": "algorithm-practice"
+        },
+        {
+            "type": "java",
+            "name": "TestQueue",
+            "request": "launch",
+            "mainClass": "study.erik.util.TestQueue",
+            "projectName": "algorithm-practice"
+        }
+    ]
+}

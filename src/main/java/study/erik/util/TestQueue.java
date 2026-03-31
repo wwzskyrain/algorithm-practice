@@ -1,6 +1,6 @@
 package study.erik.util;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

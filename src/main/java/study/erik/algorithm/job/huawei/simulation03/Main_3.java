@@ -1,6 +1,5 @@
 package study.erik.algorithm.job.huawei.simulation03;
 
-import jdk.nashorn.internal.objects.annotations.Setter;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

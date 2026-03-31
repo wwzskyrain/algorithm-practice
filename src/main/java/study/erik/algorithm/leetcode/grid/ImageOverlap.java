@@ -4,7 +4,7 @@
  */
 package study.erik.algorithm.leetcode.grid;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 import study.erik.algorithm.util.LetCodeCommit;
 
 import java.util.ArrayList;

@@ -5,7 +5,6 @@
 package study.erik.stream.reduce;
 
 import lombok.Data;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,10 +19,10 @@ import java.util.stream.Collectors;
 @Data
 public class Grade {
 
-    private String  studentNo;
-    private String  classNo;
+    private String studentNo;
+    private String classNo;
     private Integer score;
-    private String  courseName;
+    private String courseName;
 
     public Grade() {
     }
@@ -35,13 +34,36 @@ public class Grade {
         this.courseName = courseName;
     }
 
+    public Grade(String studentNo, String classNo, int score, String courseName) {
+        this.studentNo = studentNo;
+        this.classNo = classNo;
+        this.score = new Integer(score);
+        this.courseName = courseName;
+    }
+
+    public String getStudentNo() {
+        return studentNo;
+    }
+
+    public String getClassNo() {
+        return classNo;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
     /**
      * 测试，由Collectors.toList()返回的list也是支持modify操作的.
      * 通过调试，list其实是ArrayList.
      */
-    public static void testListReturnedByCollectorToListCanModify(){
+    public static void testListReturnedByCollectorToListCanModify() {
         List<Grade> list = data().stream().filter(grade -> grade.getClassNo().equals("B")).collect(Collectors.toList());
-        list.add(0, new Grade("100","C",23,"语文"));
+        list.add(0, new Grade("100", "C", 23, "语文"));
         list.forEach(System.out::println);
     }
 
@@ -56,7 +78,7 @@ public class Grade {
         HashMap<String, Integer> studentNo2SumScoreMap = grades.stream()
                 .reduce(new HashMap<>(),
                         (map, grade) -> {
-                            Integer sum = map.getOrDefault(grade.studentNo, 0);
+                            Integer sum = map.getOrDefault(grade.studentNo, new Integer(0));
                             sum += grade.getScore();
                             map.put(grade.studentNo, sum);
                             return map;
@@ -71,7 +93,7 @@ public class Grade {
         studentNo2SumScoreMap = grades.stream()
                 .collect(HashMap::new,
                         (map, grade) -> {
-                            Integer sum = map.getOrDefault(grade.studentNo, 0);
+                            Integer sum = map.getOrDefault(grade.studentNo, new Integer(0));
                             sum += grade.getScore();
                             map.put(grade.studentNo, sum);
                         },

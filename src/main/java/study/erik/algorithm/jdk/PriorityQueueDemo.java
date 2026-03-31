@@ -4,7 +4,7 @@
  */
 package study.erik.algorithm.jdk;
 
-import javafx.util.Pair;
+import study.erik.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Iterator;

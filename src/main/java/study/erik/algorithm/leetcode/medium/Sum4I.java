@@ -33,9 +33,11 @@ public class Sum4I {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
+            // 最小的四个
             if ((long) nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target) {
                 break;
             }
+            // 最大的四个
             if ((long) nums[i] + nums[length - 3] + nums[length - 2] + nums[length - 1] < target) {
                 continue;
             }
