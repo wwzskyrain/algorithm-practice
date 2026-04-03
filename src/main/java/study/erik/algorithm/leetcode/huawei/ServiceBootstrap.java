@@ -1,6 +1,5 @@
-package study.huawei;
+package study.erik.algorithm.leetcode.huawei;
 
-import javax.sound.midi.Soundbank;
 import java.util.*;
 
 // 服务启动：https://www.nowcoder.com/discuss/602464154787532800?sourceSSR=search

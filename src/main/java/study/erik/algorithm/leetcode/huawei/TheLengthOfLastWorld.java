@@ -1,12 +1,10 @@
-package study.huawei;
+package study.erik.algorithm.leetcode.huawei;
 
 import java.util.Scanner;
 
 // 字符串最后一个单词的长度
 public class TheLengthOfLastWorld {
 
-
-    // 注意类名必须为 Main, 不要有任何 package xxx 信息
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

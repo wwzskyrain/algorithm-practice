@@ -1,4 +1,4 @@
-package study.huawei;
+package study.erik.algorithm.leetcode.huawei;
 
 import java.util.Scanner;
 

@@ -1,6 +1,5 @@
-package study.huawei.medium;
+package study.erik.algorithm.leetcode.huawei.medium;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;

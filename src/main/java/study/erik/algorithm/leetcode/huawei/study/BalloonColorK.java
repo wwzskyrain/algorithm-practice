@@ -1,4 +1,4 @@
-package study.huawei.study;
+package study.erik.algorithm.leetcode.huawei.study;
 
 import java.util.*;
 
