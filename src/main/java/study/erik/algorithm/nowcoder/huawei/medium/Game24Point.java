@@ -1,4 +1,4 @@
-package study.erik.algorithm.leetcode.huawei.medium;
+package study.erik.algorithm.nowcoder.huawei.medium;
 
 //HJ67 24点游戏算法
 //https://www.nowcoder.com/practice/fbc417f314f745b1978fc751a54ac8cb?tpId=37&tags=&title=&difficulty=3&judgeStatus=0&rp=1&sourceUrl=%2Fexam%2Foj%2Fta%3FtpId%3D37

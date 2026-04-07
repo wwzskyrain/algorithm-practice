@@ -1,4 +1,4 @@
-package study.erik.algorithm.leetcode.huawei.medium;
+package study.erik.algorithm.nowcoder.huawei.medium;
 
 import lombok.extern.slf4j.Slf4j;
 

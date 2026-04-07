@@ -1,4 +1,4 @@
-package study.erik.algorithm.leetcode.huawei.medium;
+package study.erik.algorithm.nowcoder.huawei.medium;
 
 import java.util.Deque;
 import java.util.LinkedList;

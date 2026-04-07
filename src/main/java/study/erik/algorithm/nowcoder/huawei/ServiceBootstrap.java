@@ -1,4 +1,4 @@
-package study.erik.algorithm.leetcode.huawei;
+package study.erik.algorithm.nowcoder.huawei;
 
 import java.util.*;
 
